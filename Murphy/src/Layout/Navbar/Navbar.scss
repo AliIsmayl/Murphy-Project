@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+// @include MyFlex;
+
+nav {
+    background: white;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: space-between;
+    font-family: "Ubuntu", sans-serif;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+
+    .menuBox {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        @include MyFlex;
+        align-items: start;
+        display: none;
+        position: absolute;
+        left: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+
+        span:nth-child(1) {
+            width: 30px;
+        }
+
+        span:nth-child(3) {
+            width: 10px;
+        }
+
+        span {
+            height: 3px;
+            background: black;
+            transition: 0.7s;
+            width: 20px;
+
+        }
+
+        &:hover {
+            span:nth-child(1) {
+                width: 10px;
+            }
+
+            span:nth-child(3) {
+                width: 30px;
+            }
+        }
+    }
+
+    .logoBox {
+        img {
+            max-width: 100px;
+            border-radius: 3px;
+        }
+    }
+
+    ul {
+        gap: 20px;
+        @include MyFlex;
+
+        li {
+            .link {
+                display: flex;
+                color: #25224B;
+                @include MyFlex;
+
+                p {
+                    font-size: 20px;
+                }
+
+                .array {
+                    @include MyFlex;
+                    font-size: 25px;
+                    transform: rotate(40deg);
+                    transition: 0.7s;
+                    color: #F06728;
+
+                }
+
+                &:hover {
+                    .array {
+                        transform: rotate(90deg);
+                        transition: 0.7s;
+
+                    }
+
+                    p {
+                        transition: 0.7s;
+                        color: #F06728;
+                    }
+                }
+            }
+        }
+    }
+
+    .loginAndModeBox {
+        @include MyFlex;
+        gap: 10px;
+    }
+
+    .normalBox,
+    .respNormalBox {
+        @include MyFlex;
+        gap: 10px;
+        height: 100%;
+        color: #25224B;
+
+        .phone {
+            background: #F06728;
+            width: 33px;
+            height: 33px;
+            border-radius: 50%;
+            @include MyFlex;
+            font-size: 15px;
+
+            a {
+                color: white;
+                @include MyFlex;
+
+            }
+        }
+
+    }
+
+    .loginBox {
+        height: 35px;
+        border-radius: 2px;
+        border: 1px solid black;
+        width: 70px;
+        @include MyFlex;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+
+        .line {
+            height: 100%;
+            width: 0%;
+            position: absolute;
+            transition: 0.4s;
+            background: #F06728;
+        }
+
+        p {
+            position: absolute;
+            z-index: 2;
+            color: #25224B;
+        }
+
+        &:hover {
+            .line {
+                width: 100%;
+                transition: 0.4s;
+            }
+        }
+    }
+
+    .imageBox {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        @include MyFlex;
+        transition: 0.5s;
+
+        .image {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            @include MyFlex;
+            background: #F06728;
+
+            img {
+                width: 90%;
+                object-fit: contain;
+
+            }
+        }
+
+        &:hover {
+            background: rgba(128, 128, 128, 0.455);
+            transition: 0.5s;
+        }
+
+
+    }
+
+
+    .respNavbar {
+        background: #25224B;
+        position: fixed;
+        left: 10px;
+        width: 300px;
+        height: 97vh;
+        flex-direction: column;
+        gap: 20px;
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        padding: 20px;
+        display: none;
+        transition: 1s;
+        border-radius: 2px;
+        border: 2px solid #F06728;
+
+        .respNotUserLoginBox {
+            position: absolute;
+            bottom: 80px;
+            display: flex;
+            align-items: center;
+            color: white;
+
+            .loginBox {
+                border: 1px solid white;
+
+                p {
+                    color: white;
+                }
+            }
+
+        }
+
+        ul {
+            flex-direction: column;
+            align-items: start;
+
+            li {
+                .link {
+                    color: white;
+                }
+            }
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+
+        }
+
+        .respNormalBox {
+            gap: 10px;
+            position: absolute;
+            justify-content: start;
+            width: 200px;
+            height: 100px;
+            bottom: 0px;
+            color: white;
+
+        }
+
+        .respHaveUserLoginBox {
+            height: 50px;
+            @include MyFlex;
+            gap: 10px;
+            margin-bottom: 10px;
+
+
+
+            .userInformBox {
+                color: white;
+
+                p {
+                    font-size: 20px;
+                }
+
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 986px) {
+    nav {
+        display: flex;
+        justify-content: end;
+        height: 85px;
+
+        .logoBox {
+            img {
+                max-width: 80px;
+            }
+        }
+
+        .menuBox {
+            display: flex;
+        }
+
+        #normalUl {
+            display: none;
+        }
+
+        .loginAndModeBox {
+            display: none;
+        }
+
+        .normalBox {
+            display: none;
+        }
+
+        .respNavbar {
+            display: flex;
+            transform: translateX(-110%);
+        }
+    }
+}
+
+
+
+.openNavbar {
+    transform: translateX(0px) !important;
+    transition: 0.7s;
+}
+
+@media only screen and (max-width: 428px) {
+    nav {
+        .respNavbar {
+            width: 95%;
+        }
+    }
+
+}

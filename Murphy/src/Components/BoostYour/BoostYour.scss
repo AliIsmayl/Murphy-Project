@@ -1,0 +1,164 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#boostYour {
+    display: flex;
+    padding: 100px 0px;
+    justify-content: space-between;
+
+    .boostLeftBox {
+        width: 540px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0px 20px;
+
+        h5 {
+            color: #F06728;
+        }
+
+        h2 {
+            font-size: 3.5em;
+            color: #25224B;
+            margin-bottom: 20px;
+        }
+
+
+        .normalBox {
+            border-left: 5px solid #F06728;
+            margin: 20px 0px 30px 0px;
+
+            p {
+                font-size: 1.2em;
+                padding: 10px 20px;
+                text-align: justify;
+            }
+        }
+
+        .btnBox {
+            display: flex;
+            gap: 20px;
+
+            .btn {
+                height: 70px;
+                width: 220px;
+                background: #F06728;
+                @include MyFlex;
+                color: white;
+                gap: 10px;
+                transition: 0.5s;
+                cursor: pointer;
+
+                .arrow {
+                    font-size: 25px;
+                    transform: rotate(40deg);
+                    display: flex;
+                }
+
+                &:hover {
+                    background: #25224B;
+                    transition: 0.5s;
+                }
+            }
+
+            .phoneBox {
+                @include MyFlex;
+                gap: 20px;
+                color: #25224B;
+
+                .phone {
+                    background: #F2F2F2;
+                    height: 60px;
+                    width: 60px;
+                    @include MyFlex;
+                    cursor: pointer;
+                    font-size: 2em;
+                    border-radius: 50%;
+
+                }
+
+                span {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+
+    .boostRightBox {
+        padding: 0px 20px 0px 0px;
+        display: flex;
+        gap: 20px;
+
+        .numbersBox {
+            .boxIsCount {
+                border: 2px dotted #25224B;
+                border-top: none;
+                height: 200px;
+                width: 310px;
+                @include MyFlex;
+                flex-direction: column;
+
+                h1 {
+                    font-size: 3em;
+                    color: #F06728;
+                }
+
+                p {
+                    font-size: 1.3em;
+                    max-width: 50%;
+                    text-align: center;
+                    color: #25224B;
+                }
+            }
+
+            .boxIsCount:first-child {
+                border-top: 2px dotted #25224B;
+
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #boostYour {
+        flex-direction: column;
+        @include MyFlex;
+        gap: 50px;
+    }
+}
+
+@media only screen and (max-width: 878px) {
+    #boostYour {
+        .boostRightBox {
+            flex-direction: column;
+
+            .numbersBox {
+                @include MyFlex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 562px) {
+    #boostYour {
+        .boostLeftBox {
+            width: 90%;
+            .btnBox {
+                flex-direction: column;
+                @include MyFlex;
+            }
+        }
+        .boostRightBox {
+            padding: 0;
+            img{
+                max-width: 310px;
+            }
+         
+        }
+    }
+}

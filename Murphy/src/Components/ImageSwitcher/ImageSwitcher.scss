@@ -1,0 +1,82 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.active {
+    background: #f06728c4 !important;
+}
+
+#imageSwitcher {
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .littleChangerBox {
+        background: #f0672846;
+        cursor: pointer;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 30px 50px 30px;
+        height: 90vh;
+
+        .upBox {
+            font-size: 5em;
+            font-family: "Roboto", sans-serif;
+            font-weight: bold;
+            vertical-align: baseline;
+            text-decoration: none solid transparent;
+            color: transparent;
+            -webkit-text-stroke-width: 2px;
+            -webkit-text-stroke-color: white;
+        }
+
+        .downBox {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 10px 0;
+            color: white;
+
+            p {
+                font-size: 1.5em;
+                max-width: 200px;
+            }
+
+            .arrow {
+                font-size: 5em;
+                display: flex;
+                transform: rotate(40deg);
+
+            }
+        }
+
+        &:hover {
+            .upBox {
+                -webkit-text-stroke-color: #25224B;
+            }
+
+            .downBox {
+                color: #25224B;
+            }
+        }
+    }
+
+}
+
+@media only screen and (max-width: 1071px) {
+    #imageSwitcher {
+        @include MyFlex;
+        flex-wrap: wrap;
+        .littleChangerBox {
+            width: 320px;
+        }
+
+    }
+}

@@ -1,0 +1,100 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#delivering {
+    background: #F06728;
+    @include MyFlex;
+    justify-content: space-between;
+    padding: 0px 0px 10px 0px;
+
+    .leftDeliveryBox {
+        @include MyFlex;
+        width: 300px;
+
+        img {
+            margin-right: 40px;
+            max-width: 100%
+        }
+    }
+
+    .middleDeliveryBox {
+        @include MyFlex;
+        padding: 20px;
+        gap: 20px;
+
+        h3 {
+            font-size: 2.5em;
+            flex-direction: column;
+            gap: 5px;
+            color: white;
+        }
+
+        p {
+            color: #25224B;
+        }
+    }
+
+    .rightDeliveryBox {
+        padding: 0 20px 0 0;
+
+        .insureBtnBox {
+            background: #25224B;
+            height: 70px;
+            width: 230px;
+            @include MyFlex;
+            color: white;
+            transition: 0.9s;
+            cursor: pointer;
+
+            .arrowBox {
+                @include MyFlex;
+                font-size: 30px;
+                transform: rotate(30deg);
+            }
+
+            &:hover {
+                background: white;
+                transition: 0.9s;
+                color: #25224B;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1210px) {
+    #delivering {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 20px;
+
+        .middleDeliveryBox {
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .rightDeliveryBox {
+            padding: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 433px) {
+    #delivering {
+
+        .middleDeliveryBox {
+            flex-direction: column;
+
+            h3 {
+                font-size: 2em;
+                max-width: 220px;
+
+            }
+        }
+
+
+    }
+}

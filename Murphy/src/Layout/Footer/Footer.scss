@@ -1,0 +1,206 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+
+footer {
+    background: #25224B;
+
+    .footerUpBox {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 0px;
+        flex-wrap: wrap;
+
+        .leftFooterBox {
+            width: 320px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            img {
+                max-width: 100px;
+            }
+
+            p {
+                color: white;
+                text-align: justify;
+            }
+
+            .socialIconBox {
+                display: flex;
+                gap: 15px;
+
+                p {
+                    color: #F06728;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .middleFooterBox {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            h3 {
+                font-size: 2em;
+                color: #F06728;
+            }
+
+            .informBox {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 2.5em;
+                color: #F06728;
+
+                .textBox {
+                    font-size: 0.5em;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    color: white;
+
+                    p {
+                        color: #F06728;
+
+                    }
+                }
+            }
+        }
+
+        .rightFooterBox {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            h3 {
+                font-size: 2em;
+                color: #F06728;
+            }
+
+            .subscribeBox {
+                display: flex;
+                background: #F06728;
+                height: 50px;
+
+                input {
+                    padding: 0px 20px;
+                    outline: none;
+                    width: 270px;
+                    border: none;
+                }
+
+                button {
+                    background: #F06728;
+                    @include MyFlex;
+                    padding: 0px 20px;
+                    cursor: pointer;
+                    color: white;
+                    transition: 0.3s;
+                    border: none;
+
+                    &:hover {
+                        background: #F2F2F2;
+                        color: black;
+                        transition: 0.3s;
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    .footerDownBox {
+        text-align: center;
+        padding: 20px;
+        @include MyFlex;
+        border-top: 1px solid rgba(255, 255, 255, 0.397);
+
+        p {
+            display: flex;
+            gap: 4px;
+            color: white;
+
+            span {
+                color: #F06728;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1083px) {
+    footer {
+
+        .footerUpBox {
+            @include MyFlex;
+            gap: 100px;
+
+        }
+
+    }
+}
+
+@media only screen and (max-width: 773px) {
+    footer {
+        .footerUpBox {
+            gap: 40px;
+
+            .leftFooterBox {
+                @include MyFlex;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 485px) {
+    footer {
+
+        .footerUpBox {
+            gap: 20px;
+
+            h3 {
+                text-align: center;
+            }
+
+            .rightFooterBox {
+                .subscribeBox {
+                    height: 150px;
+                    flex-direction: column;
+                    background: transparent;
+                    gap: 10px;
+                    @include MyFlex;
+
+                    input {
+                        height: 50px;
+                    }
+
+                    button {
+                        height: 40px;
+                        width: 100px;
+                    }
+                }
+            }
+        }
+
+        .footerDownBox {
+            p {
+                flex-direction: column;
+            }
+        }
+
+    }
+}
