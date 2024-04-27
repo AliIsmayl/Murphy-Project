@@ -1,0 +1,51 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+
+#backToTop {
+    background: red;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 3;
+    @include MyFlex;
+    flex-direction: column;
+    gap: 10px;
+    background: #25224B;
+    border: 2px solid #F06728;
+
+    &:hover {
+        p {
+            transition: visibility 0s, opacity 1s ease;
+            animation: fadeIn 1.5s ease infinite;
+
+        }
+    }
+
+    p {
+        transform: rotate(180deg);
+        font-size: 20px;
+        color: #F06728;
+    }
+
+    span {
+        font-size: 15px;
+        color: white;
+    }
+}
+
+@keyframes fadeIn {
+   
+    50% {
+    transform: rotate(180deg) translateY(4px);
+       
+    }
+}

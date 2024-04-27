@@ -60,7 +60,7 @@ function LogisticService() {
                         <div className="serviceSwiperBox">
                          <div className="imageSwiper">
                             
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
+                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_01-500x250.jpg" alt="" />
                          </div>
                             <div className="swiperTextBox">
                                 <span>Railway</span>
