@@ -1,0 +1,132 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+#faq {
+    display: flex;
+    padding: 100px 0;
+background-color: #F2F2F2;
+    .leftBox {
+        width: 50%;
+        padding: 50px 20px;
+        font-family: "Ubuntu", sans-serif;
+
+        h3 {
+            font-size: 50px;
+            color: #25224B;
+
+            p {
+                color: #F06728;
+            }
+        }
+
+        .faqBox {
+            margin: 20px 0;
+
+            .questionText {
+                cursor: pointer;
+
+                .text {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 10px 0px 10px;
+                    border-bottom: 1px solid gray;
+                }
+
+                .icon {
+                    transition: all 0.2s;
+                    @include MyFlex;
+                    font-size: 30px;
+                    transform: rotate(-30deg);
+                    color: #F06728;
+                }
+
+                p {
+                    font-size: 20px;
+                    color: #25224B;
+
+                    &:hover {
+                        color: #F06728;
+                    }
+                }
+
+                .informText {
+                        color: grey;
+                    padding: 0px 20px;
+                    font-size: 17px;
+                    transition: all 0.7s;
+                    height: 0px;
+
+                    span {
+                        transition: all 0.2s;
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+
+    .rightBox {
+        width: 50%;
+        overflow: hidden;
+    }
+}
+
+.openFaq {
+    height: fit-content !important;
+    padding: 20px !important;
+
+    span {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+}
+
+.iconFaq {
+    transform: rotate(0deg) !important;
+}
+
+@media only screen and (max-width: 971px) {
+    #faq {
+        flex-direction: column;
+
+        .leftBox {
+            width: 100%;
+        }
+
+        .rightBox {
+            width: 100%;
+            @include MyFlex;
+        }
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    #faq {
+
+        .leftBox {
+            h3 {
+                font-size: 40px;
+                color: #25224B;
+            }
+
+            .faqBox {
+                .questionText {
+                    p {
+                        font-size: 15px;
+                    }
+
+                    .informText {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

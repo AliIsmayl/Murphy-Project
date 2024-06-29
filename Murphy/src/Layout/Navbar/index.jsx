@@ -26,7 +26,7 @@ function Navbar() {
             </div>
             <ul id='normalUl'>
                 <li>
-                    <Link className="link">
+                    <Link className="link" to={"/"}>
                         <p>Home</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
@@ -34,7 +34,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link className="link">
+                    <Link className="link" to={"/about"}>
                         <p>About Us</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
@@ -79,7 +79,7 @@ function Navbar() {
                     </div>
                 </div>
                 {/* Eger user login olmayıbsa bu cür olacaq */}
-                <div className="loginBox"><p>Log In</p><div className="line"></div></div>
+                <div className="loginBox"><p><Link to={"/login"}>Log In</Link></p><div className="line"></div></div>
                 {/* Eger user artıq login olubsa bu cür olacaq */}
                 <div className="imageBox">
                     <div className="image">

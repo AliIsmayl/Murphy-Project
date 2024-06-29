@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './LogisticService.scss'
 import { Link } from "react-router-dom";
 import { IoIosArrowRoundUp } from "react-icons/io";
@@ -6,8 +6,17 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-
+import axios from 'axios'
 function LogisticService() {
+    const [getData, setGetData] = useState([])
+
+    async function GetFunctionData() {
+        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Services/Get?page=1&take=3")
+        setGetData(res.data)
+    }
+    useEffect(() => {
+        GetFunctionData()
+    }, [])
     return (
         <section id='logisticService'>
             <div className="upLogisticServiceBox">
@@ -32,102 +41,34 @@ function LogisticService() {
                     }}
                     breakpoints={{
                         0: {
-                          slidesPerView: 1,
+                            slidesPerView: 1,
                         },
                         702: {
-                          slidesPerView: 2,
+                            slidesPerView: 2,
                         },
                         1175: {
-                          slidesPerView: 3,
+                            slidesPerView: 3,
                         },
-                      }}
+                    }}
                     modules={[Pagination]}
                     className="mySwiper"
                 >
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_01-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="serviceSwiperBox">
-                         <div className="imageSwiper">
-                            
-                               <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/serv_06-500x250.jpg" alt="" />
-                         </div>
-                            <div className="swiperTextBox">
-                                <span>Railway</span>
-                                <p>Packing Services <div className="arrowBox"><IoIosArrowRoundUp /></div></p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
+                    {
+                        getData && getData.map((item) => (
+                            <SwiperSlide>
+                                <div className="serviceSwiperBox">
+                                    <div className="imageSwiper">
+
+                                        <img src={item.image} alt="" />
+                                    </div>
+                                    <div className="swiperTextBox">
+                                        <span>{item.name}</span>
+                                        <p>{item.tittle}<div className="arrowBox"><IoIosArrowRoundUp /></div></p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))
+                    }
                 </Swiper>
             </div>
         </section>

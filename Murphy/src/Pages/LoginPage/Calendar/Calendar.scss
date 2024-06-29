@@ -1,0 +1,32 @@
+#loginAndregisterBox {
+    form {
+        span {
+            color: #25224b !important;
+        }
+    }
+
+}
+
+.react-calendar__tile--active {
+    background-color: #25224b;
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+    background-color: #f06728 !important;
+}
+
+.react-calendar__tile--now {
+    background-color: rgba(128, 128, 128, 0.334);
+    border-radius: 10px;
+}
+
+.react-calendar__tile--now {
+    background-color: rgba(128, 128, 128, 0.334) !important;
+    border-radius: 10px !important;
+
+    color: #f06728;
+}
+.react-calendar {
+    color: #25224b;
+}

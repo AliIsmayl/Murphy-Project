@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './BoostYour.scss'
 import { IoIosArrowRoundUp } from "react-icons/io";
 import { HiOutlinePhoneOutgoing } from "react-icons/hi";
 
+
 function BoostYour() {
+   
+    
+
     return (
         <section id='boostYour'>
             <div className="boostLeftBox">

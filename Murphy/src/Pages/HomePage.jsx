@@ -6,17 +6,19 @@ import LogisticService from '../Components/LogisticService'
 import BoostYour from '../Components/BoostYour'
 import VideoInform from '../Components/VideoInform'
 import ImageSwitcher from '../Components/ImageSwitcher'
+import Calendar from './LoginPage/Calendar/Calendar'
 
 function HomePage() {
   return (
     <>
-    <Header/>
-    <SmallInform/>
-    <BoostYour/>
-    <Delivering/>
-    <LogisticService/>
-    {/* <VideoInform/> */}
-<ImageSwitcher/>
+      <Header />
+      <SmallInform />
+      <BoostYour />
+      <Delivering />
+      <LogisticService />
+      {/* <VideoInform/> */}
+      <ImageSwitcher />
+
     </>
   )
 }

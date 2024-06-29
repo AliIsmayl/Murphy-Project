@@ -1,0 +1,103 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+#videoSect {
+    height: 600px;
+    background-image: url("http://goodrise.like-themes.com/wp-content/uploads/2024/01/parallax_02.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+    .backPage {
+        background-color: rgba(0, 0, 0, 0.323);
+        width: 100%;
+        height: 100%;
+        padding: 150px 100px;
+
+        p {
+            font-family: "Josefin Sans", sans-serif;
+            font-size: 60px;
+            color: white;
+            font-weight: 600;
+            max-width: 500px;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+
+            span {
+                color: #F06728;
+            }
+        }
+
+        .btns {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            button {
+                height: 60px;
+                width: 60px;
+                @include MyFlex;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                color: #F06728;
+                transition: all 0.7s;
+
+                &:hover {
+                    background-color: #F06728;
+                    color: white;
+                }
+            }
+
+            i {
+                font-size: 20px;
+                color: whitesmoke;
+            }
+        }
+
+    }
+
+    .videoPlayerBox {
+        top: 0;
+        background: rgba(0, 0, 0, 0.696);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        .closeBtn{
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            cursor: pointer;
+        }
+    }
+    .openVideo{
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 694px) {
+    #videoSect {
+        .backPage {
+            padding: 150px 20px;
+
+            p {
+                font-size: 46px;
+                max-width: 80%;
+            }
+        }
+    }
+}

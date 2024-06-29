@@ -1,0 +1,83 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+#aboutSwiper {
+    padding: 20px 10px;
+
+    .upBox {
+        @include MyFlex;
+        flex-direction: column;
+        gap: 20px;
+        font-family: "Ubuntu", sans-serif;
+
+        h1 {
+            color: #F06728;
+            font-size: 15px;
+            letter-spacing: 10px;
+        }
+
+        p {
+            color: #25224B;
+            font-size: 50px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+    }
+
+    .downBox {
+        margin-top: 80px;
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+            padding: 10px 0 30px;
+        }
+
+        .swiper-slide {
+            background: white;
+            @include MyFlex;
+            flex-direction: column;
+            gap: 20px;
+
+            span {
+                font-size: 100px;
+                color: #F06728;
+                font-family: "Quicksand", sans-serif;
+                font-weight: 700;
+            }
+
+            p {
+                font-family: "Quicksand", sans-serif;
+                margin-top: -40px;
+                color: gray;
+                font-size: 20px;
+                text-align: center;
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                aspect-ratio: 1/2;
+                object-fit: cover;
+            }
+
+            h1 {
+                font-size: 20px;
+                color: #25224B;
+            }
+        }
+    }
+    .swiper-pagination-bullet-active  {
+        background: #25224B;
+    }
+}
+
