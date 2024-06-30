@@ -1,0 +1,79 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+.dashboard {
+    background: #16283c;
+    height: 100vh;
+    position: fixed;
+    width: 320px;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    transition: all 0.7s;
+
+    .closeBtn {
+        height: 40px;
+        width: 40px;
+        position: absolute;
+        right: -50px;
+        @include MyFlex;
+        font-size: 30px;
+        cursor: pointer;
+        transition: all 0.7s;
+        background-color: #204162;
+        color: white;
+    }
+
+    .upBox {
+        @include MyFlex;
+        gap: 20px;
+        padding: 20px;
+        color: white;
+
+        .image {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                aspect-ratio: 1/1;
+            }
+        }
+
+    }
+
+    .downBox {
+
+        p {
+            padding: 8px 6px;
+            cursor: pointer;
+            background: #204162;
+
+            margin: 5px 0;
+
+            .link {
+                color: whitesmoke;
+            }
+        }
+    }
+}
+
+.closedDashboard {
+    transform: translateX(-100%);
+
+}
+
+.closedCloseIcon {
+    transform: translateX(-150%);
+
+}

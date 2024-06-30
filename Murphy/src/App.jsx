@@ -9,13 +9,15 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import DetailPage from './Pages/DetailPage/DetailPage';
 import ProfilePage from './Pages/ProfilePage/ProfilePage';
 import CargoRequestPage from './Pages/CargoRequestPage/CargoRequestPage';
+import Dashboard from './Layout/Dashboard/Dashboard';
+import AdminAbout from './Pages/CompanyNamePage/CompanyNamePage';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -24,8 +26,18 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cargoReguest" element={<CargoRequestPage />} />
         </Routes>
-        <BackToTop/>
-        <Footer/>
+        <BackToTop />
+        {/* <Footer /> */}
+        <Dashboard/>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* <Route path="/login" element={<LoginPage />} /> */}
+          <Route path="/detail" element={<DetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/cargoReguest" element={<CargoRequestPage />} />
+          <Route path="/admin/about" element={<AdminAbout />} />
+        </Routes>
       </BrowserRouter>
     </>
   )

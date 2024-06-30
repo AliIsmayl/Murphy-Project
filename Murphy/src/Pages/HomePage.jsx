@@ -7,6 +7,8 @@ import BoostYour from '../Components/BoostYour'
 import VideoInform from '../Components/VideoInform'
 import ImageSwitcher from '../Components/ImageSwitcher'
 import Calendar from './LoginPage/Calendar/Calendar'
+import Dashboard from '../Layout/Dashboard/Dashboard'
+import NotMeanDashBoard from '../Components/NotMeanDashBoard/NotMeanDashBoard'
 
 function HomePage() {
   return (
@@ -18,7 +20,6 @@ function HomePage() {
       <LogisticService />
       {/* <VideoInform/> */}
       <ImageSwitcher />
-
     </>
   )
 }
