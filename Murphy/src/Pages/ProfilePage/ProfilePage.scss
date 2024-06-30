@@ -1,0 +1,134 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#profilePage {
+    @include MyFlex;
+    padding: 50px 0px;
+
+    .profileBox {
+        width: 600px;
+        border-radius: 50px;
+        overflow: hidden;
+        background-color: #25224B;
+        -webkit-box-shadow: 17px 17px 32px -5px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 17px 17px 32px -5px rgba(0, 0, 0, 0.75);
+        box-shadow: 17px 17px 32px -5px rgba(0, 0, 0, 0.75);
+    }
+
+    .upBox {
+        // background: #F06728;
+        display: flex;
+        padding: 20px 10px;
+        justify-content: space-between;
+
+        .contactBox {
+            height: 30px;
+            width: 100px;
+            background-color: #F06728;
+            margin-top: 60px;
+            cursor: pointer;
+            @include MyFlex;
+            color: white;
+            border-radius: 10px;
+            p{
+                margin:0px 5px;
+            }
+        }
+
+        .profileImage {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                aspect-ratio: 1/1.4;
+            }
+        }
+
+        .messageBox {
+            height: 30px;
+            width: 100px;
+            background-color: #F06728;
+            margin-top: 60px;
+            cursor: pointer;
+            @include MyFlex;
+            color: white;
+            border-radius: 10px;
+            p{
+                margin:0px 5px;
+            }
+        }
+    }
+
+    .downBox {
+        color: white;
+        padding: 20px 10px;
+        @include MyFlex;
+        flex-direction: column;
+
+        h1 {
+            font-size: 40px;
+        }
+
+        span {
+            margin: 0 0 20px 0;
+            color: gray;
+        }
+
+        .numberBox {
+            display: flex;
+            gap: 20px;
+            padding: 20px 10px;
+
+            .number {
+                @include MyFlex;
+                flex-direction: column;
+
+                p {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .showMore {
+            background: #F06728;
+            height: 40px;
+            width: 100px;
+            @include MyFlex;
+            cursor: pointer;
+            color: white;
+            border-radius: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width: 681px) {
+    #profilePage {
+.profileBox{
+   width: 90%;
+}
+        .upBox {
+            .contactBox {
+                width: 80px;
+
+            }
+
+            .profileImage {
+                height: 100px;
+                width: 100px;
+            }
+
+            .messageBox {
+                width: 80px;
+
+            }
+        }
+    }
+}

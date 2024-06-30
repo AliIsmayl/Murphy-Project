@@ -6,6 +6,9 @@ import Footer from './Layout/Footer';
 import BackToTop from './Components/BackToTop';
 import AboutPage from './Pages/AboutPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
+import DetailPage from './Pages/DetailPage/DetailPage';
+import ProfilePage from './Pages/ProfilePage/ProfilePage';
+import CargoRequestPage from './Pages/CargoRequestPage/CargoRequestPage';
 
 function App() {
 
@@ -17,7 +20,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/detail" element={<DetailPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/cargoReguest" element={<CargoRequestPage />} />
         </Routes>
         <BackToTop/>
         <Footer/>
