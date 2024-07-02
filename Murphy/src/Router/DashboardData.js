@@ -1,41 +1,37 @@
 export const Dashboard = [
   {
     name: "About",
-    path: "",
+    path: "/admin/about",
   },
   {
     name: "Custom Info",
-    path: "",
+    path: "/admin/customİnfo",
   },
   {
     name: "Faqs",
-    path: "",
+    path: "/admin/faq",
   },
   {
     name: "From Countries",
-    path: "",
+    path: "/admin/fromCountries",
   },
   {
     name: "Orders",
-    path: "",
+    path: "/admin/orders",
   },
   {
     name: "Partner Companies",
-    path: "",
+    path: "/admin/partnerCompanies",
   },
   {
     name: "Services",
-    path: "",
+    path: "/admin/services",
   },
   {
     name: "Settings",
-    path: "",
+    path: "/admin/settings",
   },
   {
     name: "Sliders",
-    path: "",
-  },
-  {
-    name: "To Countries",
-    path: "",
-  },];
+    path: "/admin/sliders",
+  }];

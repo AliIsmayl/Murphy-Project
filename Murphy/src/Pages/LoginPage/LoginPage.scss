@@ -162,6 +162,29 @@
             color: #25224b;
         }
 
+        .rememberBtn {
+            padding: 6px 8px;
+            width: 100%;
+           background-color: transparent;
+            display: flex;
+            cursor: pointer;
+            color: #25224b;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+            gap: 10px;
+            margin-top: 10px;
+            input{
+                height: 15px;
+                width: 15px;
+                cursor: pointer;
+            }
+            p{
+                margin-top: 0px;
+                color: white;
+            }
+        }
+
         span {
             color: white;
             cursor: pointer;

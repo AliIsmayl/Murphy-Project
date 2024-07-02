@@ -11,13 +11,13 @@ function Dashboard() {
         setcloseBtn(!closeBtn)
     }
     return (
-        <nav className={`dashboard ${closeBtn ?"closedDashboard":""}`}>
-            <div className={`closeBtn ${closeBtn ?"":"closedCloseIcon"}`} onClick={openNavbar}>
+        <nav className={`dashboard ${closeBtn ? "closedDashboard" : ""}`}>
+            <div className={`closeBtn ${closeBtn ? "" : "closedCloseIcon"}`} onClick={openNavbar}>
                 {
-                    closeBtn ?<IoMdMenu />:<IoMdClose />
+                    closeBtn ? <IoMdMenu /> : <IoMdClose />
                 }
-                
-                </div>
+
+            </div>
             <div className="upBox">
                 <div className="image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_Neymar_850_1705.jpg" alt="" />
@@ -29,7 +29,7 @@ function Dashboard() {
             <div className="downBox">
                 {
                     DashboardData && DashboardData.map((item) => (
-                        <p key={item.id}><Link className='link'>{item.name}</Link></p>
+                        <Link className='link' to={item.path}> <p key={item.id}>{item.name}</p></Link>
                     ))
                 }
             </div>

@@ -1,44 +1,40 @@
-import React, { useEffect, useState } from 'react'
-import './CompanyNamePage.scss'
-import NotMeanDashBoard from '../../Components/NotMeanDashBoard/NotMeanDashBoard'
-import axios from 'axios'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { BiSolidArchiveOut } from "react-icons/bi";
+import { FaPlusSquare } from "react-icons/fa";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { RiEdit2Line } from "react-icons/ri";
-import { FaPlusSquare } from "react-icons/fa";
-import { BiSolidArchiveOut } from "react-icons/bi";
 import { Link } from 'react-router-dom';
-import { IoCloseSharp } from "react-icons/io5";
-import { IoReload } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
+import NotMeanDashBoard from '../../Components/NotMeanDashBoard/NotMeanDashBoard';
+import './CompanyNamePage.scss';
+import toast from 'react-hot-toast';
+const token = localStorage.getItem("token");
 
 function AdminAbout() {
     const [getData, setGetData] = useState([])
-    const [openArchive, setopenArchive] = useState(false)
-    const [openCreate, setopenCreate] = useState(false)
-    const [textUpdate, settextUpdate] = useState(false)
 
-    function handleOpenArchiveBox() {
-        setopenArchive(!openArchive)
-        setopenCreate(false)
-        settextUpdate(false)
+    async function handleDelete(id) {
+        try {
+            if (token) {
+                await axios.patch(`http://alihuseyn-001-site1.btempurl.com/api/Abouts/SoftDelete/${id}`, null, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    },
+                })
+                toast.error('Silindi...')
+                getAxiosData()
 
+            } else {
+                alert('proplem')
+            }
+        } catch (error) {
 
-    }
-    function handleUpdateBox() {
-        settextUpdate(!textUpdate)
-        setopenCreate(false)
-        setopenArchive(false)
-
-    }
-    function handleOpenCreateBox() {
-        setopenCreate(!openCreate)
-        setopenArchive(false)
-        settextUpdate(false)
-
+        }
     }
 
     async function getAxiosData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Get?page=1&take=5")
+        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Get?page=1&take=1000")
         setGetData(res.data)
     }
     useEffect(() => {
@@ -58,50 +54,6 @@ function AdminAbout() {
                             <button style={{ background: "green" }} ><BiSolidArchiveOut /></button>
                         </Link>
                     </div>
-                    {/* <div className={`archiveTableBox ${openArchive ? "openArchive" : ""}`}>
-                            <div className="closeBtn" onClick={handleOpenArchiveBox}><IoCloseSharp /></div>
-                            <table >
-                                <tr>
-                                    <th style={{ width: "75px" }}>Count</th>
-                                    <th style={{ width: "100px" }}>Tittle</th>
-                                    <th style={{ width: "100px" }}>Image</th>
-                                    <th style={{ width: "100px" }}>Desc</th>
-                                    <th style={{ width: "75px" }}>Delete</th>
-                                    <th style={{ width: "80px" }}>Reload</th>
-                                </tr>
-                                {
-                                    getData && getData.map((item, index) => (
-                                        <tr key={item.id}>
-                                            <td style={{ width: "75px" }}>{index + 1}</td>
-                                            <td style={{ width: "100px" }}>{item.tittle}</td>
-                                            <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
-                                            <td style={{ width: "100px" }}>{item.description}</td>
-                                            <td style={{ width: "75px" }}><button><MdDelete /></button></td>
-                                            <td style={{ width: "80px" }}><button><IoReload /></button></td>
-                                        </tr>
-                                    ))
-                                }
-
-                            </table>
-                        </div> */}
-                    {/* <div className={`createTableBox ${openCreate ? "openArchive" : ""}`}>
-                        <div className="closeBtn" onClick={handleOpenCreateBox}><IoCloseSharp /></div>
-                        <form action="">
-                            <input type="text" placeholder='Tittle...' />
-                            <input type="text" placeholder='Description...' />
-                            <input type="file" />
-                            <button>Create</button>
-                        </form>
-                    </div> */}
-                    {/* <div className={`editTableBox ${textUpdate ? "openArchive" : ""}`}>
-                        <div className="closeBtn" onClick={handleUpdateBox}><IoCloseSharp /></div>
-                        <form action="">
-                            <input type="text" placeholder='Tittle...' />
-                            <input type="text" placeholder='Description...' />
-                            <input type="file" />
-                            <button>Update</button>
-                        </form>
-                    </div> */}
                     <table>
                         <tr>
                             <th style={{ width: "70px" }}>Count</th>
@@ -116,7 +68,7 @@ function AdminAbout() {
                                     <td style={{ width: "70px" }}>{index + 1}</td>
                                     <td style={{ width: "100px" }}>{item.tittle}</td>
                                     <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
-                                    <td style={{ width: "70px" }}><button style={{ background: "red" }}><FaDeleteLeft /></button></td>
+                                    <td style={{ width: "70px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><FaDeleteLeft /></button></td>
                                     <td style={{ width: "70px" }} >
                                         <Link to={"/admin/about/update"}>
                                             <button style={{ background: "#F06728" }} ><RiEdit2Line /></button>

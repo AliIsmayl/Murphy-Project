@@ -53,7 +53,9 @@
     }
 
     .downBox {
-
+        .link {
+            color: whitesmoke;
+        }
         p {
             padding: 8px 6px;
             cursor: pointer;
@@ -61,9 +63,7 @@
 
             margin: 5px 0;
 
-            .link {
-                color: whitesmoke;
-            }
+           
         }
     }
 }
