@@ -51,36 +51,40 @@ function AdminAbout() {
             <section id='companyNamePage'>
                 <div className="borderBox">
                     <div className="createBox">
-                        <button style={{ background: "#25224B", margin: "0 0 0 50px" }} onClick={handleOpenCreateBox}><FaPlusSquare /></button>
-                        <button style={{ background: "green" }} onClick={handleOpenArchiveBox}><BiSolidArchiveOut /></button>
+                        <Link to={"/admin/about/create"}>
+                            <button style={{ background: "#25224B", margin: "0 0 0 50px" }}><FaPlusSquare /></button>
+                        </Link>
+                        <Link to={"/admin/about/archive"}>
+                            <button style={{ background: "green" }} ><BiSolidArchiveOut /></button>
+                        </Link>
                     </div>
-                    <div className={`archiveTableBox ${openArchive ? "openArchive" : ""}`}>
-                        <div className="closeBtn" onClick={handleOpenArchiveBox}><IoCloseSharp /></div>
-                        <table >
-                            <tr>
-                                <th style={{ width: "75px" }}>Count</th>
-                                <th style={{ width: "100px" }}>Tittle</th>
-                                <th style={{ width: "100px" }}>Image</th>
-                                <th style={{ width: "100px" }}>Desc</th>
-                                <th style={{ width: "75px" }}>Delete</th>
-                                <th style={{ width: "80px" }}>Reload</th>
-                            </tr>
-                            {
-                                getData && getData.map((item, index) => (
-                                    <tr key={item.id}>
-                                        <td style={{ width: "75px" }}>{index + 1}</td>
-                                        <td style={{ width: "100px" }}>{item.tittle}</td>
-                                        <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
-                                        <td style={{ width: "100px" }}>{item.description}</td>
-                                        <td style={{ width: "75px" }}><button><MdDelete /></button></td>
-                                        <td style={{ width: "80px" }}><button><IoReload /></button></td>
-                                    </tr>
-                                ))
-                            }
+                    {/* <div className={`archiveTableBox ${openArchive ? "openArchive" : ""}`}>
+                            <div className="closeBtn" onClick={handleOpenArchiveBox}><IoCloseSharp /></div>
+                            <table >
+                                <tr>
+                                    <th style={{ width: "75px" }}>Count</th>
+                                    <th style={{ width: "100px" }}>Tittle</th>
+                                    <th style={{ width: "100px" }}>Image</th>
+                                    <th style={{ width: "100px" }}>Desc</th>
+                                    <th style={{ width: "75px" }}>Delete</th>
+                                    <th style={{ width: "80px" }}>Reload</th>
+                                </tr>
+                                {
+                                    getData && getData.map((item, index) => (
+                                        <tr key={item.id}>
+                                            <td style={{ width: "75px" }}>{index + 1}</td>
+                                            <td style={{ width: "100px" }}>{item.tittle}</td>
+                                            <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
+                                            <td style={{ width: "100px" }}>{item.description}</td>
+                                            <td style={{ width: "75px" }}><button><MdDelete /></button></td>
+                                            <td style={{ width: "80px" }}><button><IoReload /></button></td>
+                                        </tr>
+                                    ))
+                                }
 
-                        </table>
-                    </div>
-                    <div className={`createTableBox ${openCreate ? "openArchive" : ""}`}>
+                            </table>
+                        </div> */}
+                    {/* <div className={`createTableBox ${openCreate ? "openArchive" : ""}`}>
                         <div className="closeBtn" onClick={handleOpenCreateBox}><IoCloseSharp /></div>
                         <form action="">
                             <input type="text" placeholder='Tittle...' />
@@ -88,8 +92,8 @@ function AdminAbout() {
                             <input type="file" />
                             <button>Create</button>
                         </form>
-                    </div>
-                    <div className={`editTableBox ${textUpdate ? "openArchive" : ""}`}>
+                    </div> */}
+                    {/* <div className={`editTableBox ${textUpdate ? "openArchive" : ""}`}>
                         <div className="closeBtn" onClick={handleUpdateBox}><IoCloseSharp /></div>
                         <form action="">
                             <input type="text" placeholder='Tittle...' />
@@ -97,7 +101,7 @@ function AdminAbout() {
                             <input type="file" />
                             <button>Update</button>
                         </form>
-                    </div>
+                    </div> */}
                     <table>
                         <tr>
                             <th style={{ width: "70px" }}>Count</th>
@@ -113,7 +117,11 @@ function AdminAbout() {
                                     <td style={{ width: "100px" }}>{item.tittle}</td>
                                     <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
                                     <td style={{ width: "70px" }}><button style={{ background: "red" }}><FaDeleteLeft /></button></td>
-                                    <td style={{ width: "70px" }} ><button style={{ background: "#F06728" }} onClick={handleUpdateBox}><RiEdit2Line /></button></td>
+                                    <td style={{ width: "70px" }} >
+                                        <Link to={"/admin/about/update"}>
+                                            <button style={{ background: "#F06728" }} ><RiEdit2Line /></button>
+                                        </Link>
+                                    </td>
                                 </tr>
                             ))
                         }

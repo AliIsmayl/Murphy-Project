@@ -1,0 +1,68 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+.editPage {
+    padding: 30px 0;
+
+    .home {
+        color: black;
+        margin: 0 0 20px 50px;
+
+    }
+
+    button {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        @include MyFlex;
+        font-size: 20px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .editTableBox {
+        background: #204162;
+        width: 310px;
+border-radius: 10px;
+        button {
+            color: black;
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            left: 5px;
+        }
+
+        form {
+            padding: 40px 10px;
+            @include MyFlex;
+            flex-direction: column;
+            gap: 10px;
+
+            button {
+                width: 100px;
+                font-size: 15px;
+                border-radius: 5px;
+                border: none;
+            }
+
+            input {
+                width: 90%;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: none;
+
+            }
+        }
+    }
+
+
+}
