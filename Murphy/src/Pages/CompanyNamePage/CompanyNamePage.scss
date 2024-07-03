@@ -14,7 +14,7 @@
     .borderBox {
         padding: 10px;
         border: 1px solid black;
-        width: 438px;
+        width: 725px;
     }
 
     .createBox {
@@ -101,30 +101,36 @@
 
         tr {
             font-size: 20px;
-            border: 1px solid #25224B;
             display: flex;
 
             th {
                 background: #b8daff;
                 padding: 10px;
                 @include MyFlex;
+                width: 200px  ;
 
             }
 
             td {
+                width: 200px  ;
+
                 @include MyFlex;
                 padding: 10px;
-                width: 100px;
                 height: 100px;
                 overflow: hidden;
 
                 img {
-                    width: 100%;
+                    width: 100px;
+                    height: 100px;
                     object-fit: cover;
                     aspect-ratio: 1/1;
                 }
 
             }
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
         }
     }
 }

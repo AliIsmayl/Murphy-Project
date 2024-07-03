@@ -20,6 +20,8 @@ import OrderArchivePage from './Pages/OrderPage/OrderArchivePage/OrderArchivePag
 import OrderChangePage from './Pages/OrderPage/OrderChangePage/OrderChangePage';
 import OrderUnsubmitedPage from './Pages/OrderPage/OrderUnsubmitedPage/OrderUnsubmitedPage';
 import ProfileOrder from './Pages/ProfileOrder/ProfileOrder';
+import ProfileDeliveredOrder from './Pages/ProfileOrder/ProfileDeliveredOrder/ProfileDeliveredOrder';
+import OrderDetailPage from './Pages/ProfileOrder/OrderDetailPage/OrderDetailPage';
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
           <Route path="/detail" element={<DetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/order" element={<ProfileOrder />} />
+          <Route path="/profile/orderDelivered" element={<ProfileDeliveredOrder />} />
+          <Route path="/profile/order/detail/:id" element={<OrderDetailPage />} />
           <Route path="/cargoReguest" element={<CargoRequestPage />} />
         </Routes>
         <BackToTop />

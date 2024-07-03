@@ -68,20 +68,20 @@ function AdminAbout() {
                     </div>
                     <table>
                         <tr>
-                            <th style={{ width: "70px" }}>Count</th>
-                            <th style={{ width: "100px" }}>Tittle</th>
-                            <th style={{ width: "100px" }}>Image</th>
-                            <th style={{ width: "70px" }}>Soft Delete</th>
-                            <th style={{ width: "70px" }}>Edit</th>
+                            <th style={{width:"100px"}}>Count</th>
+                            <th >Tittle</th>
+                            <th >Image</th>
+                            <th style={{width:"100px"}}>Soft Delete</th>
+                            <th style={{width:"100px"}} >Edit</th>
                         </tr>
                         {
                             getData && getData.map((item, index) => (
                                 <tr key={item.id}>
-                                    <td style={{ width: "70px" }}>{index + 1}</td>
-                                    <td style={{ width: "100px" }}>{item.tittle}</td>
-                                    <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
-                                    <td style={{ width: "70px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><FaDeleteLeft /></button></td>
-                                    <td style={{ width: "70px" }} >
+                                    <td style={{width:"100px"}} >{index + 1}</td>
+                                    <td >{item.tittle}</td>
+                                    <td ><Link to={item.image}><img src={item.image} alt="" /></Link></td>
+                                    <td style={{width:"100px"}} ><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><FaDeleteLeft /></button></td>
+                                    <td style={{width:"100px"}}  >
                                         <Link to={"/admin/about/update"}>
                                             <button style={{ background: "#F06728" }} ><RiEdit2Line /></button>
                                         </Link>
