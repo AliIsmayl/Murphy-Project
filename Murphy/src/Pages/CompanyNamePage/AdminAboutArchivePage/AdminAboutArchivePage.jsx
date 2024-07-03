@@ -14,43 +14,63 @@ function AdminAboutArchivePage() {
 
     async function handleDelete(id) {
         try {
-            if (token) {
-                await axios.delete(`http://alihuseyn-001-site1.btempurl.com/api/Abouts/Delete/${id}`, {
+            if (!token) {
+                alert('Problem: Token is missing or invalid.');
+                return;
+            }
+
+            const response = await axios.delete(
+                `http://alihuseyn-001-site1.btempurl.com/api/Abouts/Delete/${id}`,
+                {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
-                    },
-                });
-                toast.error('Data Silindi...')
-                getAxiosData();
+                    }
+                }
+            );
+
+            if (response.status === 200) {
+                toast.error('Data Silindi...');
+                getAxiosData(); // Assuming this function updates the UI or fetches data again.
             } else {
-                alert('proplem');
+                toast.error('Silme işlemi başarısız oldu.');
             }
         } catch (error) {
             console.error('Error deleting:', error);
-            alert('Error deleting item');
+            alert('Bir hata oluştu, silme işlemi gerçekleştirilemedi.');
         }
     }
 
+
     async function handleRecovery(id) {
         try {
-            if (token) {
-                await axios.patch(`http://alihuseyn-001-site1.btempurl.com/api/Abouts/Recovery/recovery/${id}`,null, {
+            if (!token) {
+                alert('Problem: Token is missing or invalid.');
+                return;
+            }
+    
+            await axios.patch(
+                `http://alihuseyn-001-site1.btempurl.com/api/Abouts/Recovery/recovery/${id}`,
+                null,
+                {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
-                    },
-                });
-                toast.success('Geri qaytarıldı...')
-                getAxiosData();
-            } else {
-                alert('proplem');
-            }
+                    }
+                }
+            );
+    
+            toast.success('Geri qaytarıldı...');
+            getAxiosData(); // Assuming this function updates the UI or fetches data again.
         } catch (error) {
-            console.error('Error deleting:', error);
-            alert('Error deleting item');
+            console.error('Error recovering item:', error);
+            toast.error('Bir hata oluştu, geri alma işlemi gerçekleştirilemedi.');
         }
     }
+    
+
+
+
 
     async function getAxiosData() {
         const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Get?isdeleted=true&page=1&take=10");
@@ -86,7 +106,7 @@ function AdminAboutArchivePage() {
                                     <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
                                     <td style={{ width: "100px" }}>{item.description}</td>
                                     <td style={{ width: "75px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><MdDelete /></button></td>
-                                    <td style={{ width: "85px" }}><button style={{ background: "green" }} onClick={()=>handleRecovery(item.id)}><IoReload /></button></td>
+                                    <td style={{ width: "85px" }}><button style={{ background: "green" }} onClick={() => handleRecovery(item.id)}><IoReload /></button></td>
                                 </tr>
                             ))}
                         </tbody>

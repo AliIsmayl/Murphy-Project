@@ -15,9 +15,13 @@ import { LuRepeat2 } from "react-icons/lu";
 function OrderPage() {
     const [getData, setGetData] = useState([])
 
-  async function handleDelete(id) {
-    try {
-        if (token) {
+    async function handleDelete(id) {
+        try {
+            if (!token) {
+                alert('Problem: Token is missing or invalid.');
+                return;
+            }
+
             await axios.patch(
                 `http://alihuseyn-001-site1.btempurl.com/api/Orders/SoftDelete/${id}`,
                 null,
@@ -28,16 +32,15 @@ function OrderPage() {
                     }
                 }
             );
+
             toast.error('Silindi...');
-            getAxiosData();
-        } else {
-            alert('Problem: Token is missing or invalid.');
+            getAxiosData(); // Assuming this function updates the UI or fetches data again.
+        } catch (error) {
+            console.error('Error during deletion:', error);
+            toast.error('Bir hata oluştu, silme işlemi gerçekleştirilemedi.');
         }
-    } catch (error) {
-        console.error(error);
-        toast.error('Bir hata oluştu, silme işlemi gerçekleştirilemedi.');
     }
-}
+
 
 
     async function getAxiosData() {
@@ -76,8 +79,8 @@ function OrderPage() {
                                 <tr key={item.id}>
                                     <td style={{ width: "70px" }}>{index + 1}</td>
                                     <td style={{ width: "100px" }}>{item.companyName}</td>
-                                    <td style={{ width: "220px"}}>{item.companyEmail}</td>
-                                    <td style={{ width: "150px"}}>{item.address}</td>
+                                    <td style={{ width: "220px" }}>{item.companyEmail}</td>
+                                    <td style={{ width: "150px" }}>{item.address}</td>
                                     <td style={{ width: "150px" }}>{item.loadName}</td>
                                     <td style={{ width: "90px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><FaDeleteLeft /></button></td>
                                     <td style={{ width: "100px" }} >

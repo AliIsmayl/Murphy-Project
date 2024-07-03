@@ -15,23 +15,35 @@ function AdminAbout() {
 
     async function handleDelete(id) {
         try {
-            if (token) {
-                await axios.patch(`http://alihuseyn-001-site1.btempurl.com/api/Abouts/SoftDelete/${id}`, null, {
+            if (!token) {
+                alert('Problem: Token is missing or invalid.');
+                return;
+            }
+    
+            const response = await axios.patch(
+                `http://alihuseyn-001-site1.btempurl.com/api/Abouts/SoftDelete/${id}`,
+                null,
+                {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
-                    },
-                })
-                toast.error('Silindi...')
-                getAxiosData()
-
+                    }
+                }
+            );
+    
+            if (response.status === 200) {
+                toast.error('Silindi...');
+                getAxiosData(); // Assuming this function updates the UI or fetches data again.
             } else {
-                alert('proplem')
+                toast.error('Silme işlemi başarısız oldu.');
             }
         } catch (error) {
-
+            console.error('Error deleting item:', error);
+            toast.error('Bir hata oluştu, silme işlemi gerçekleştirilemedi.');
         }
     }
+    
+    
 
     async function getAxiosData() {
         const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Get?page=1&take=1000")

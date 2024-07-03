@@ -33,24 +33,30 @@ function OrderArchivePage() {
 
     async function handleRecovery(id) {
         try {
-            if (token) {
-                await axios.patch(`http://alihuseyn-001-site1.btempurl.com/api/Orders/Recovery/${id}`, null, {
+            if (!token) {
+                alert('Problem: Token is missing or invalid.');
+                return;
+            }
+    
+            await axios.patch(
+                `http://alihuseyn-001-site1.btempurl.com/api/Orders/Recovery/${id}`,
+                null,
+                {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
                     }
-                });
-                toast.success('Geri qaytarıldı...');
-                getAxiosData();
-            } else {
-                alert('Problem: Token is missing or invalid.');
-            }
+                }
+            );
+    
+            toast.success('Geri qaytarıldı...');
+            getAxiosData(); // Assuming this function updates the UI or fetches data again.
         } catch (error) {
             console.error('Error recovering item:', error);
             toast.error('Bir hata oluştu, geri alma işlemi gerçekleştirilemedi.');
         }
     }
-
+    
 
     async function getAxiosData() {
         const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Orders/Get?isdeleted=true&page=1&take=1000");
