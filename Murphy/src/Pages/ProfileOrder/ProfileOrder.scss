@@ -1,0 +1,73 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+.orderDetailpage {
+    padding: 30px;
+    @include MyFlex;
+    flex-direction: column;
+
+    .myOrdersBox {
+        margin: 0 0 10px;
+        display: flex;
+        gap: 50px;
+
+        .link {
+            background-color: gray;
+            padding: 5px 7px;
+            border-radius: 2px;
+            color: white;
+        }
+
+    }
+
+    button {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        @include MyFlex;
+        font-size: 20px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .archiveTableBox {
+        background: gainsboro;
+        padding: 30px;
+
+    }
+
+    table {
+
+        tr {
+            font-size: 20px;
+            border: 1px solid #25224B;
+            display: flex;
+
+            th {
+                background: #b8daff;
+                padding: 10px;
+                @include MyFlex;
+                border: 1px solid white;
+                width: 200px;
+
+            }
+
+            td {
+                width: 200px;
+                border: 1px solid white;
+                @include MyFlex;
+                padding: 10px;
+                height: 100px;
+                overflow: hidden;
+                font-size: 17px;
+
+
+            }
+        }
+    }
+}

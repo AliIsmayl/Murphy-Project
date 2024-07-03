@@ -19,6 +19,7 @@ import OrderPage from './Pages/OrderPage/OrderPage';
 import OrderArchivePage from './Pages/OrderPage/OrderArchivePage/OrderArchivePage';
 import OrderChangePage from './Pages/OrderPage/OrderChangePage/OrderChangePage';
 import OrderUnsubmitedPage from './Pages/OrderPage/OrderUnsubmitedPage/OrderUnsubmitedPage';
+import ProfileOrder from './Pages/ProfileOrder/ProfileOrder';
 
 function App() {
 
@@ -33,15 +34,13 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/detail" element={<DetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/order" element={<ProfileOrder />} />
           <Route path="/cargoReguest" element={<CargoRequestPage />} />
         </Routes>
         <BackToTop />
         {/* <Footer /> */}
         <Dashboard />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          {/* <Route path="/login" element={<LoginPage />} /> */}
           <Route path="/admin/about" element={<AdminAbout />} />
           <Route path="/admin/about/create" element={<AdminAboutCreatePage />} />
           <Route path="/admin/about/update" element={<AdminAboutEditPage />} />

@@ -3,6 +3,7 @@ import './ProfilePage.scss'
 import NotMean from '../../Components/NotMean/NotMean'
 import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineSearch } from "react-icons/md";
+import { Link } from 'react-router-dom';
 function ProfilePage() {
     return (
         <>
@@ -26,7 +27,7 @@ function ProfilePage() {
                             <div className="number"><p>43</p><span>Photos</span></div>
                             <div className="number"><p>21</p><span>Comments</span></div>
                         </div>
-                        <div className="showMore">My Orders</div>
+                        <div className="showMore"><Link to={"/profile/order"}>My Orders</Link></div>
                     </div>
                 </div>
             </section>
