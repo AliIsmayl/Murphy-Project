@@ -75,7 +75,7 @@ function AdminAboutArchivePage() {
                                 <th style={{ width: "100px" }}>Image</th>
                                 <th style={{ width: "100px" }}>Desc</th>
                                 <th style={{ width: "75px" }}>Delete</th>
-                                <th style={{ width: "80px" }}>Reload</th>
+                                <th style={{ width: "85px" }}>Recovery</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,7 @@ function AdminAboutArchivePage() {
                                     <td style={{ width: "100px" }}><Link to={item.image}><img src={item.image} alt="" /></Link></td>
                                     <td style={{ width: "100px" }}>{item.description}</td>
                                     <td style={{ width: "75px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><MdDelete /></button></td>
-                                    <td style={{ width: "80px" }}><button style={{ background: "green" }} onClick={()=>handleRecovery(item.id)}><IoReload /></button></td>
+                                    <td style={{ width: "85px" }}><button style={{ background: "green" }} onClick={()=>handleRecovery(item.id)}><IoReload /></button></td>
                                 </tr>
                             ))}
                         </tbody>

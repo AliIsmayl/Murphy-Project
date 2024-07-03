@@ -1,0 +1,137 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+
+#orderPage {
+    min-height: 100vh;
+    padding: 30px 0;
+    flex-direction: column;
+
+    .borderBox {
+        padding: 10px;
+        border: 1px solid black;
+        width: 906px;
+    }
+
+    .createBox {
+        display: flex;
+        gap: 10px;
+        padding: 0 0 20px;
+        border-radius: 5px;
+    }
+
+    button {
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        @include MyFlex;
+        font-size: 20px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
+
+    // .editTableBox {
+    //     background: #204162 !important;
+    //     color: white;
+    // }
+
+    .createTableBox,
+    .editTableBox {
+        background: #204162;
+        width: 310px;
+        position: absolute;
+        display: none;
+
+        button {
+            color: black;
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            left: 5px;
+        }
+
+        form {
+            padding: 40px 10px;
+            @include MyFlex;
+            flex-direction: column;
+            gap: 10px;
+
+            button {
+                width: 100px;
+                font-size: 15px;
+                border-radius: 5px;
+                border: none;
+            }
+
+            input {
+                width: 90%;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: none;
+
+            }
+        }
+    }
+
+    // .archiveTableBox {
+    //     background: gainsboro;
+    //     position: absolute;
+    //     padding: 30px;
+    //     display: none;
+
+    //     .closeBtn {
+    //         position: absolute;
+    //         top: 10px;
+    //         left: 5px;
+    //         font-size: 20px;
+    //         cursor: pointer;
+    //     }
+    // }
+
+    table {
+
+        tr {
+            font-size: 20px;
+            border: 1px solid #25224B;
+            display: flex;
+
+            th {
+                background: #b8daff;
+                padding: 10px;
+                @include MyFlex;
+
+            }
+
+            td {
+                @include MyFlex;
+                padding: 10px;
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+                font-size: 17px;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    aspect-ratio: 1/1;
+                }
+
+            }
+        }
+    }
+}
+
+.openArchive {
+    display: flex !important;
+}
+
+@media only screen and (max-width: 645px) {}

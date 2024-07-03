@@ -15,13 +15,17 @@ import AdminAboutCreatePage from './Pages/CompanyNamePage/AdminAboutCreatePage/A
 import AdminAboutEditPage from './Pages/CompanyNamePage/AdminAboutEditPage/AdminAboutEditPage';
 import AdminAboutArchivePage from './Pages/CompanyNamePage/AdminAboutArchivePage/AdminAboutArchivePage';
 import { Toaster } from 'react-hot-toast';
+import OrderPage from './Pages/OrderPage/OrderPage';
+import OrderArchivePage from './Pages/OrderPage/OrderArchivePage/OrderArchivePage';
+import OrderChangePage from './Pages/OrderPage/OrderChangePage/OrderChangePage';
+import OrderUnsubmitedPage from './Pages/OrderPage/OrderUnsubmitedPage/OrderUnsubmitedPage';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-      <Toaster />
+        <Toaster />
         {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -42,6 +46,10 @@ function App() {
           <Route path="/admin/about/create" element={<AdminAboutCreatePage />} />
           <Route path="/admin/about/update" element={<AdminAboutEditPage />} />
           <Route path="/admin/about/archive" element={<AdminAboutArchivePage />} />
+          <Route path="/admin/orders" element={<OrderPage />} />
+          <Route path="/admin/order/change" element={<OrderChangePage />} />
+          <Route path="/admin/order/archive" element={<OrderArchivePage />} />
+          <Route path="/admin/order/unsubmited" element={<OrderUnsubmitedPage />} />
         </Routes>
       </BrowserRouter>
     </>
