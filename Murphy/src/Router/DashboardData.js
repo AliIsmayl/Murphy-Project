@@ -1,5 +1,9 @@
 export const Dashboard = [
   {
+    name: "Home",
+    path: "/",
+  },
+  {
     name: "About",
     path: "/admin/about",
   },

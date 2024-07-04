@@ -71,6 +71,7 @@ function OrderPage() {
                             <th style={{ width: "220px" }}>Company Email</th>
                             <th style={{ width: "150px" }}>Address</th>
                             <th style={{ width: "150px" }}>Load Name</th>
+                            <th style={{ width: "150px" }}>Load Name</th>
                             <th style={{ width: "90px" }}>Soft Delete</th>
                             <th style={{ width: "100px" }}>Change Order Status</th>
                         </tr>
@@ -82,9 +83,10 @@ function OrderPage() {
                                     <td style={{ width: "220px" }}>{item.companyEmail}</td>
                                     <td style={{ width: "150px" }}>{item.address}</td>
                                     <td style={{ width: "150px" }}>{item.loadName}</td>
+                                    <td style={{ width: "150px" }}>{item.status === 1 ? "Hazırlanır" : item.status === 2 ? "Gömrükləmə başa çatdı" : item.status === 3 ? "Yoldadır" : item.status === 4 ? "Təyin olunmuş yere çatdı" : ""}</td>
                                     <td style={{ width: "90px" }}><button style={{ background: "red" }} onClick={() => handleDelete(item.id)}><FaDeleteLeft /></button></td>
                                     <td style={{ width: "100px" }} >
-                                        <Link to={"/admin/order/change"}>
+                                        <Link to={`/admin/order/change/${item.id}`}>
                                             <button style={{ background: "#F06728" }} ><LuRepeat2 /></button>
                                         </Link>
                                     </td>

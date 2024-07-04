@@ -61,10 +61,13 @@ function LogisticService() {
 
                                         <img src={item.image} alt="" />
                                     </div>
+                                    <Link to={`services/detail/${item.id}`}>
                                     <div className="swiperTextBox">
-                                        <span>{item.name}</span>
-                                        <p>{item.tittle}<div className="arrowBox"><IoIosArrowRoundUp /></div></p>
+                                        <span>{item.tittle}</span>
+                                        <p>{item.name}<div className="arrowBox"><IoIosArrowRoundUp /></div></p>
                                     </div>
+                                    </Link>
+                                   
                                 </div>
                             </SwiperSlide>
                         ))

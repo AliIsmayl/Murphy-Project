@@ -22,6 +22,9 @@ import OrderUnsubmitedPage from './Pages/OrderPage/OrderUnsubmitedPage/OrderUnsu
 import ProfileOrder from './Pages/ProfileOrder/ProfileOrder';
 import ProfileDeliveredOrder from './Pages/ProfileOrder/ProfileDeliveredOrder/ProfileDeliveredOrder';
 import OrderDetailPage from './Pages/ProfileOrder/OrderDetailPage/OrderDetailPage';
+import DeliverinDetail from './Components/Delivering/DeliverinDetail/DeliverinDetail';
+import MainLayOut from './Layout/MainLayOut/MainLayOut';
+import AdminLayOut from './Layout/AdminLayOut/AdminLayOut';
 
 function App() {
 
@@ -29,30 +32,32 @@ function App() {
     <>
       <BrowserRouter>
         <Toaster />
-        {/* <Navbar /> */}
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/detail" element={<DetailPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile/order" element={<ProfileOrder />} />
-          <Route path="/profile/orderDelivered" element={<ProfileDeliveredOrder />} />
-          <Route path="/profile/order/detail/:id" element={<OrderDetailPage />} />
-          <Route path="/cargoReguest" element={<CargoRequestPage />} />
+          <Route path='/' element={<MainLayOut />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/services/detail/:id" element={<DetailPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/order" element={<ProfileOrder />} />
+            <Route path="/profile/orderDelivered" element={<ProfileDeliveredOrder />} />
+            <Route path="/profile/order/detail/:id" element={<OrderDetailPage />} />
+            <Route path="/delivery/detail/:id" element={<DeliverinDetail />} />
+            <Route path="/cargoReguest" element={<CargoRequestPage />} />
+          </Route>
         </Routes>
         <BackToTop />
-        {/* <Footer /> */}
-        <Dashboard />
         <Routes>
-          <Route path="/admin/about" element={<AdminAbout />} />
-          <Route path="/admin/about/create" element={<AdminAboutCreatePage />} />
-          <Route path="/admin/about/update" element={<AdminAboutEditPage />} />
-          <Route path="/admin/about/archive" element={<AdminAboutArchivePage />} />
-          <Route path="/admin/orders" element={<OrderPage />} />
-          <Route path="/admin/order/change" element={<OrderChangePage />} />
-          <Route path="/admin/order/archive" element={<OrderArchivePage />} />
-          <Route path="/admin/order/unsubmited" element={<OrderUnsubmitedPage />} />
+          <Route path='/admin' element={<AdminLayOut />}>
+            <Route path="/admin/about" element={<AdminAbout />} />
+            <Route path="/admin/about/create" element={<AdminAboutCreatePage />} />
+            <Route path="/admin/about/update" element={<AdminAboutEditPage />} />
+            <Route path="/admin/about/archive" element={<AdminAboutArchivePage />} />
+            <Route path="/admin/orders" element={<OrderPage />} />
+            <Route path="/admin/order/change/:id" element={<OrderChangePage />} />
+            <Route path="/admin/order/archive" element={<OrderArchivePage />} />
+            <Route path="/admin/order/unsubmited" element={<OrderUnsubmitedPage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

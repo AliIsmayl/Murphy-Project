@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FaSearchPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import './ProfileDeliveredOrder.scss';
+import NotMean from '../../../Components/NotMean/NotMean';
 const token = localStorage.getItem("token");
 
 function ProfileDeliveredOrder() {
@@ -38,6 +39,8 @@ function ProfileDeliveredOrder() {
     }, []);
 
     return (
+      <>
+      <NotMean/>
         <div className='orderDetailpage'>
             <div className="orderPageImage"></div>
             <div className="myOrdersBox">
@@ -70,6 +73,7 @@ function ProfileDeliveredOrder() {
                 </tbody>
             </table>
         </div>
+      </>
     );
 }
 

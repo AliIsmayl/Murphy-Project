@@ -6,6 +6,7 @@ import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { IoChevronBackOutline } from "react-icons/io5";
 import { FaSearchPlus } from "react-icons/fa";
+import NotMean from '../../Components/NotMean/NotMean';
 const token = localStorage.getItem("token");
 
 function ProfileOrder() {
@@ -41,38 +42,41 @@ function ProfileOrder() {
     }, []);
 
     return (
-        <div className='orderDetailpage'>
-            <div className="orderPageImage"></div>
-            <div className="myOrdersBox">
-                <Link className='link' to={'/profile/orderDelivered'}>My Delivered Orders</Link>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th style={{ width: "80px" }}>Count</th>
-                        <th >Load Name</th>
-                        <th >Status</th>
-                        <th >Address</th>
-                        <th style={{ width: "80px" }} >Detail</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {getData && getData.map((item, index) => (
-                        <tr key={item.id}>
-                            <td style={{ width: "80px" }} >{index + 1}</td>
-                            <td >{item.loadName}</td>
-                            <td >{item.status === 1 ? "Hazırlanır" :  item.status=== 2 ? "Gömrükləmə başa çatdı" :  item.status=== 3 ? "Yoldadı" :  item.status=== 4 ? "Təyin olunmuş yere çatdı" : "..."}</td>
-                            <td >{item.address}</td>
-                            <td style={{ width: "80px" }} >
-                                <Link to={`/profile/order/detail/${item.id}`}>
-                                    <button style={{ background: "gray" }} ><FaSearchPlus /></button>
-                                </Link>
-                            </td>
+        <>
+        <NotMean/>
+            <div className='orderDetailpage'>
+                <div className="orderPageImage"></div>
+                <div className="myOrdersBox">
+                    <Link className='link' to={'/profile/orderDelivered'}>My Delivered Orders</Link>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style={{ width: "80px" }}>Count</th>
+                            <th >Load Name</th>
+                            <th >Status</th>
+                            <th >Address</th>
+                            <th style={{ width: "80px" }} >Detail</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        {getData && getData.map((item, index) => (
+                            <tr key={item.id}>
+                                <td style={{ width: "80px" }} >{index + 1}</td>
+                                <td >{item.loadName}</td>
+                                <td >{item.status === 1 ? "Hazırlanır" : item.status === 2 ? "Gömrükləmə başa çatdı" : item.status === 3 ? "Yoldadı" : item.status === 4 ? "Təyin olunmuş yere çatdı" : "..."}</td>
+                                <td >{item.address}</td>
+                                <td style={{ width: "80px" }} >
+                                    <Link to={`/profile/order/detail/${item.id}`}>
+                                        <button style={{ background: "gray" }} ><FaSearchPlus /></button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </>
     );
 }
 

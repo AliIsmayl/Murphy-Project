@@ -44,9 +44,8 @@ function LoginPage() {
             const token = res.data.token;
             const decoded = jwtDecode(token);
             localStorage.setItem('user', JSON.stringify(decoded))
-            console.log("decoded", res.data);
-            setUser(decoded)
             localStorage.setItem('token', token)
+            setUser(decoded)
             const userRole = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
             if (userRole === "Admin") {
                 navigate('/admin/about');

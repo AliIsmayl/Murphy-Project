@@ -10,11 +10,10 @@
     min-height: 100vh;
     padding: 30px 0;
     flex-direction: column;
-
     .borderBox {
         padding: 10px;
         border: 1px solid black;
-        width: 906px;
+        width: 1055px;
     }
 
     .createBox {
@@ -118,6 +117,7 @@
                 height: 100px;
                 overflow: hidden;
                 font-size: 17px;
+                text-align: center;
 
                 img {
                     width: 100%;

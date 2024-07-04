@@ -10,6 +10,7 @@
     @include MyFlex;
     justify-content: space-between;
     padding: 0px 0px 10px 0px;
+    position: relative;
 
     .leftDeliveryBox {
         @include MyFlex;
@@ -35,6 +36,51 @@
 
         p {
             color: #25224B;
+        }
+    }
+
+    .searchBox {
+        @include MyFlex;
+        background: rgba(10, 10, 10, 0.703);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        gap: 20px;
+        font-size: 20px;
+        color: white;
+        display: none;
+
+        form {
+            gap: 10px;
+            @include MyFlex;
+
+            input {
+                padding: 10px 15px;
+                border-radius: 10px;
+                border: none;
+                width: 200px;
+            }
+
+            button {
+
+                height: 30px;
+                padding: 2px 5px;
+                cursor: pointer;
+                border-radius: 5px;
+                border: none;
+                background-color: #F06728;
+                color: white;
+            }
+        }
+
+        .closeBtn {
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
         }
     }
 
@@ -81,7 +127,9 @@
         }
     }
 }
-
+.openedSearchBox{
+    display: flex !important;
+}
 @media only screen and (max-width: 433px) {
     #delivering {
 

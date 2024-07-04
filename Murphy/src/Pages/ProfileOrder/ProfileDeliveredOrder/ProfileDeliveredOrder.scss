@@ -8,7 +8,7 @@
 .orderDetailpage {
     @include MyFlex;
     flex-direction: column;
-
+padding: 0 0 50px;
     .orderPageImage {
         background-image: url("http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg");
         background-position: center;

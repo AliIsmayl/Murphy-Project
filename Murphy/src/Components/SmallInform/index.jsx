@@ -6,6 +6,7 @@ import { BsBoxSeam } from "react-icons/bs";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { AiOutlineSafetyCertificate } from "react-icons/ai";
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 function SmallInform() {
     const [getData, setGetData] = useState([])
 
@@ -22,10 +23,13 @@ function SmallInform() {
         <div id='smallInform'>
             {
                 getData && getData.map((item) => (
-                    <div className="smallBox" >
-                        <span><i className={item.icon}></i></span>
-                        <p>{item.tittle}</p>
-                    </div>
+                    <Link to={`services/detail/${item.id}`}>
+                        <div className="smallBox" >
+                            <span><i className={item.icon}></i></span>
+                            <p>{item.name}</p>
+                        </div>
+                    </Link>
+
                 ))
             }
 

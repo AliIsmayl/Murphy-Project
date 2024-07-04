@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Dashboard.scss'
 import { Dashboard as DashboardData } from '../../Router/DashboardData';
 import { Link } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
+import { userContext } from '../../Context/userContext';
 
 function Dashboard() {
     const [closeBtn, setcloseBtn] = useState(false)
+    const { getTokenData } = useContext(userContext)
+
     function openNavbar() {
         setcloseBtn(!closeBtn)
     }
@@ -16,11 +19,10 @@ function Dashboard() {
                 {
                     closeBtn ? <IoMdMenu /> : <IoMdClose />
                 }
-
             </div>
             <div className="upBox">
                 <div className="image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_Neymar_850_1705.jpg" alt="" />
+                    <img src={getTokenData.profileImage} alt="" />
                 </div>
                 <div className="text">
                     <p>Welcome Admin</p>
