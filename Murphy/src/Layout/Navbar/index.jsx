@@ -29,6 +29,8 @@ function Navbar() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         navigate("/")
+        window.location.reload()
+
     }
     return (
         <nav>

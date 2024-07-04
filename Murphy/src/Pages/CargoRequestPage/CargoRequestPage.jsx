@@ -38,7 +38,7 @@ function CargoRequestPage() {
 
     async function handleCreateInform(e) {
         e.preventDefault();
-        if (token) {
+
             const formData = new FormData();
             formData.append("companyName", companyName);
             formData.append("companyEmail", companyEmail);
@@ -67,9 +67,7 @@ function CargoRequestPage() {
                 console.error('Error creating order:', error);
                 toast.error(error.message);
             }
-        } else {
-            alert("Giriş yapınız.");
-        }
+        
     }
 
 
@@ -95,7 +93,7 @@ function CargoRequestPage() {
                         <input type="number" placeholder='Load Weight...' onChange={(e) => setLoadWeight(e.target.value)} />
                         <input type="number" placeholder='Load Capasity...' onChange={(e) => setLoadCapasity(e.target.value)} />
                         <select onChange={(e) => setServices(e.target.value)}>
-                            <option hidden>Choose one...</option>
+                            <option hidden>Choose Service...</option>
                             {
                                 select1Data && select1Data.map((item) => (
                                     <option key={item.id} value={item.id}>{item.name}</option>
@@ -103,7 +101,7 @@ function CargoRequestPage() {
                             }
                         </select>
                         <select onChange={(e) => setToCountry(e.target.value)}>
-                            <option hidden>Choose one...</option>
+                            <option hidden>Choose To Country...</option>
                             {
                                 select2Data && select2Data.map((item) => (
                                     <option key={item.id} value={item.id}>{item.name}</option>
@@ -111,7 +109,7 @@ function CargoRequestPage() {
                             }
                         </select>
                         <select onChange={(e) => setFromCountry(e.target.value)}>
-                            <option hidden>Choose one...</option>
+                            <option hidden>Choose From Country...</option>
                             {
                                 select3Data && select3Data.map((item) => (
                                     <option key={item.id} value={item.id}>{item.name}</option>

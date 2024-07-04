@@ -24,8 +24,8 @@ function LogisticService() {
                 <div className="normalBox">
                     <p>Global Logistics Expertise at Your Service</p>
                     <span>Logistics services encompass a broad range of activities aimed at efficiently managing the movement and storage of goods. This includes transportation, warehousing, inventory management, order fulfillment, and distribution.</span>
-                    <Link className='link'>
-                        <p>Read More</p>
+                    <Link className='link'to={'cargoReguest'}>
+                        <p>Apply now</p>
                         <div className="arrowBox">
                             <IoIosArrowRoundUp />
                         </div>

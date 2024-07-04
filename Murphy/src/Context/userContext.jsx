@@ -26,7 +26,7 @@ function UserProvider({ children }) {
         searchText,
         setsearchText,
         getTokenData,
-        setgetTokenData
+        setgetTokenData,
     }
     useEffect(() => {
         getToken()
