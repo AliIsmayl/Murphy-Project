@@ -1,0 +1,9 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#newsPage {
+}

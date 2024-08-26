@@ -182,7 +182,8 @@ nav {
         overflow: hidden;
         @include MyFlex;
         transition: 0.5s;
-border: 1px solid rgba(0, 0, 0, 0.271);
+        border: 1px solid rgba(0, 0, 0, 0.271);
+
         .image {
             height: 50px;
             width: 50px;

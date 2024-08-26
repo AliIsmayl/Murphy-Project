@@ -60,8 +60,8 @@ function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link className="link">
-                        <p>Products</p>
+                    <Link className="link" to={"/news"}>
+                        <p>News</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>

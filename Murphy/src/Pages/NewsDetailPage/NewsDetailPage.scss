@@ -1,0 +1,113 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#newsDetailPage {
+    #newsDetailHead {
+        height: 400px;
+        background-image: url('http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+        .backPage {
+            background-color: rgba(0, 0, 0, 0.323);
+            width: 100%;
+            height: 100%;
+            @include MyFlex;
+            flex-direction: column;
+            gap: 10px;
+
+            h1 {
+                font-family: "Josefin Sans", sans-serif;
+                font-size: 70px;
+                color: white;
+            }
+
+            .path {
+                display: flex;
+                font-size: 22px;
+                gap: 10px;
+                color: white;
+
+                .link {
+                    background-color: transparent;
+                    border: none;
+                    color: #F06728;
+
+                }
+            }
+        }
+    }
+
+    #newDetailTextBox {
+        gap: 50px;
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+
+        .imgBox {
+            width: 500px;
+            height: 350px;
+            overflow: hidden;
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        .textBox {
+            width: 500px;
+            font-size: 20px;
+        }
+
+
+    }
+}
+
+
+
+@media only screen and (max-width: 1130px) {
+    #newsDetailPage {
+
+        #newDetailTextBox {
+            @include MyFlex;
+
+            flex-direction: column;
+
+        }
+    }
+}
+
+@media only screen and (max-width: 651px) {
+    #newsDetailPage {
+        #newsDetailHead {
+            .backPage {
+                h1 {
+                    font-size: 35px;
+                    max-width: 300px;
+                }
+            }
+        }
+
+        #newDetailTextBox {
+            .imgBox {
+                width: 310px;
+                height: 200px;
+
+                img {
+                    max-width: 100%;
+                }
+            }
+
+            .textBox {
+                width: 310px;
+                font-size: 20px;
+            }
+        }
+    }
+}

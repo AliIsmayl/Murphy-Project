@@ -25,6 +25,8 @@ import OrderDetailPage from './Pages/ProfileOrder/OrderDetailPage/OrderDetailPag
 import DeliverinDetail from './Components/Delivering/DeliverinDetail/DeliverinDetail';
 import MainLayOut from './Layout/MainLayOut/MainLayOut';
 import AdminLayOut from './Layout/AdminLayOut/AdminLayOut';
+import NewsPage from './Pages/NewsPage/NewsPage';
+import NewsDetailPage from './Pages/NewsDetailPage/NewsDetailPage';
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
           <Route path='/' element={<MainLayOut />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/newsDetail" element={<NewsDetailPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/services/detail/:id" element={<DetailPage />} />
             <Route path="/profile" element={<ProfilePage />} />

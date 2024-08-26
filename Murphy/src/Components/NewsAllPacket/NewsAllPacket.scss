@@ -1,0 +1,77 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+#newsAllPacket {
+    padding: 50px;
+    gap: 50px;
+    flex-wrap: wrap;
+    @include MyFlex;
+
+    .newCard {
+        width: 370px;
+        height: 350px;
+        overflow: hidden;
+        cursor: pointer;
+
+        .imageBox {
+            height: 300px;
+            overflow: hidden;
+            @include MyFlex;
+
+            img {
+                max-width: 100%;
+                object-fit: cover;
+                aspect-ratio: 1/0.85;
+                transition: all 0.3s;
+
+            }
+
+
+
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+color: #F06728;
+            }
+        }
+
+        .textBox {
+            height: 50px;
+            @include MyFlex;
+            font-size: 30px;
+
+            p {
+                font-family: "Josefin Sans", sans-serif;
+
+            }
+
+            &:hover {
+                color: orange;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 658px) {
+    #newsAllPacket {
+        padding: 50px 10px;
+
+        .newCard {
+            width: 310px;
+            height: 300px;
+
+            .imageBox {
+                height: 250px;
+            }
+
+        }
+    }
+}
