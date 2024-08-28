@@ -5,7 +5,11 @@
 }
 
 // @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 #newsDetailPage {
+    font-family: "Ubuntu", sans-serif;
+
     #newsDetailHead {
         height: 400px;
         background-image: url('http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg');
@@ -45,14 +49,20 @@
     }
 
     #newDetailTextBox {
-        gap: 50px;
-        padding: 50px;
+        padding: 50px 100px;
         display: flex;
+        align-items: start;
         justify-content: space-between;
 
+        .tittleBox {
+            margin-bottom: 40px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
         .imgBox {
-            width: 500px;
-            height: 350px;
+            width: 700px;
+            height: 400px;
             overflow: hidden;
 
             img {
@@ -62,7 +72,23 @@
 
         .textBox {
             width: 500px;
-            font-size: 20px;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+
+        .rigtBox {
+
+            width: 300px;
+
+            p {
+                margin-top: 10px;
+
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+
         }
 
 
@@ -76,8 +102,11 @@
 
         #newDetailTextBox {
             @include MyFlex;
-
             flex-direction: column;
+
+            .rigtBox {
+                margin-top: 30px;
+            }
 
         }
     }

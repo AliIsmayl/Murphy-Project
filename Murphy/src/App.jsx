@@ -38,8 +38,10 @@ function App() {
           <Route path='/' element={<MainLayOut />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            
             <Route path="/news" element={<NewsPage />} />
-            <Route path="/newsDetail" element={<NewsDetailPage />} />
+            <Route path="/news/detail/:id" element={<NewsDetailPage />} />
+
             <Route path="/login" element={<LoginPage />} />
             <Route path="/services/detail/:id" element={<DetailPage />} />
             <Route path="/profile" element={<ProfilePage />} />

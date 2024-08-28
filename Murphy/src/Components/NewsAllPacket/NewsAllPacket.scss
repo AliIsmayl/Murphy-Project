@@ -8,70 +8,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 #newsAllPacket {
+    background: red;
     padding: 50px;
+    display: flex;
+    flex-direction: column;
     gap: 50px;
-    flex-wrap: wrap;
-    @include MyFlex;
 
     .newCard {
-        width: 370px;
-        height: 350px;
         overflow: hidden;
-        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        display: flex;
 
         .imageBox {
-            height: 300px;
-            overflow: hidden;
-            @include MyFlex;
+            background: orange;
+            width: 300px;
+            height: 150px;
 
             img {
-                max-width: 100%;
-                object-fit: cover;
-                aspect-ratio: 1/0.85;
-                transition: all 0.3s;
-
-            }
-
-
-
-        }
-
-        &:hover {
-            img {
-                transform: scale(1.1);
-color: #F06728;
+                width: 100%;
             }
         }
 
         .textBox {
-            height: 50px;
-            @include MyFlex;
+            margin-left: 10px;
             font-size: 30px;
+            font-family: "Ubuntu", sans-serif;
 
-            p {
-                font-family: "Josefin Sans", sans-serif;
-
-            }
-
-            &:hover {
-                color: orange;
+            p:hover {
+                color: #F06728;
             }
         }
     }
 }
 
-@media only screen and (max-width: 658px) {
+@media only screen and (max-width: 762px) {
     #newsAllPacket {
-        padding: 50px 10px;
+       padding: 50px 20px;
 
         .newCard {
-            width: 310px;
-            height: 300px;
+            flex-direction: column;
+            @include MyFlex;
 
-            .imageBox {
-                height: 250px;
+        
+
+            .textBox {
+                margin-top: 30px;
+              
             }
-
         }
     }
 }
