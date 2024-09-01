@@ -80,14 +80,21 @@
 
             width: 300px;
 
-            p {
-                margin-top: 10px;
-
-                &:hover {
-                    text-decoration: underline;
-                    cursor: pointer;
+            .link {
+                text-decoration: none;
+                width: 100px;
+                p {
+                    max-width: 400px;
+                    margin-top: 10px;
+    
+                    &:hover {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
                 }
             }
+
+           
 
         }
 

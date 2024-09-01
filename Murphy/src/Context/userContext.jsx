@@ -10,9 +10,9 @@ function UserProvider({ children }) {
 
     async function getToken() {
         if (token) {
-            const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Autentications/GetCurrentUser", {
+            const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     "Authorization": "Bearer " + token
                 },
             })

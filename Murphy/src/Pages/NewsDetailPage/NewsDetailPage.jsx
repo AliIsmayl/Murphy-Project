@@ -51,7 +51,9 @@ function NewsDetailPage() {
                                 {info && info
                                     .filter(item => item.id !== detail.id) // Exclude current detail's ID
                                     .map((item) => (
-                                        <p key={item.id}>{item.tittle}</p>
+                                        <Link className='link' to={`/news/detail/${item.id}`}>
+                                            <p key={item.id}>{item.tittle}</p>
+                                        </Link>
                                     ))
                                 }
                             </div>

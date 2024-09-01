@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { userContext } from '../../Context/userContext';
+import toast, { Toaster } from 'react-hot-toast';
 
 function LoginPage() {
     const [changeBox, setChangeBox] = useState(false);
@@ -26,6 +27,19 @@ function LoginPage() {
     const [remember, setRemember] = useState(false);
     const navigate = useNavigate();
 
+    const [regName, setRegName] = useState('')
+    const [regUserName, setRegUserName] = useState('')
+    const [regSurName, setRegSurName] = useState('')
+    const [regEmail, setRegEmail] = useState('')
+    const [regPass, setRegPass] = useState('')
+    const [regConfPass, setRegConfPass] = useState('')
+    const [regMale, setRegMale] = useState('')
+    const [regImage, setRegImage] = useState('')
+
+    function handleImage(files) {
+        setRegImage(files[0])
+    }
+
     async function handleLogin(e) {
         e.preventDefault();
         const userData = {
@@ -35,9 +49,10 @@ function LoginPage() {
         };
         try {
 
-            const res = await axios.post("http://alihuseyn-001-site1.btempurl.com/api/Autentications/Login", userData, {
+            const res = await axios.post("http://thetest-001-site1.ftempurl.com/api/Autentications/Login", userData, {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
+
                 },
             });
 
@@ -72,7 +87,51 @@ function LoginPage() {
         setWriteCalendarText(true);
     }
 
-    console.log("date", dateState);
+    async function handleRegisterForm(e) {
+        e.preventDefault();
+
+        const form = new FormData();
+
+        // Kullanıcı verilerini FormData'ya ekleyin
+        form.append('Name', regName);
+        form.append('Surname', regSurName);
+        form.append('UserName', regUserName);
+        form.append('Email', regEmail);
+        form.append('Password', regPass);
+        form.append('ConfirmPassword', regConfPass);
+        form.append('Gender', regMale); // Eğer bu bir sayı ise, +regMale yapmanıza gerek yok
+
+        // Tarihi doğru formatta ekleyin (YYYY-MM-DDT00:00:00)
+        form.append('BirthDate', moment(dateState).format('YYYY-MM-DDTHH:mm:ss'));
+
+        // Resmi FormData'ya ekleyin (Tek bir dosya varsayarsak)
+        if (regImage) {
+            form.append('Image', regImage);
+        }
+
+        try {
+            const response = await axios.post("http://thetest-001-site1.ftempurl.com/api/Autentications/Register", form, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            toast.success('Successfully registered!');
+            setChangeBox(!changeBox);
+        } catch (error) {
+            console.log("Error during registration:", error);
+            if (error.response) {
+                console.log("Server responded with:", error.response.data);
+                toast.error(error.response.data.message || 'Registration failed!');
+            } else {
+                console.log("Error:", error.message);
+                toast.error('Registration failed!');
+            }
+        }
+
+    }
+
+
 
     return (
         <>
@@ -100,40 +159,40 @@ function LoginPage() {
                     </form>
                 </div>
                 <div className="registerPage">
-                    <form action="" className={`${changeBox ? "changer" : ""}`}>
+                    <form onSubmit={(e) => handleRegisterForm(e)} action="" className={`${changeBox ? "changer" : ""}`}>
                         <img src={Logo} alt="" />
                         <label>Register</label>
                         <div className="allInputsBox">
                             <div className="inputBox">
                                 <div className="inputIconBox"><RiUser6Line /></div>
-                                <input type="text" placeholder='Name...' />
+                                <input type="text" onChange={(e) => setRegName(e.target.value)} placeholder='Name...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><RiUser6Fill /></div>
-                                <input type="text" placeholder='Username...' />
+                                <input type="text" onChange={(e) => setRegUserName(e.target.value)} placeholder='Username...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><RiUser6Fill /></div>
-                                <input type="text" placeholder='Surname...' />
+                                <input type="text" onChange={(e) => setRegSurName(e.target.value)} placeholder='Surname...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><HiOutlineMail /></div>
-                                <input type="email" placeholder='Email...' />
+                                <input type="email" onChange={(e) => setRegEmail(e.target.value)} placeholder='Email...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><PiLockKey /></div>
-                                <input type="password" placeholder='Password...' />
+                                <input type="password" onChange={(e) => setRegPass(e.target.value)} placeholder='Password...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><PiLockKeyFill /></div>
-                                <input type="password" placeholder='Confirm Password...' />
+                                <input type="password" onChange={(e) => setRegConfPass(e.target.value)} placeholder='Confirm Password...' />
                             </div>
                             <div className="inputBox">
                                 <div className="inputIconBox"><IoMdTransgender /></div>
-                                <select>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
+                                <select onChange={(e) => setRegMale(e.target.value)}>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
                                 </select>
                             </div>
                             <div className="inputBox">
@@ -141,7 +200,7 @@ function LoginPage() {
                                 <div className="input">
                                     <label htmlFor="pic">
                                         <p>Upload Image...</p>
-                                        <input type="file" id="pic" />
+                                        <input onChange={(e) => handleImage(e.target.files)} type="file" id="pic" />
                                     </label>
                                 </div>
                             </div>
@@ -156,7 +215,7 @@ function LoginPage() {
                                 </div>
                             </div>
                         </div>
-                        <button className='clickedBtn'>Register</button>
+                        <button type='submit' className='clickedBtn'>Register</button>
                         <h4>Going to <span onClick={handleChangeBox}>Login</span></h4>
                     </form>
                 </div>
