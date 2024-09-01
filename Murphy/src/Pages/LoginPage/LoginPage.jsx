@@ -14,67 +14,100 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { userContext } from '../../Context/userContext';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 function LoginPage() {
     const [changeBox, setChangeBox] = useState(false);
     const [openCalendarBox, setOpenCalendarBox] = useState(false);
     const [writeCalendarText, setWriteCalendarText] = useState(false);
     const [dateState, setDateState] = useState(null);
-    const { setUser } = useContext(userContext)
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [remember, setRemember] = useState(false);
+    const { setUser } = useContext(userContext);
     const navigate = useNavigate();
-
-    const [regName, setRegName] = useState('')
-    const [regUserName, setRegUserName] = useState('')
-    const [regSurName, setRegSurName] = useState('')
-    const [regEmail, setRegEmail] = useState('')
-    const [regPass, setRegPass] = useState('')
-    const [regConfPass, setRegConfPass] = useState('')
-    const [regMale, setRegMale] = useState('')
-    const [regImage, setRegImage] = useState('')
+    const [regImage, setRegImage] = useState('');
 
     function handleImage(files) {
-        setRegImage(files[0])
+        setRegImage(files[0]);
     }
 
-    async function handleLogin(e) {
-        e.preventDefault();
+    const loginValidationSchema = Yup.object().shape({
+        username: Yup.string().required('Username is required'),
+        password: Yup.string().required('Password is required'),
+    });
+
+    const registerValidationSchema = Yup.object().shape({
+        regName: Yup.string().required('Name is required'),
+        regUserName: Yup.string().required('Username is required'),
+        regSurName: Yup.string().required('Surname is required'),
+        regEmail: Yup.string().email('Invalid email address').required('Email is required'),
+        regPass: Yup.string().required('Password is required'),
+        regConfPass: Yup.string()
+            .oneOf([Yup.ref('regPass'), null], 'Passwords must match')
+            .required('Confirm Password is required'),
+        regMale: Yup.string().required('Gender is required'),
+    });
+
+    async function handleLogin(values, { setSubmitting }) {
         const userData = {
-            UsernameOrEmail: username,
-            Password: password,
-            isRemembered: remember
+            UsernameOrEmail: values.username,
+            Password: values.password,
+            isRemembered: values.remember,
         };
         try {
-
             const res = await axios.post("http://thetest-001-site1.ftempurl.com/api/Autentications/Login", userData, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
-
+                    "Content-Type": "application/json",
                 },
             });
 
             const token = res.data.token;
             const decoded = jwtDecode(token);
-            localStorage.setItem('user', JSON.stringify(decoded))
-            localStorage.setItem('token', token)
-            setUser(decoded)
+            localStorage.setItem('user', JSON.stringify(decoded));
+            localStorage.setItem('token', token);
+            setUser(decoded);
             const userRole = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
             if (userRole === "Admin") {
                 navigate('/admin/about');
-            }
-            else {
+            } else {
                 navigate('/');
-
             }
-
         } catch (error) {
             console.log("Error during login:", error.message);
-            if (error.response && error.response.data) {
-                console.log("Server response:", error.response.data);
-            }
+            toast.error('Login failed!');
+        } finally {
+            setSubmitting(false);
+        }
+    }
+
+    async function handleRegisterForm(values, { setSubmitting }) {
+        const form = new FormData();
+        form.append('Name', values.regName);
+        form.append('Surname', values.regSurName);
+        form.append('UserName', values.regUserName);
+        form.append('Email', values.regEmail);
+        form.append('Password', values.regPass);
+        form.append('ConfirmPassword', values.regConfPass);
+        form.append('Gender', values.regMale);
+        form.append('BirthDate', moment(dateState).format('YYYY-MM-DDTHH:mm:ss'));
+
+        if (regImage) {
+            form.append('Image', regImage);
+        }
+
+        try {
+            await axios.post("http://thetest-001-site1.ftempurl.com/api/Autentications/Register", form, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            toast.success('Successfully registered!');
+            setChangeBox(!changeBox);
+        } catch (error) {
+            console.log("Error during registration:", error);
+            toast.error('Registration failed!');
+        } finally {
+            setSubmitting(false);
         }
     }
 
@@ -87,137 +120,120 @@ function LoginPage() {
         setWriteCalendarText(true);
     }
 
-    async function handleRegisterForm(e) {
-        e.preventDefault();
-
-        const form = new FormData();
-
-        // Kullanıcı verilerini FormData'ya ekleyin
-        form.append('Name', regName);
-        form.append('Surname', regSurName);
-        form.append('UserName', regUserName);
-        form.append('Email', regEmail);
-        form.append('Password', regPass);
-        form.append('ConfirmPassword', regConfPass);
-        form.append('Gender', regMale); // Eğer bu bir sayı ise, +regMale yapmanıza gerek yok
-
-        // Tarihi doğru formatta ekleyin (YYYY-MM-DDT00:00:00)
-        form.append('BirthDate', moment(dateState).format('YYYY-MM-DDTHH:mm:ss'));
-
-        // Resmi FormData'ya ekleyin (Tek bir dosya varsayarsak)
-        if (regImage) {
-            form.append('Image', regImage);
-        }
-
-        try {
-            const response = await axios.post("http://thetest-001-site1.ftempurl.com/api/Autentications/Register", form, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
-
-            toast.success('Successfully registered!');
-            setChangeBox(!changeBox);
-        } catch (error) {
-            console.log("Error during registration:", error);
-            if (error.response) {
-                console.log("Server responded with:", error.response.data);
-                toast.error(error.response.data.message || 'Registration failed!');
-            } else {
-                console.log("Error:", error.message);
-                toast.error('Registration failed!');
-            }
-        }
-
-    }
-
-
-
     return (
         <>
             <NotMean />
             <section id='loginAndregisterBox'>
                 <div className="loginPage">
-                    <form action="" className={`${changeBox ? "changer" : ""}`} onSubmit={handleLogin}>
-                        <img src={Logo} alt="" />
-                        <label>Login</label>
-                        <div className="inputBox">
-                            <div className="inputIconBox"><RiUser6Line /></div>
-                            <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder='Username...' />
-                        </div>
-                        <div className="inputBox">
-                            <div className="inputIconBox"><PiLockKey /></div>
-                            <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder='Password...' />
-                        </div>
-                        <button className='rememberBtn'>
-                            <input type="checkbox" onChange={() => setRemember(!remember)} />
-                            <p>Remember me</p>
-                        </button>
-                        <button className='clickedBtn' type='submit'>Login</button>
-                        <p>Forgot password</p>
-                        <h4>Going to <span onClick={handleChangeBox}>Register</span></h4>
-                    </form>
+                    <Formik
+                        initialValues={{ username: '', password: '', remember: false }}
+                        validationSchema={loginValidationSchema}
+                        onSubmit={handleLogin}
+                    >
+                        {({ isSubmitting }) => (
+                            <Form className={`${changeBox ? "changer" : ""}`}>
+                                <img src={Logo} alt="" />
+                                <label>Login</label>
+                                <div className="inputBox">
+                                    <div className="inputIconBox"><RiUser6Line /></div>
+                                    <Field type="text" name="username" placeholder='Username...' />
+                                    <ErrorMessage name="username" component="div" className="error" />
+                                </div>
+                                <div className="inputBox">
+                                    <div className="inputIconBox"><PiLockKey /></div>
+                                    <Field type="password" name="password" placeholder='Password...' />
+                                    <ErrorMessage name="password" component="div" className="error" />
+                                </div>
+                                <button className='rememberBtn'>
+                                    <Field type="checkbox" name="remember" />
+                                    <p>Remember me</p>
+                                </button>
+                                <button className='clickedBtn' type='submit' disabled={isSubmitting}>Login</button>
+                                <p>Forgot password</p>
+                                <h4>Going to <span onClick={handleChangeBox}>Register</span></h4>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
                 <div className="registerPage">
-                    <form onSubmit={(e) => handleRegisterForm(e)} action="" className={`${changeBox ? "changer" : ""}`}>
-                        <img src={Logo} alt="" />
-                        <label>Register</label>
-                        <div className="allInputsBox">
-                            <div className="inputBox">
-                                <div className="inputIconBox"><RiUser6Line /></div>
-                                <input type="text" onChange={(e) => setRegName(e.target.value)} placeholder='Name...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><RiUser6Fill /></div>
-                                <input type="text" onChange={(e) => setRegUserName(e.target.value)} placeholder='Username...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><RiUser6Fill /></div>
-                                <input type="text" onChange={(e) => setRegSurName(e.target.value)} placeholder='Surname...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><HiOutlineMail /></div>
-                                <input type="email" onChange={(e) => setRegEmail(e.target.value)} placeholder='Email...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><PiLockKey /></div>
-                                <input type="password" onChange={(e) => setRegPass(e.target.value)} placeholder='Password...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><PiLockKeyFill /></div>
-                                <input type="password" onChange={(e) => setRegConfPass(e.target.value)} placeholder='Confirm Password...' />
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><IoMdTransgender /></div>
-                                <select onChange={(e) => setRegMale(e.target.value)}>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    <option value="3">Other</option>
-                                </select>
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><LuImagePlus /></div>
-                                <div className="input">
-                                    <label htmlFor="pic">
-                                        <p>Upload Image...</p>
-                                        <input onChange={(e) => handleImage(e.target.files)} type="file" id="pic" />
-                                    </label>
+                    <Formik
+                        initialValues={{
+                            regName: '', regUserName: '', regSurName: '', regEmail: '',
+                            regPass: '', regConfPass: '', regMale: ''
+                        }}
+                        validationSchema={registerValidationSchema}
+                        onSubmit={handleRegisterForm}
+                    >
+                        {({ isSubmitting }) => (
+                            <Form className={`${changeBox ? "changer" : ""}`}>
+                                <img src={Logo} alt="" />
+                                <label>Register</label>
+                                <div className="allInputsBox">
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><RiUser6Line /></div>
+                                        <Field type="text" name="regName" placeholder='Name...' />
+                                        <ErrorMessage name="regName" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><RiUser6Fill /></div>
+                                        <Field type="text" name="regUserName" placeholder='Username...' />
+                                        <ErrorMessage name="regUserName" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><RiUser6Fill /></div>
+                                        <Field type="text" name="regSurName" placeholder='Surname...' />
+                                        <ErrorMessage name="regSurName" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><HiOutlineMail /></div>
+                                        <Field type="email" name="regEmail" placeholder='Email...' />
+                                        <ErrorMessage name="regEmail" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><PiLockKey /></div>
+                                        <Field type="password" name="regPass" placeholder='Password...' />
+                                        <ErrorMessage name="regPass" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><PiLockKeyFill /></div>
+                                        <Field type="password" name="regConfPass" placeholder='Confirm Password...' />
+                                        <ErrorMessage name="regConfPass" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><IoMdTransgender /></div>
+                                        <Field as="select" name="regMale">
+                                            <option value="">Select Gender</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+                                            <option value="3">Other</option>
+                                        </Field>
+                                        <ErrorMessage name="regMale" component="div" className="error" />
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><LuImagePlus /></div>
+                                        <div className="input">
+                                            <label htmlFor="pic">
+                                                <p>Upload Image...</p>
+                                                <input onChange={(e) => handleImage(e.target.files)} type="file" id="pic" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className="inputBox">
+                                        <div className="inputIconBox"><FaRegCalendarCheck /></div>
+                                        <div className="inputLittleBox" onClick={handleOpenCalendar}>
+                                            <p>{writeCalendarText ? moment(dateState).format('MMMM Do YYYY') : "Select Birthday..."}</p>
+                                        </div>
+                                        <div className={`openCalender ${openCalendarBox ? "opened" : ""}`}>
+                                            <CalendarPicker setDateState={setDateState} dateState={dateState} />
+                                            <p onClick={handleOpenCalendar}>Ok</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="inputBox">
-                                <div className="inputIconBox"><FaRegCalendarCheck /></div>
-                                <div className="inputLittleBox" onClick={handleOpenCalendar}>
-                                    <p>{writeCalendarText ? moment(dateState).format('MMMM Do YYYY') : "Select Birthday..."}</p>
-                                </div>
-                                <div className={`openCalender ${openCalendarBox ? "opened" : ""}`}>
-                                    <CalendarPicker setDateState={setDateState} dateState={dateState} />
-                                    <p onClick={handleOpenCalendar}>Ok</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button type='submit' className='clickedBtn'>Register</button>
-                        <h4>Going to <span onClick={handleChangeBox}>Login</span></h4>
-                    </form>
+                                <button type='submit' className='clickedBtn' disabled={isSubmitting}>Register</button>
+                                <h4>Going to <span onClick={handleChangeBox}>Login</span></h4>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
             </section>
         </>
