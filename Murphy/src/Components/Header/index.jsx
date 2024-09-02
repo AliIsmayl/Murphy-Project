@@ -22,7 +22,7 @@ function Header() {
     };
 
     async function GetFunctionData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Sliders/Get?page=1&take=5")
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Sliders/Get?isdeleted=true&page=1&take=3")
         setGetData(res.data)
     }
 
