@@ -14,7 +14,7 @@ function OrderArchivePage() {
     async function handleDelete(id) {
         try {
             if (token) {
-                await axios.delete(`http://alihuseyn-001-site1.btempurl.com/api/Orders/Delete/${id}`, {
+                await axios.delete(`http://thetest-001-site1.ftempurl.com/api/Orders/Delete/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
@@ -39,7 +39,7 @@ function OrderArchivePage() {
             }
     
             await axios.patch(
-                `http://alihuseyn-001-site1.btempurl.com/api/Orders/Recovery/${id}`,
+                `http://thetest-001-site1.ftempurl.com/api/Orders/Recovery/${id}`,
                 null,
                 {
                     headers: {
@@ -59,7 +59,7 @@ function OrderArchivePage() {
     
 
     async function getAxiosData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Orders/Get?isdeleted=true&page=1&take=1000");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Orders/Get?isdeleted=true&page=1&take=1000");
         setGetData(res.data);
     }
 

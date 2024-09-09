@@ -22,17 +22,17 @@ function CargoRequestPage() {
     const navigate = useNavigate()
 
     async function GetData1() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Services/Get?page=1&take=6");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=6");
         setSelect1Data(res.data);
     }
 
     async function GetData2() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/ToCountries/Get?page=1&take=200");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/ToCountries/Get?page=1&take=200");
         setSelect2Data(res.data);
     }
 
     async function GetData3() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/FromCountries/Get?page=1&take=200");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/FromCountries/Get?page=1&take=200");
         setSelect3Data(res.data);
     }
 
@@ -52,7 +52,7 @@ function CargoRequestPage() {
             formData.append("toCountryId", toCountry);
 
             try {
-                const res = await axios.post("http://alihuseyn-001-site1.btempurl.com/api/Orders/Create", formData, {
+                const res = await axios.post("http://thetest-001-site1.ftempurl.com/api/Orders/Create", formData, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `Bearer ${token}`

@@ -23,7 +23,7 @@ function OrderPage() {
             }
 
             await axios.patch(
-                `http://alihuseyn-001-site1.btempurl.com/api/Orders/SoftDelete/${id}`,
+                `http://thetest-001-site1.ftempurl.com/api/Orders/SoftDelete/${id}`,
                 null,
                 {
                     headers: {
@@ -44,7 +44,7 @@ function OrderPage() {
 
 
     async function getAxiosData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Orders/Get?isdeleted=false&page=1&take=1000")
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Orders/Get?isdeleted=false&page=1&take=1000")
         setGetData(res.data)
     }
     useEffect(() => {

@@ -20,7 +20,7 @@ function OrderUnsubmitedPage() {
         try {
             if (token) {
                 await axios.put(
-                    `http://alihuseyn-001-site1.btempurl.com/api/Orders/Submit/${id}`,
+                    `http://thetest-001-site1.ftempurl.com/api/Orders/Submit/${id}`,
                     null,
                     {
                         headers: {
@@ -44,7 +44,7 @@ function OrderUnsubmitedPage() {
     async function handleDelete(id) {
         try {
             if (token) {
-                await axios.delete(`http://alihuseyn-001-site1.btempurl.com/api/Orders/Delete/${id}`, {
+                await axios.delete(`http://thetest-001-site1.ftempurl.com/api/Orders/Delete/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ function OrderUnsubmitedPage() {
     
 
     async function getAxiosData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Orders/Get?page=1&take=1000");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Orders/Get?page=1&take=1000");
         setGetData(res.data);
     }
 

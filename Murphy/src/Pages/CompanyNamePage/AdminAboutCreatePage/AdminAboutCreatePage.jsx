@@ -25,7 +25,7 @@ function AdminAboutCreatePage() {
             formData.append("Image", image);
 
             try {
-                const res = await axios.post("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Create", formData, {
+                const res = await axios.post("http://thetest-001-site1.ftempurl.com/api/Abouts/Create", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                         "Authorization": "Bearer " + token

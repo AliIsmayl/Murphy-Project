@@ -23,7 +23,7 @@ function OrderChangePage() {
     const token = localStorage.getItem("token");
 
     async function getAxiosData() {
-        const res = await axios.get(`http://alihuseyn-001-site1.btempurl.com/api/Orders/Get/${id}?isdeleted=false`, {
+        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Orders/Get/${id}?isdeleted=false`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -34,7 +34,7 @@ function OrderChangePage() {
     async function handleUpdate(e) {
         e.preventDefault();
         try {
-            await axios.patch(`http://alihuseyn-001-site1.btempurl.com/api/Orders/ChangeOrderStatus/${id}`, { status: getData.status }, {
+            await axios.patch(`http://thetest-001-site1.ftempurl.com/api/Orders/ChangeOrderStatus/${id}`, { status: getData.status }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }

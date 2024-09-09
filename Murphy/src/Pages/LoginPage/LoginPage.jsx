@@ -18,6 +18,7 @@ import { userContext } from "../../Context/userContext";
 import toast from "react-hot-toast";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Image from "../../Image/back.jpg";
 
 function LoginPage() {
   const [changeBox, setChangeBox] = useState(false);
@@ -30,40 +31,88 @@ function LoginPage() {
   const [showPassword, setShowPassword] = useState(false); // Şifre görünürlük state'i
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Onay şifresi görünürlük state'i
   const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showImage, setShowImage] = useState(null);
+  const [errors, setErrors] = useState(null);
+  const [isSending, setIsSending] = useState(false);
 
   function handleImage(files) {
-    setRegImage(files[0]);
+    if (files[0].type.startsWith("image")) {
+      setRegImage(files[0]);
+    } else {
+      setShowImage("Please upload an image file");
+    }
+    console.log("files:", files[0]);
   }
 
   const loginValidationSchema = Yup.object().shape({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    username: Yup.string()
+      .test(
+        "isValidLength",
+        "Name must be between 3 and 27 letters",
+        (value) => value && value.length >= 3 && value.length <= 27
+      )
+      .matches(
+        /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+        "Name cannot contain numbers or symbols"
+      )
+      .required(errors?.UsernameOrEmail[0]),
+    password: Yup.string()
+      .test(
+        "isValidLength",
+        "Name must be between 8 symbols",
+        (value) => value && value.length >= 8
+      )
+      // .matches(
+      //   /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+      //   "Name cannot contain numbers or symbols"
+      // )
+      .required(errors?.Password[0]),
   });
 
   const registerValidationSchema = Yup.object().shape({
     regName: Yup.string()
-      .matches(
-        /^[A-Za-zşŞçÇöÖüÜğĞıİ]{3,27}$/,
-        "Name must be between 3 and 27 letters and cannot contain symbols"
+      .test(
+        "isValidLength",
+        "Name must be between 3 and 27 letters", // 3 ile 27 karakter arasında değilse bu hata çıkar
+        (value) => value && value.length >= 3 && value.length <= 27
       )
-      .required("Name is required"),
+      .matches(
+        /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+        "Name cannot contain numbers or symbols"
+      )
+      .required(errors?.Name[0]),
     regUserName: Yup.string()
-      .matches(
-        /^[A-Za-zşŞçÇöÖüÜğĞıİ]{3,27}$/,
-        "Name must be between 3 and 27 letters and cannot contain symbols"
+      .test(
+        "isValidLength",
+        "Name must be between 3 and 27 letters",
+        (value) => value && value.length >= 3 && value.length <= 27
       )
-      .required("Name is required"),
-    regSurName: Yup.string().required("Surname is required"),
+      .matches(
+        /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+        "Name cannot contain numbers or symbols"
+      )
+      .required(errors?.UserName[0]),
+    regSurName: Yup.string()
+      .test(
+        "isValidLength",
+        "Name must be between 3 and 27 letters",
+        (value) => value && value.length >= 3 && value.length <= 27
+      )
+      .matches(
+        /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+        "Name cannot contain numbers or symbols"
+      )
+      .required(errors?.Surname[0]),
     regEmail: Yup.string()
       .email("Invalid email address")
-      .required("Email is required"),
+      .required(errors?.Email[0]),
     regPass: Yup.string()
       .min(8, "Password must be at least 8 characters long")
-      .required("Password is required"),
+      .required(errors?.Password[0]),
     regConfPass: Yup.string()
       .oneOf([Yup.ref("regPass"), null], "Passwords must match")
-      .required("Confirm Password is required"),
-    regMale: Yup.string().required("Gender is required"),
+      .required(errors?.ConfirmPassword[0]),
+    regMale: Yup.string().required(errors?.Gender[0]),
   });
 
   async function handleLogin(values, { setSubmitting }) {
@@ -104,6 +153,7 @@ function LoginPage() {
   }
 
   async function handleRegisterForm(values, { setSubmitting }) {
+    setIsSending(true); // Register işlemi başladığında loading başlasın
     const form = new FormData();
     form.append("Name", values.regName);
     form.append("Surname", values.regSurName);
@@ -119,7 +169,7 @@ function LoginPage() {
     }
 
     try {
-      await axios.post(
+      const res = await axios.post(
         "http://thetest-001-site1.ftempurl.com/api/Autentications/Register",
         form,
         {
@@ -128,6 +178,9 @@ function LoginPage() {
           },
         }
       );
+      if (res.status === 400) {
+        setErrors(res.errors);
+      }
       toast.success("Successfully registered!");
       setChangeBox(!changeBox);
     } catch (error) {
@@ -135,6 +188,7 @@ function LoginPage() {
       toast.error("Registration failed!");
     } finally {
       setSubmitting(false);
+      setIsSending(false); // İşlem tamamlandıktan sonra loading bitmeli
     }
   }
 
@@ -150,7 +204,10 @@ function LoginPage() {
   return (
     <>
       <NotMean />
-      <section id="loginAndregisterBox">
+      <section
+        id="loginAndregisterBox"
+        style={{ backgroundImage: `url(${Image})` }}
+      >
         <div className="loginPage">
           <Formik
             initialValues={{ username: "", password: "", remember: false }}
@@ -179,28 +236,32 @@ function LoginPage() {
                   />
                 </div>
                 <div className="inputBox">
-  <div className="logoAndInputBox">
-    <div className="inputIconBox">
-      <PiLockKey />
-    </div>
-    <Field
-      type={showLoginPassword ? "text" : "password"} 
-      name="password"
-      placeholder="Password..."
-    />
-    <div
-      className="eyeIcon"
-      onClick={() => setShowLoginPassword(!showLoginPassword)} 
-    >
-      {showLoginPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />} 
-    </div>
-  </div>
-  <ErrorMessage
-    name="password"
-    component="div"
-    className="error"
-  />
-</div>
+                  <div className="logoAndInputBox">
+                    <div className="inputIconBox">
+                      <PiLockKey />
+                    </div>
+                    <Field
+                      type={showLoginPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password..."
+                    />
+                    <div
+                      className="eyeIcon"
+                      onClick={() => setShowLoginPassword(!showLoginPassword)}
+                    >
+                      {showLoginPassword ? (
+                        <AiOutlineEyeInvisible />
+                      ) : (
+                        <AiOutlineEye />
+                      )}
+                    </div>
+                  </div>
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="error"
+                  />
+                </div>
 
                 <button className="rememberBtn">
                   <Field type="checkbox" name="remember" />
@@ -366,7 +427,7 @@ function LoginPage() {
                         <IoMdTransgender />
                       </div>
                       <Field as="select" name="regMale">
-                        <option value="">Select Gender</option>
+                        <option hidden>Select Gender</option>
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                         <option value="3">Other</option>
@@ -383,15 +444,20 @@ function LoginPage() {
                       <div className="inputIconBox">
                         <LuImagePlus />
                       </div>
-                      <div className="input">
-                        <label htmlFor="pic">
-                          <p>Upload Image...</p>
-                          <input
-                            onChange={(e) => handleImage(e.target.files)}
-                            type="file"
-                            id="pic"
-                          />
-                        </label>
+                      <div className="flexBox">
+                        <div className="input">
+                          <label htmlFor="pic">
+                            <p>Upload Image...</p>
+                            <input
+                              onChange={(e) => handleImage(e.target.files)}
+                              type="file"
+                              id="pic"
+                            />
+                          </label>
+                        </div>
+                        <p style={{ color: "white" }}>
+                          {showImage && showImage}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -429,7 +495,15 @@ function LoginPage() {
                   className="clickedBtn"
                   disabled={isSubmitting}
                 >
-                  Register
+                  {isSending ? (
+                    <img
+                      src="https://i.gifer.com/ZKZg.gif"
+                      style={{ width: "20px", height: "20px" }}
+                      alt="Loading"
+                    />
+                  ) : (
+                    "Register"
+                  )}
                 </button>
                 <h4>
                   Going to <span onClick={handleChangeBox}>Login</span>

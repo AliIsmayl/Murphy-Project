@@ -8,7 +8,7 @@ function Faq() {
     const [getData, setGetData] = useState([]);
 
     async function GetFunctionData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Faqs/Get?page=1&take=3");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Faqs/Get?page=1&take=3");
         setGetData(res.data);
     }
 

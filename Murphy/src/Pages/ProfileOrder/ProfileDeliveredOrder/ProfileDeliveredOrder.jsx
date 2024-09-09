@@ -13,7 +13,7 @@ function ProfileDeliveredOrder() {
         try {
             if (token) {
                 const res = await axios.get(
-                    "http://alihuseyn-001-site1.btempurl.com/api/Orders/GetAllByCurrentlyUser?orderStatus=4&page=1&take=100",
+                    "http://thetest-001-site1.ftempurl.com/api/Orders/GetAllByCurrentlyUser?orderStatus=4&page=1&take=100",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`

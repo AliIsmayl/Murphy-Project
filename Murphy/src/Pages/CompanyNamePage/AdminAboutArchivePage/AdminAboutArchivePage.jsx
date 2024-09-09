@@ -20,7 +20,7 @@ function AdminAboutArchivePage() {
             }
 
             const response = await axios.delete(
-                `http://alihuseyn-001-site1.btempurl.com/api/Abouts/Delete/${id}`,
+                `http://thetest-001-site1.ftempurl.com/api/Abouts/Delete/${id}`,
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function AdminAboutArchivePage() {
             }
     
             await axios.patch(
-                `http://alihuseyn-001-site1.btempurl.com/api/Abouts/Recovery/recovery/${id}`,
+                `http://thetest-001-site1.ftempurl.com/api/Abouts/Recovery/recovery/${id}`,
                 null,
                 {
                     headers: {
@@ -73,7 +73,7 @@ function AdminAboutArchivePage() {
 
 
     async function getAxiosData() {
-        const res = await axios.get("http://alihuseyn-001-site1.btempurl.com/api/Abouts/Get?isdeleted=true&page=1&take=10");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Abouts/Get?isdeleted=true&page=1&take=10");
         setGetData(res.data);
     }
 
