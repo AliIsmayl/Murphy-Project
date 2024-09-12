@@ -99,7 +99,7 @@ function Navbar() {
                     <div className="phone">
                         <a href="tel:0998982004" > <SlCallOut /></a>
                     </div>
-                </div>
+            </div>
                 {/* Eger user login olmayıbsa bu cür olacaq */}
                 {
                     userRole ?

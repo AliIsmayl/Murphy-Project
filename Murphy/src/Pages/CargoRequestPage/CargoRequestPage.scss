@@ -1,74 +1,79 @@
 @mixin MyFlex {
-    display: flex;
-    justify-content: center;
-    align-items: center
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // @include MyFlex;
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 #cargoRequestPage {
-    background: #F06728;
-    height: 100vh;
+  background: #f06728;
+  min-height: 100vh;
+  @include MyFlex;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0px;
+  .err{
+    color: red;
+    padding: 10px 10px 0px 3px;
+  }
+  form {
+    background: #364653;
     @include MyFlex;
-
-    form {
-        background: #364653;
-        @include MyFlex;
-        flex-direction: column;
-        width: 600px;
-        font-family: "Ubuntu", sans-serif;
-        padding: 20px 10px;
-        border-radius: 10px;
-
-        p {
-            color: #F06728;
-        }
-
-        label {
-            font-size: 40px;
-            color: white;
-        }
-
-        .allInPutBox {
-            flex-wrap: wrap;
-            gap: 20px;
-            @include MyFlex;
-            padding: 40px 10px;
-
-            input {
-                width: 250px;
-                height: 40px;
-                background-color: #1e2f3f;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                padding: 20px;
-              
-            }
-
-            select {
-                width: 250px;
-                height: 40px;
-                background-color: #1e2f3f;
-                color: white;
-                border: none;
-                border-radius: 4px;
-               padding: 10px;
-            }
-          
-
-
-        }
-
-        button {
-            height: 40px;
-            width: 200px;
-            background-color: #F06728;
-            cursor: pointer;
-            color: white;
-            border: none;
-            border-radius: 4px;
-        }
+    flex-direction: column;
+    width: 600px;
+    font-family: "Ubuntu", sans-serif;
+    padding: 20px 10px;
+    border-radius: 10px;
+    ::placeholder {
+      color: white;
     }
+    p {
+      color: #f06728;
+    }
+
+    label {
+      font-size: 40px;
+      color: white;
+    }
+
+    .allInPutBox {
+      flex-wrap: wrap;
+      gap: 20px;
+      @include MyFlex;
+      padding: 40px 10px;
+
+      input {
+        width: 250px;
+        height: 40px;
+        background-color: #1e2f3f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 20px;
+      }
+
+      select {
+        width: 250px;
+        height: 40px;
+        background-color: #1e2f3f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+      }
+    }
+
+    button {
+      height: 40px;
+      width: 200px;
+      background-color: #f06728;
+      cursor: pointer;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+  }
 }

@@ -1,149 +1,145 @@
 @mixin MyFlex {
-    display: flex;
-    justify-content: center;
-    align-items: center
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // @include MyFlex;
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 #newsDetailPage {
-    font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 
-    #newsDetailHead {
-        height: 400px;
-        background-image: url('http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
+  #newsDetailHead {
+    height: 400px;
+    background-image: url("http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
-        .backPage {
-            background-color: rgba(0, 0, 0, 0.323);
-            width: 100%;
-            height: 100%;
-            @include MyFlex;
-            flex-direction: column;
-            gap: 10px;
+    .backPage {
+      background-color: rgba(0, 0, 0, 0.323);
+      width: 100%;
+      height: 100%;
+      @include MyFlex;
+      flex-direction: column;
+      gap: 10px;
 
-            h1 {
-                font-family: "Josefin Sans", sans-serif;
-                font-size: 70px;
-                color: white;
-            }
+      h1 {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 70px;
+        color: white;
+      }
 
-            .path {
-                display: flex;
-                font-size: 22px;
-                gap: 10px;
-                color: white;
-
-                .link {
-                    background-color: transparent;
-                    border: none;
-                    color: #F06728;
-
-                }
-            }
-        }
-    }
-
-    #newDetailTextBox {
-        padding: 50px 100px;
+      .path {
         display: flex;
-        align-items: start;
-        justify-content: space-between;
+        font-size: 22px;
+        gap: 10px;
+        color: white;
 
-        .tittleBox {
-            margin-bottom: 40px;
-            font-size: 30px;
-            font-weight: bold;
+        .link {
+          background-color: transparent;
+          border: none;
+          color: #f06728;
+          background: red;
         }
-
-        .imgBox {
-            width: 700px;
-            height: 400px;
-            overflow: hidden;
-
-            img {
-                max-width: 100%;
-            }
-        }
-
-        .textBox {
-            width: 500px;
-            font-size: 30px;
-            margin-top: 20px;
-        }
-
-        .rigtBox {
-
-            width: 300px;
-
-            .link {
-                text-decoration: none;
-                width: 100px;
-                p {
-                    max-width: 400px;
-                    margin-top: 10px;
-    
-                    &:hover {
-                        text-decoration: underline;
-                        cursor: pointer;
-                    }
-                }
-            }
-
-           
-
-        }
-
-
+      }
     }
+  }
+
+  #newDetailTextBox {
+    padding: 50px 100px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+
+    .tittleBox {
+      margin-bottom: 40px;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .imgBox {
+      width: 700px;
+      height: 400px;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .textBox {
+      width: 500px;
+      font-size: 30px;
+      margin-top: 20px;
+    }
+
+    .rigtBox {
+      width: 300px;
+      .link {
+        text-decoration: none;
+        // width: 100px;
+        align-items: end;
+        text-decoration: none;
+        gap: 5px;
+        display: flex;
+        p {
+          margin-top: 10px;
+          color: black;
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+        img {
+          width: 100px;
+          height: 50px;
+        }
+      }
+    }
+  }
 }
 
-
-
 @media only screen and (max-width: 1130px) {
-    #newsDetailPage {
+  #newsDetailPage {
+    #newDetailTextBox {
+      @include MyFlex;
+      flex-direction: column;
 
-        #newDetailTextBox {
-            @include MyFlex;
-            flex-direction: column;
-
-            .rigtBox {
-                margin-top: 30px;
-            }
-
-        }
+      .rigtBox {
+        margin-top: 30px;
+      }
     }
+  }
 }
 
 @media only screen and (max-width: 651px) {
-    #newsDetailPage {
-        #newsDetailHead {
-            .backPage {
-                h1 {
-                    font-size: 35px;
-                    max-width: 300px;
-                }
-            }
+  #newsDetailPage {
+    #newsDetailHead {
+      .backPage {
+        h1 {
+          font-size: 35px;
+          max-width: 300px;
         }
-
-        #newDetailTextBox {
-            .imgBox {
-                width: 310px;
-                height: 200px;
-
-                img {
-                    max-width: 100%;
-                }
-            }
-
-            .textBox {
-                width: 310px;
-                font-size: 20px;
-            }
-        }
+      }
     }
+
+    #newDetailTextBox {
+      .imgBox {
+        width: 310px;
+        height: 200px;
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .textBox {
+        width: 310px;
+        font-size: 20px;
+      }
+    }
+  }
 }

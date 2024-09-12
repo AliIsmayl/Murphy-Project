@@ -33,17 +33,19 @@ function LoginPage() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showImage, setShowImage] = useState(null);
   const [errors, setErrors] = useState(null);
-  const [isSending, setIsSending] = useState(false);
+const [isSending, setIsSending] = useState(false);
 
   function handleImage(files) {
     if (files[0].type.startsWith("image")) {
-      setRegImage(files[0]);
+      setRegImage(files[0]); // Resmi state'e ekle
+      setShowImage(null); // Eğer daha önce bir hata varsa, hata mesajını temizle
     } else {
-      setShowImage("Please upload an image file");
+      setRegImage(""); // Yanlış dosya tipiyse, regImage'ı boşalt
+      setShowImage("Please upload an image file"); // Hata mesajını göster
     }
     console.log("files:", files[0]);
   }
-
+  
   const loginValidationSchema = Yup.object().shape({
     username: Yup.string()
       .test(
@@ -51,10 +53,10 @@ function LoginPage() {
         "Name must be between 3 and 27 letters",
         (value) => value && value.length >= 3 && value.length <= 27
       )
-      .matches(
-        /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
-        "Name cannot contain numbers or symbols"
-      )
+      // .matches(
+      //   /^[A-Za-zşŞçÇöÖüÜğĞıİ]+$/,
+      //   "Name cannot contain numbers or symbols"
+      // )
       .required(errors?.UsernameOrEmail[0]),
     password: Yup.string()
       .test(
@@ -127,7 +129,7 @@ function LoginPage() {
         userData,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -152,7 +154,7 @@ function LoginPage() {
     }
   }
 
-  async function handleRegisterForm(values, { setSubmitting }) {
+  async function handleRegisterForm(values, { setSubmitting, resetForm }) {
     setIsSending(true); // Register işlemi başladığında loading başlasın
     const form = new FormData();
     form.append("Name", values.regName);
@@ -163,11 +165,11 @@ function LoginPage() {
     form.append("ConfirmPassword", values.regConfPass);
     form.append("Gender", values.regMale);
     form.append("BirthDate", moment(dateState).format("YYYY-MM-DDTHH:mm:ss"));
-
+  
     if (regImage) {
       form.append("Image", regImage);
     }
-
+  
     try {
       const res = await axios.post(
         "http://thetest-001-site1.ftempurl.com/api/Autentications/Register",
@@ -178,11 +180,17 @@ function LoginPage() {
           },
         }
       );
+  
       if (res.status === 400) {
         setErrors(res.errors);
+      } else {
+        toast.success("Successfully registered!");
+        resetForm(); // Formu resetle
+        setDateState(null); // Tarih alanını sıfırla
+        setRegImage(""); // Görseli sıfırla
+        setWriteCalendarText(false); // Placeholder'ı geri yükle
+        setChangeBox(!changeBox);
       }
-      toast.success("Successfully registered!");
-      setChangeBox(!changeBox);
     } catch (error) {
       console.log("Error during registration:", error);
       toast.error("Registration failed!");
@@ -191,6 +199,8 @@ function LoginPage() {
       setIsSending(false); // İşlem tamamlandıktan sonra loading bitmeli
     }
   }
+  
+  
 
   function handleChangeBox() {
     setChangeBox(!changeBox);
