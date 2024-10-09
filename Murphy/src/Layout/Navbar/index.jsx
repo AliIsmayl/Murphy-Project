@@ -52,12 +52,47 @@ function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link className="link" to={"/about"}>
-                        <p>About Us</p>
+                    <Link className="link" >
+                        <p>Şirkət profili</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>
                     </Link>
+                    <div className="openSubmenu">
+                        <ul>
+                            <Link className="link" to={"/about"}>
+                                <p>Haqqımızda</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                            <Link className="link" to={"/about"}>
+                                <p>Xülasə</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                            <Link className="link" to={"/about"}>
+                                <p>Ofislərimiz</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                            <Link className="link" to={"/about"}>
+                                <p>Diplomlarımız</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                            <Link className="link" to={"/about"}>
+                                <p>Struktur</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </ul>
+                    </div>
+
                 </li>
                 <li>
                     <Link className="link" to={"/news"}>
@@ -93,13 +128,13 @@ function Navbar() {
                     <div className="lang1Box">Az</div>
                     <div className="lang1Box">En</div>
                     <div className="lang1Box">Ru</div>
-                    <div className="modeBox">
+                    {/* <div className="modeBox">
                         <ModeBox />
-                    </div>
+                    </div> */}
                     <div className="phone">
                         <a href="tel:0998982004" > <SlCallOut /></a>
                     </div>
-            </div>
+                </div>
                 {/* Eger user login olmayıbsa bu cür olacaq */}
                 {
                     userRole ?
@@ -122,11 +157,9 @@ function Navbar() {
                 }
             </div>
             <div className={`respNavbar ${navbarOpen ? "openNavbar" : ""}`}>
-                {/* Eger user login olmayıbsa bu cür olacaq */}
                 <div className="respNotUserLoginBox">
                     <div className="loginBox"><p>Log In</p><div className="line"></div></div>
                 </div>
-                {/* Eger user artıq login olubsa bu cür olacaq */}
                 <div className="respHaveUserLoginBox">
                     <div className="imageBox">
                         <div className="image">
@@ -152,12 +185,55 @@ function Navbar() {
                     </li>
                     <li>
                         <Link className="link">
-                            <p>About Us</p>
+                            <p>Şəbəkə</p>
                             <div className="array">
                                 <IoIosArrowRoundUp />
                             </div>
                         </Link>
+
                     </li>
+                    <ul className='openMenu'>
+                        <li>
+                            <Link className="link" to={"/about"}>
+                                <p>Haqqımızda</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="link" to={"/about"}>
+                                <p>Xülasə</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="link" to={"/about"}>
+                                <p>Ofislərimiz</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="link" to={"/about"}>
+                                <p>Diplomlarımız</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link className="link" to={"/about"}>
+                                <p>Struktur</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+                    </ul>
                     <li>
                         <Link className="link">
                             <p>Products</p>
@@ -166,14 +242,17 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-                    <li>
-                        <Link className="link" to={'/admin'}>
-                            <p>Admin </p>
-                            <div className="array">
-                                <IoIosArrowRoundUp />
-                            </div>
-                        </Link>
-                    </li>
+                    {userRole ?
+                        <li>
+                            <Link className="link" to={'/admin'}>
+                                <p> Admin </p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
+                        </li>
+
+                        : ""}
                     <li>
                         <Link className="link">
                             <p>Contact</p>
@@ -187,9 +266,9 @@ function Navbar() {
                     <div className="lang1Box">Az</div>
                     <div className="lang1Box">En</div>
                     <div className="lang1Box">Ru</div>
-                    <div className="modeBox">
+                    {/* <div className="modeBox">
                         <ModeBox />
-                    </div>
+                    </div> */}
                     <div className="phone">
                         <a href="tel:0998982004" > <SlCallOut /></a>
                     </div>

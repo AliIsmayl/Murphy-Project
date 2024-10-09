@@ -1,6 +1,7 @@
 import React from 'react'
 import './AboutHead.scss'
 import { Link } from 'react-router-dom'
+
 function AboutHead() {
     return (
         <section id='aboutHead'>

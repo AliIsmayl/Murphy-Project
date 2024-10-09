@@ -27,6 +27,8 @@ import MainLayOut from './Layout/MainLayOut/MainLayOut';
 import AdminLayOut from './Layout/AdminLayOut/AdminLayOut';
 import NewsPage from './Pages/NewsPage/NewsPage';
 import NewsDetailPage from './Pages/NewsDetailPage/NewsDetailPage';
+import SummaryPage from './Pages/SummaryPage/SummaryPage';
+import AllOfficePage from './Pages/AllOfficePage/AllOfficePage';
 
 function App() {
 
@@ -50,6 +52,8 @@ function App() {
             <Route path="/profile/order/detail/:id" element={<OrderDetailPage />} />
             <Route path="/delivery/detail/:id" element={<DeliverinDetail />} />
             <Route path="/cargoReguest" element={<CargoRequestPage />} />
+            <Route path="/summary" element={<SummaryPage />} />
+            <Route path="/allOffice" element={<AllOfficePage />} />
           </Route>
         </Routes>
         <BackToTop />
