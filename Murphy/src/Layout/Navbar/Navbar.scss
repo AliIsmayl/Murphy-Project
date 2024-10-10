@@ -273,17 +273,14 @@ nav {
         ul {
             flex-direction: column;
             align-items: start;
-            background: red;
 
             .openMenu {
-                background: orange;
 
             }
 
             li {
 
                 .link {
-                    background-color: green;
                     color: white;
 
 
@@ -385,4 +382,16 @@ nav {
         }
     }
 
+}
+
+.openMenu {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+.opened {
+    height: auto;
+    opacity: 1;
 }

@@ -14,6 +14,11 @@ const token = localStorage.getItem("token");
 function Navbar() {
     const [navbarOpen, setNavbarOpen] = useState(false)
     const { getTokenData } = useContext(userContext)
+    const [openRespNavbarText, setopenRespNavbarText] = useState(false)
+
+    function handleOPenRespNavbarText() {
+        setopenRespNavbarText(!openRespNavbarText)
+    }
     const navigate = useNavigate()
     function handleOpenNavbar() {
         setNavbarOpen(!navbarOpen)
@@ -66,25 +71,25 @@ function Navbar() {
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
-                            <Link className="link" to={"/about"}>
+                            <Link className="link" to={"/summary"}>
                                 <p>Xülasə</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
-                            <Link className="link" to={"/about"}>
+                            <Link className="link" to={"/allOffice"}>
                                 <p>Ofislərimiz</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
-                            <Link className="link" to={"/about"}>
+                            <Link className="link" to={"/sertificate"}>
                                 <p>Diplomlarımız</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
-                            <Link className="link" to={"/about"}>
+                            <Link className="link" to={"/structor"}>
                                 <p>Struktur</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
@@ -183,16 +188,16 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-                    <li>
+                    <li  onClick={handleOPenRespNavbarText}>
                         <Link className="link">
-                            <p>Şəbəkə</p>
+                            <p>Şirkət</p>
                             <div className="array">
                                 <IoIosArrowRoundUp />
                             </div>
                         </Link>
 
                     </li>
-                    <ul className='openMenu'>
+                    <ul className={`openMenu ${openRespNavbarText ? "opened" : ""}`}>
                         <li>
                             <Link className="link" to={"/about"}>
                                 <p>Haqqımızda</p>

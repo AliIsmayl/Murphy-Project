@@ -29,6 +29,8 @@ import NewsPage from './Pages/NewsPage/NewsPage';
 import NewsDetailPage from './Pages/NewsDetailPage/NewsDetailPage';
 import SummaryPage from './Pages/SummaryPage/SummaryPage';
 import AllOfficePage from './Pages/AllOfficePage/AllOfficePage';
+import SertificatePage from './Pages/SertificatePage/SertificatePage';
+import StructorPage from './Pages/StructorPage/StructorPage';
 
 function App() {
 
@@ -40,7 +42,7 @@ function App() {
           <Route path='/' element={<MainLayOut />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
-            
+
             <Route path="/news" element={<NewsPage />} />
             <Route path="/news/detail/:id" element={<NewsDetailPage />} />
 
@@ -54,6 +56,8 @@ function App() {
             <Route path="/cargoReguest" element={<CargoRequestPage />} />
             <Route path="/summary" element={<SummaryPage />} />
             <Route path="/allOffice" element={<AllOfficePage />} />
+            <Route path="/sertificate" element={<SertificatePage />} />
+            <Route path="/structor" element={<StructorPage />} />
           </Route>
         </Routes>
         <BackToTop />
