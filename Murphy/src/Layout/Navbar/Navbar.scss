@@ -33,7 +33,6 @@ nav {
 
         li {
             position: relative;
-
             &:hover {
                 .openSubmenu {
                     display: flex;
@@ -61,6 +60,7 @@ nav {
                 display: flex;
                 color: #25224B;
                 @include MyFlex;
+                text-align: center;
 
                 p {
                     font-size: 20px;

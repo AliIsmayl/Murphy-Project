@@ -17,7 +17,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-
     .backPage {
       background-color: rgba(0, 0, 0, 0.323);
       width: 100%;
@@ -71,31 +70,37 @@
     }
 
     .textBox {
-      width: 500px;
-      font-size: 30px;
+      // max-width: 90%;
+      font-size: 25px;
       margin-top: 20px;
     }
 
     .rigtBox {
-      width: 300px;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
       .link {
         text-decoration: none;
-        // width: 100px;
-        align-items: end;
+        align-items: start;
         text-decoration: none;
         gap: 5px;
         display: flex;
+
         p {
           margin-top: 10px;
           color: black;
+
           &:hover {
             text-decoration: underline;
             cursor: pointer;
           }
         }
+
         img {
-          width: 100px;
-          height: 50px;
+          width: 150px;
+          height: 80px;
         }
       }
     }

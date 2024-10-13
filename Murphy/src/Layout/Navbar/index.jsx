@@ -84,7 +84,7 @@ function Navbar() {
                                 </div>
                             </Link>
                             <Link className="link" to={"/sertificate"}>
-                                <p>Diplomlarımız</p>
+                                <p>Lisenziyalar və Sertifikatlar</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>
@@ -120,8 +120,8 @@ function Navbar() {
                     : ""}
 
                 <li>
-                    <Link className="link">
-                        <p>Contact</p>
+                    <Link className="link" to={"/myDelivery"}>
+                        <p>Kargom haradadır</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>
@@ -188,7 +188,7 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-                    <li  onClick={handleOPenRespNavbarText}>
+                    <li onClick={handleOPenRespNavbarText}>
                         <Link className="link">
                             <p>Şirkət</p>
                             <div className="array">
@@ -224,7 +224,7 @@ function Navbar() {
                         </li>
                         <li>
                             <Link className="link" to={"/about"}>
-                                <p>Diplomlarımız</p>
+                                <p>Lisenziyalar və Sertifikatlar</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>
@@ -260,7 +260,7 @@ function Navbar() {
                         : ""}
                     <li>
                         <Link className="link">
-                            <p>Contact</p>
+                            <p>Kargom haradadır</p>
                             <div className="array">
                                 <IoIosArrowRoundUp />
                             </div>

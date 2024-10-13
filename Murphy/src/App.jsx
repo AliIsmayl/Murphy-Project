@@ -31,6 +31,7 @@ import SummaryPage from './Pages/SummaryPage/SummaryPage';
 import AllOfficePage from './Pages/AllOfficePage/AllOfficePage';
 import SertificatePage from './Pages/SertificatePage/SertificatePage';
 import StructorPage from './Pages/StructorPage/StructorPage';
+import MyDelivery from './Pages/MyDelivery/MyDelivery';
 
 function App() {
 
@@ -58,6 +59,7 @@ function App() {
             <Route path="/allOffice" element={<AllOfficePage />} />
             <Route path="/sertificate" element={<SertificatePage />} />
             <Route path="/structor" element={<StructorPage />} />
+            <Route path="/myDelivery" element={<MyDelivery />} />
           </Route>
         </Routes>
         <BackToTop />

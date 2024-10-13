@@ -5,47 +5,70 @@
 }
 
 // @include MyFlex;
-
-#backToTop {
-    background: red;
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
-    cursor: pointer;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 3;
-    @include MyFlex;
-    flex-direction: column;
-    gap: 10px;
-    background: #25224B;
-    border: 2px solid #F06728;
-
-    &:hover {
-        p {
-            transition: visibility 0s, opacity 1s ease;
-            animation: fadeIn 1.5s ease infinite;
-
+.mainLink {
+    .link {
+        position: fixed;
+        right: 20px;
+        bottom: 120px;
+        width: 100px;
+        height: 40px;
+        @include MyFlex;
+        cursor: pointer;
+        border: 1px solid #F06728;
+        border-radius: 10px;
+        font-family: "Ubuntu", sans-serif;
+        background-color: white;
+        flex-direction: column;
+z-index: 3;
+        &:hover {
+            background: #F06728;
+        }
+        &:active{
+            color: #25224B;
         }
     }
 
-    p {
-        transform: rotate(180deg);
-        font-size: 20px;
-        color: #F06728;
-    }
+    #backToTop {
+        background: red;
+        height: 80px;
+        width: 80px;
+        border-radius: 10px;
+        cursor: pointer;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 3;
+        @include MyFlex;
+        flex-direction: column;
+        gap: 10px;
+        background: #25224B;
+        border: 2px solid #F06728;
 
-    span {
-        font-size: 15px;
-        color: white;
+        &:hover {
+            p {
+                transition: visibility 0s, opacity 1s ease;
+                animation: fadeIn 1.5s ease infinite;
+
+            }
+        }
+
+        p {
+            transform: rotate(180deg);
+            font-size: 20px;
+            color: #F06728;
+        }
+
+        span {
+            font-size: 15px;
+            color: white;
+        }
     }
 }
 
 @keyframes fadeIn {
-   
+
     50% {
-    transform: rotate(180deg) translateY(4px);
-       
+        transform: rotate(180deg) translateY(4px);
+
     }
 }

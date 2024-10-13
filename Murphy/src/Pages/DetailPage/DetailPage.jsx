@@ -39,7 +39,6 @@ function DetailPage() {
               </div>
               <div className="image" style={{ backgroundImage: `url(${detail.image})` }}>
               </div>
-
             </div>
           </div>
         </>

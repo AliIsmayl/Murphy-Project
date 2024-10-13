@@ -11,9 +11,10 @@ footer {
 
     .footerUpBox {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 40px 0px;
         flex-wrap: wrap;
+        // background: red;
 
         .leftFooterBox {
             width: 320px;
@@ -35,7 +36,7 @@ footer {
                 display: flex;
                 gap: 15px;
 
-                p {
+                .link {
                     color: #F06728;
                     cursor: pointer;
 
@@ -57,12 +58,14 @@ footer {
                 color: #F06728;
             }
 
+          
+
             .informBox {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                font-size: 2.5em;
                 color: #F06728;
+                font-size: 30px;
 
                 .textBox {
                     font-size: 0.5em;
@@ -73,6 +76,12 @@ footer {
 
                     p {
                         color: #F06728;
+                        font-size: 22px;
+
+
+                    }
+                    span{
+                        font-size: 22px;
 
                     }
                 }

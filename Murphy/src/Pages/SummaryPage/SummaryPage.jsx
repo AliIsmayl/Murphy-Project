@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 function SummaryPage() {
     return (
-        <>
+        <div className='summaryBox'>
             <NotMean />
             <section id='summaryHead'>
                 <div className="backPage">
@@ -18,7 +18,10 @@ function SummaryPage() {
                 </div>
             </section>
             <div className="normalBox">
-                <img src="https://murphy.az/wp-content/uploads/2023/08/Ramin-768x506.jpg" alt="" />
+                <div className="leftBox">
+                    <img src="https://murphy.az/wp-content/uploads/2023/08/Ramin-768x506.jpg" alt="" />
+                    <p>Ramin Səfərov</p>
+                </div>
                 <p>Cədvəl və büdcə daxilində “Dünya ilə körpü qurmaq”
 
                     “Murphy Shipping and Commercial Services” MMC Murphy Group prinsiplərinin innovativ və səmərəli davamçısıdır.
@@ -28,7 +31,7 @@ function SummaryPage() {
 
                     Bizim biznes yanaşmamız sadə və düzdür. Keyfiyyəti, peşəkar İdarəetmə Qrupumuzun sistematik yanaşmasına, güclü Marketinq və Əməliyyat personalına əməl etməklə müştərilərimizin tələblərinə daim cavab vermək və ya ondan artıq olmaq kimi müəyyən edirik. Etibarlı, Səmərəli, Sərfəli</p>
             </div>
-        </>
+        </div>
     )
 }
 

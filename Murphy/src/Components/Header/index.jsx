@@ -63,7 +63,7 @@ function Header() {
                                             <p>{item.tittle}</p>
                                             {/* <p><span>Secure</span> Freight Handling</p> */}
                                             <span>{item.description}</span>
-                                            <div className="headerSwiperBtnsBox">
+                                            {/* <div className="headerSwiperBtnsBox">
                                                 <button>
                                                     <p>Read More</p>
                                                     <p className='swiperArrow'><IoIosArrowRoundUp /></p>
@@ -73,7 +73,7 @@ function Header() {
                                                     <p className='swiperArrow'><IoIosArrowRoundUp /></p>
 
                                                 </button>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </SwiperSlide>
@@ -159,7 +159,7 @@ function Header() {
                                 <img src="http://goodrise.like-themes.com/wp-content/uploads/2023/12/SLIDE_02.jpg" alt="" />
                             </div>
                         </SwiperSlide> */}
-                        {
+                        {/* {
                             getData && getData.map((item, index) => (
                                 <SwiperSlide onClick={() => handleThumbClick(index)} >
                                 <div className="headerSmallSwiperBox">
@@ -168,7 +168,7 @@ function Header() {
                                 </div>
                             </SwiperSlide>
                             ))
-                        }
+                        } */}
                         {/* <SwiperSlide onClick={() => handleThumbClick(1)} >
                             <div className="headerSmallSwiperBox">
                                 <div className="frontBlurBox"></div>

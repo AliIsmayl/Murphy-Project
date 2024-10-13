@@ -1,0 +1,151 @@
+@mixin MyFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+// @include MyFlex;
+#myDelivery {
+    background: #F06728;
+    @include MyFlex;
+    justify-content: space-between;
+    padding: 50px 0px 50px 0px;
+    position: relative;
+    min-height: 60vh;
+
+    .leftDeliveryBox {
+        @include MyFlex;
+        width: 300px;
+
+        img {
+            margin-right: 40px;
+            max-width: 100%
+        }
+    }
+
+    .middleDeliveryBox {
+        @include MyFlex;
+        padding: 20px;
+        gap: 20px;
+
+        h3 {
+            font-size: 2.5em;
+            flex-direction: column;
+            gap: 5px;
+            color: white;
+        }
+
+        p {
+            color: #25224B;
+        }
+    }
+
+    .searchBox {
+        @include MyFlex;
+        background: rgba(10, 10, 10, 0.703);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        gap: 20px;
+        font-size: 20px;
+        color: white;
+        display: none;
+
+        form {
+            gap: 10px;
+            @include MyFlex;
+
+            input {
+                padding: 10px 15px;
+                border-radius: 10px;
+                border: none;
+                width: 200px;
+            }
+
+            button {
+
+                height: 30px;
+                padding: 2px 5px;
+                cursor: pointer;
+                border-radius: 5px;
+                border: none;
+                background-color: #F06728;
+                color: white;
+            }
+        }
+
+        .closeBtn {
+            font-size: 30px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .rightDeliveryBox {
+        padding: 0 20px 0 0;
+
+        .insureBtnBox {
+            background: #25224B;
+            height: 70px;
+            width: 230px;
+            @include MyFlex;
+            color: white;
+            transition: 0.9s;
+            cursor: pointer;
+
+            .arrowBox {
+                @include MyFlex;
+                font-size: 30px;
+                transform: rotate(30deg);
+            }
+
+            &:hover {
+                background: white;
+                transition: 0.9s;
+                color: #25224B;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1210px) {
+    #myDelivery {
+        flex-direction: column;
+        gap: 20px;
+        padding: 50px 20px;
+
+        .middleDeliveryBox {
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .rightDeliveryBox {
+            padding: 0;
+        }
+    }
+}
+
+.openedSearchBox {
+    display: flex !important;
+}
+
+@media only screen and (max-width: 433px) {
+    #myDelivery {
+
+        .middleDeliveryBox {
+            flex-direction: column;
+
+            h3 {
+                font-size: 2em;
+                max-width: 220px;
+
+            }
+        }
+
+
+    }
+}

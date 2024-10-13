@@ -12,14 +12,15 @@
     .normalBox {
         display: flex;
         gap: 20px;
-        padding: 20px;
+        padding: 80px 20px;
         flex-wrap: wrap;
         @include MyFlex;
-        gap: 20px;
+        align-items: start;
+        gap: 25px;
 
         img {
             width: 250px;
-            height: 280px;
+            height: 350px;
             aspect-ratio: 1/2;
             object-fit: cover;
         }
@@ -30,8 +31,12 @@
             display: flex;
             flex-direction: column;
             @include MyFlex;
-            background-color: rgba(0, 0, 0, 0.323);
+            // background-color: rgba(0, 0, 0, 0.323);
             font-family: "Ubuntu", sans-serif;
+
+            span {
+                max-width: 250px;
+            }
         }
 
 
@@ -58,6 +63,7 @@
                 font-family: "Josefin Sans", sans-serif;
                 font-size: 60px;
                 color: white;
+                text-align: center;
             }
 
             .path {
@@ -71,6 +77,34 @@
                     border: none;
                     color: #F06728;
 
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 606px) {
+    .sertificate {
+        #allOfficeHead {
+            .backPage {
+
+                h1 {
+                    font-size: 40px;
+                }
+
+                .path {
+                    display: flex;
+                    font-size: 22px;
+                    gap: 10px;
+                    color: white;
+                    text-align: center;
+
+                    .link {
+                        background-color: transparent;
+                        border: none;
+                        color: #F06728;
+
+                    }
                 }
             }
         }
