@@ -33,6 +33,7 @@ nav {
 
         li {
             position: relative;
+
             &:hover {
                 .openSubmenu {
                     display: flex;
@@ -56,7 +57,10 @@ nav {
                 }
             }
 
-            .link {
+            
+
+            .link,
+            .xidmətLink {
                 display: flex;
                 color: #25224B;
                 @include MyFlex;
@@ -86,6 +90,11 @@ nav {
                         transition: 0.7s;
                         color: #F06728;
                     }
+                }
+            }
+            .xidmətLink {
+                p {
+                    font-size: 16px;
                 }
             }
         }
@@ -274,9 +283,7 @@ nav {
             flex-direction: column;
             align-items: start;
 
-            .openMenu {
-
-            }
+            .openMenu {}
 
             li {
 

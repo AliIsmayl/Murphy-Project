@@ -8,7 +8,7 @@ function DetailPage() {
   const [detail, setGetData] = useState([]);
   const { id } = useParams()
 
-  async function getAxiosData() {
+  async function getAxiosData(id) {
     try {
       const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Services/Get/${id}?isdeleted=false`);
       setGetData(res.data);
@@ -18,8 +18,8 @@ function DetailPage() {
   }
 
   useEffect(() => {
-    getAxiosData();
-  }, []);
+    getAxiosData(id);
+  }, [id]);
   return (
     <>
       {detail ?

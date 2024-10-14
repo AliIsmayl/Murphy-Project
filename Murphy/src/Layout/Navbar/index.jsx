@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Navbar.scss'
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowRoundUp } from "react-icons/io";
@@ -10,12 +10,21 @@ import { useState } from 'react';
 import { userContext } from '../../Context/userContext';
 import { jwtDecode } from 'jwt-decode';
 const token = localStorage.getItem("token");
+import axios from 'axios'
 
 function Navbar() {
     const [navbarOpen, setNavbarOpen] = useState(false)
     const { getTokenData } = useContext(userContext)
+    const [getData, setGetData] = useState([])
     const [openRespNavbarText, setopenRespNavbarText] = useState(false)
 
+    async function GetFunctionData() {
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
+        setGetData(res.data)
+    }
+    useEffect(() => {
+        GetFunctionData()
+    }, [])
     function handleOPenRespNavbarText() {
         setopenRespNavbarText(!openRespNavbarText)
     }
@@ -95,6 +104,29 @@ function Navbar() {
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
+                        </ul>
+                    </div>
+
+                </li>
+                <li>
+                    <Link className="link" >
+                        <p>Xidmətlərimiz</p>
+                        <div className="array">
+                            <IoIosArrowRoundUp />
+                        </div>
+                    </Link>
+                    <div className="openSubmenu">
+                        <ul>
+                            {
+                                getData && getData.map((item) => (
+                                    <Link className="xidmətLink" to={`services/detail/${item.id}`} key={item.id}>
+                                        <p>{item.tittle}</p>
+                                        <div className="array">
+                                            <IoIosArrowRoundUp />
+                                        </div>
+                                    </Link>
+                                ))
+                            }
                         </ul>
                     </div>
 

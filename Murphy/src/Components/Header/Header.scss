@@ -5,10 +5,14 @@
 }
 
 // @include MyFlex;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 header {
     height: 100vh;
     overflow: hidden;
     background: rgba(0, 0, 0, 0.158);
+    font-family: "Ubuntu", sans-serif;
+
     // @include MyFlex;
     .wrapper {
         margin-top: 10px;
@@ -44,16 +48,11 @@ header {
 
                 p {
                     font-weight: bold;
-                    font-size: 6.5em;
+                    font-size: 70px;
                     color: white;
                     margin-bottom: 20px;
                     // transform: translate(-10px, 30px);
 
-                    span {
-                        color: #F06728;
-                        font-size: 1em;
-
-                    }
                 }
 
                 span {
@@ -106,7 +105,8 @@ header {
                                 transition: 0.6s;
                                 color: #25224B;
                             }
-                            .swiperArrow{
+
+                            .swiperArrow {
                                 transform: rotate(40deg) !important;
                             }
                         }
@@ -197,7 +197,7 @@ header {
                     padding: 50px 20px;
 
                     p {
-                        font-size: 4.3em;
+                        font-size: 45px;
                         max-width: 100px;
                     }
 

@@ -61,7 +61,6 @@ function Header() {
                                     <div className="swiperBigBox" key={item.id}>
                                         <div className={`normalSwiperBox ${openText ? "openWindowAnimation" : ""}`}>
                                             <p>{item.tittle}</p>
-                                            {/* <p><span>Secure</span> Freight Handling</p> */}
                                             <span>{item.description}</span>
                                             {/* <div className="headerSwiperBtnsBox">
                                                 <button>
