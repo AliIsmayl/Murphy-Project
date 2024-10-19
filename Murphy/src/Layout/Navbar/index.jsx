@@ -98,6 +98,12 @@ function Navbar() {
                                     <IoIosArrowRoundUp />
                                 </div>
                             </Link>
+                            <Link className="link" to={"/gallery"}>
+                                <p>Qaleriya</p>
+                                <div className="array">
+                                    <IoIosArrowRoundUp />
+                                </div>
+                            </Link>
                             <Link className="link" to={"/structor"}>
                                 <p>Struktur</p>
                                 <div className="array">

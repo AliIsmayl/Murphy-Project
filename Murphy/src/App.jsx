@@ -32,12 +32,15 @@ import AllOfficePage from './Pages/AllOfficePage/AllOfficePage';
 import SertificatePage from './Pages/SertificatePage/SertificatePage';
 import StructorPage from './Pages/StructorPage/StructorPage';
 import MyDelivery from './Pages/MyDelivery/MyDelivery';
+import ScrollToTop from './Components/ScroolTopFunction';
+import GalleryPage from './Pages/GalleryPage/GalleryPage';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop/>
         <Toaster />
         <Routes>
           <Route path='/' element={<MainLayOut />}>
@@ -60,6 +63,7 @@ function App() {
             <Route path="/sertificate" element={<SertificatePage />} />
             <Route path="/structor" element={<StructorPage />} />
             <Route path="/myDelivery" element={<MyDelivery />} />
+            <Route path="/gallery" element={<GalleryPage />} />
           </Route>
         </Routes>
         <BackToTop />

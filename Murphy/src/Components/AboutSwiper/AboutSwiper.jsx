@@ -11,7 +11,7 @@ function AboutSwiper() {
     const [getData, setGetData] = useState([]);
 
     async function GetFunctionData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/PartnerCompanies/Get?page=1&take=3");
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/PartnerCompanies/Get?page=1&take=1000");
         setGetData(res.data);
     }
 

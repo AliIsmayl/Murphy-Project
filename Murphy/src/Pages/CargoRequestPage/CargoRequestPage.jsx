@@ -24,9 +24,9 @@ function CargoRequestPage() {
     loadName: "",
     loadWeight: "",
     loadCapasity: "",
-    services: "",
-    toCountry: "",
-    fromCountry: "",
+    serviceId: "", // serviceId
+    toCountryId: "", // toCountryId
+    fromCountryId: "", // fromCountryId
   };
 
   const validationSchema = Yup.object().shape({
@@ -39,9 +39,9 @@ function CargoRequestPage() {
     loadName: Yup.string().required("Load Name is required"),
     loadWeight: Yup.number().required("Load Weight is required"),
     loadCapasity: Yup.number().required("Load Capacity is required"),
-    services: Yup.string().required("Service is required"),
-    toCountry: Yup.string().required("To Country is required"),
-    fromCountry: Yup.string().required("From Country is required"),
+    serviceId: Yup.string().required("Service is required"),
+    toCountryId: Yup.string().required("To Country is required"),
+    fromCountryId: Yup.string().required("From Country is required"),
   });
 
   useEffect(() => {
@@ -68,7 +68,7 @@ function CargoRequestPage() {
     fetchData();
   }, []);
 
-  const handleSubmit = async (values, { setSubmitting, setFieldError }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     const formData = new FormData();
     Object.keys(values).forEach((key) => {
       formData.append(key, values[key]);
@@ -107,11 +107,13 @@ function CargoRequestPage() {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting, errors, touched }) => (
+          {({ isSubmitting }) => (
             <Form>
               <p>Client Trust Us</p>
               <label>Cargo Request Quote</label>
               <div className="allInPutBox">
+
+                {/* Company Name */}
                 <div className="ipnutBox">
                   <Field
                     type="text"
@@ -121,6 +123,7 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="companyName" component="div" />
                 </div>
 
+                {/* Company Email */}
                 <div className="ipnutBox">
                   <Field
                     type="email"
@@ -130,6 +133,7 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="companyEmail" component="div" />
                 </div>
 
+                {/* Company Phone */}
                 <div className="ipnutBox">
                   <Field
                     type="text"
@@ -139,11 +143,13 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="companyPhone" component="div" />
                 </div>
 
+                {/* Address */}
                 <div className="ipnutBox">
                   <Field type="text" name="address" placeholder="Address..." />
                   <ErrorMessage className="err" name="address" component="div" />
                 </div>
 
+                {/* Load Name */}
                 <div className="ipnutBox">
                   <Field
                     type="text"
@@ -153,6 +159,7 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="loadName" component="div" />
                 </div>
 
+                {/* Load Weight */}
                 <div className="ipnutBox">
                   <Field
                     type="number"
@@ -162,6 +169,7 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="loadWeight" component="div" />
                 </div>
 
+                {/* Load Capacity */}
                 <div className="ipnutBox">
                   <Field
                     type="number"
@@ -171,52 +179,56 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="loadCapasity" component="div" />
                 </div>
 
+                {/* Service */}
                 <div className="ipnutBox">
-                  <Field as="select" name="services">
+                  <Field as="select" name="serviceId">
                     <option value="" hidden>
                       Choose Service...
                     </option>
-
                     {select1Data.map((item) => (
                       <option key={item.id} value={item.id}>
                         {item.name}
                       </option>
                     ))}
                   </Field>
-                  <ErrorMessage className="err" name="services" component="div" />
+                  <ErrorMessage className="err" name="serviceId" component="div" />
                 </div>
+
+                {/* To Country */}
                 <div className="ipnutBox">
-                  <Field as="select" name="toCountry">
+                  <Field as="select" name="toCountryId">
                     <option value="" hidden>
                       Choose To Country...
                     </option>
-
                     {select2Data.map((item) => (
                       <option key={item.id} value={item.id}>
                         {item.name}
                       </option>
                     ))}
                   </Field>
-                  <ErrorMessage className="err" name="toCountry" component="div" />
+                  <ErrorMessage className="err" name="toCountryId" component="div" />
                 </div>
+
+                {/* From Country */}
                 <div className="ipnutBox">
-                  <Field as="select" name="fromCountry">
+                  <Field as="select" name="fromCountryId">
                     <option value="" hidden>
                       Choose From Country...
                     </option>
-
                     {select3Data.map((item) => (
                       <option key={item.id} value={item.id}>
                         {item.name}
                       </option>
                     ))}
                   </Field>
-                  <ErrorMessage className="err" name="fromCountry" component="div" />
+                  <ErrorMessage className="err" name="fromCountryId" component="div" />
                 </div>
+
+                {/* Submit Button */}
+                <button type="submit" disabled={isSubmitting}>
+                  Submit Request
+                </button>
               </div>
-              <button type="submit" disabled={isSubmitting}>
-                Comparison
-              </button>
             </Form>
           )}
         </Formik>

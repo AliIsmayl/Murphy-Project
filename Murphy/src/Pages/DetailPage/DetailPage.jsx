@@ -35,7 +35,7 @@ function DetailPage() {
             <div className="imageAndTextBox">
               <div className="text">
                 <span>{detail.tittle}</span>
-                <p>{detail.tittle}</p>
+                <p>{detail.description}</p>
               </div>
               <div className="image" style={{ backgroundImage: `url(${detail.image})` }}>
               </div>

@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import NotMean from '../../Components/NotMean/NotMean'
-import './SertificatePage.scss'
+import './GalleryPage.scss'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-function SertificatePage() {
-    const [sertificate, setSertificate] = useState([])
-    const [take, setTake] = useState(4)
+function GalleryPage() {
+    const [gallery, setGallery] = useState([])
 
-    function handleMoreText() {
-        setTake((take) => take + 4)
-    }
     async function getData() {
-        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Licenses/Get?page=1&take=${take}`)
-        setSertificate(res.data)
+        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/GalleryItems/Get?page=1&take=3")
+        setGallery(res.data)
     }
     useEffect(() => {
         getData()
-    }, [take])
+    }, [])
 
     return (
-        <div className='sertificate'>
+        <div className='galleryPage'>
             <NotMean />
             <section id='allOfficeHead'>
                 <div className="backPage">
@@ -34,20 +30,17 @@ function SertificatePage() {
             </section>
             <div className="normalBox">
                 {
-                    sertificate.map((item) => (
+                    gallery.map((item) => (
                         <Link to={item.image} className="cardBox">
                             <img src={item.image} alt="" />
                             <span>{item.name}</span>
                         </Link>
                     ))
                 }
-
-            </div>
-            <div className="moreBtn">
-                <button onClick={handleMoreText}>Daha Çox</button>
+                
             </div>
         </div>
     )
 }
 
-export default SertificatePage
+export default GalleryPage
