@@ -26,21 +26,22 @@ function DetailPage() {
         <>
           <NotMean />
           <div id='detailPage'>
-            <div className="imageBox" style={{ backgroundImage: "url(http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg)" }}>
-              <div className="frontBox">
-                <h1>{detail.name}</h1>
-                <p>Home <span>//</span> Services <span>//</span> <Link className='link'>{detail.name}</Link></p>
+          <div className="imageBox" style={{ backgroundImage: "url(http://goodrise.like-themes.com/wp-content/uploads/2024/01/inner_HEADER.jpg)" }}>
+                <div className="frontBox">
+                  <h1>{detail.name}</h1>
+                  <p>Home <span>//</span> Services <span>//</span> <Link className='link'>{detail.name}</Link></p>
+                </div>
+              </div>
+             
+              <div className="imageAndTextBox">
+                <div className="text">
+                  <span>{detail.tittle}</span>
+                  <p>{detail.description}</p>
+                </div>
+                <div className="image" style={{ backgroundImage: `url(${detail.image})` }}>
+                </div>
               </div>
             </div>
-            <div className="imageAndTextBox">
-              <div className="text">
-                <span>{detail.tittle}</span>
-                <p>{detail.description}</p>
-              </div>
-              <div className="image" style={{ backgroundImage: `url(${detail.image})` }}>
-              </div>
-            </div>
-          </div>
         </>
         : ""}
     </>

@@ -15,6 +15,7 @@ function CargoRequestPage() {
   const [select2Data, setSelect2Data] = useState([]);
   const [select3Data, setSelect3Data] = useState([]);
   const navigate = useNavigate();
+  const [sending, setSending] = useState(false)
 
   const initialValues = {
     companyName: "",
@@ -78,6 +79,7 @@ function CargoRequestPage() {
       const res = await axios.post(
         "http://thetest-001-site1.ftempurl.com/api/Orders/Create",
         formData,
+        setSending(true),
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -86,6 +88,7 @@ function CargoRequestPage() {
         }
       );
       toast.success("Əlavə edildi...");
+      setSending(false)
       navigate("/");
     } catch (error) {
       console.error("Error creating order:", error);
@@ -226,7 +229,7 @@ function CargoRequestPage() {
 
                 {/* Submit Button */}
                 <button type="submit" disabled={isSubmitting}>
-                  Submit Request
+                  {sending ? <img src="https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-05-37_512.gif" alt="" /> : "Submit Request"}
                 </button>
               </div>
             </Form>

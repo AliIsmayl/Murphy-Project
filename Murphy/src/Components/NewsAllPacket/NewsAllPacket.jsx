@@ -5,16 +5,20 @@ import { Link } from 'react-router-dom'
 
 function NewsAllPacket() {
     const [info, setinfo] = useState('')
+    const [take, setTake] = useState(1)
 
+    function handleMoreText() {
+        setTake((take) => take + 1)
+    }
     async function getData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=3")
+        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=${take}`)
         setinfo(res.data)
     }
 
     useEffect(() => {
         getData()
 
-    }, [])
+    }, [take])
     return (
         <section id='newsAllPacket'>
 
@@ -30,6 +34,9 @@ function NewsAllPacket() {
                     </Link>
                 ))
             }
+            <div className="moreBtn">
+                <button onClick={handleMoreText}>Daha Çox</button>
+            </div>
         </section>
     )
 }

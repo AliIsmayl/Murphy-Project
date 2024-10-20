@@ -99,7 +99,7 @@ function Navbar() {
                                 </div>
                             </Link>
                             <Link className="link" to={"/gallery"}>
-                                <p>Qaleriya</p>
+                                <p>Qalereya</p>
                                 <div className="array">
                                     <IoIosArrowRoundUp />
                                 </div>

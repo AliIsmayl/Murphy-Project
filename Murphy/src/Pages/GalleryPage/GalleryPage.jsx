@@ -6,25 +6,29 @@ import axios from 'axios'
 
 function GalleryPage() {
     const [gallery, setGallery] = useState([])
+    const [take, setTake] = useState(4)
 
+    function handleMoreText() {
+        setTake((take) => take + 4)
+    }
     async function getData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/GalleryItems/Get?page=1&take=3")
+        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/GalleryItems/Get?page=1&take=${take}`)
         setGallery(res.data)
     }
     useEffect(() => {
         getData()
-    }, [])
+    }, [take])
 
     return (
         <div className='galleryPage'>
             <NotMean />
             <section id='allOfficeHead'>
                 <div className="backPage">
-                    <h1>Lisenziyalar və Sertifikatlar</h1>
+                    <h1>Qalereya</h1>
                     <div className="path">
                         <Link className='link' to={"/"}>Ana səhifə</Link>
                 //
-                        <p>Lisenziyalar və Sertifikatlar</p>
+                        <p>Qalereya</p>
                     </div>
                 </div>
             </section>
@@ -37,7 +41,10 @@ function GalleryPage() {
                         </Link>
                     ))
                 }
-                
+
+            </div>
+            <div className="moreBtn">
+                <button onClick={handleMoreText}>Daha Çox</button>
             </div>
         </div>
     )

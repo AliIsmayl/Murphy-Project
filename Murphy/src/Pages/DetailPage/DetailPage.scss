@@ -8,7 +8,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
 #detailPage {
-    
+
+
+
 
     .imageBox {
         height: 50vh;
@@ -51,13 +53,13 @@
     .imageAndTextBox {
         padding: 70px 10px;
         @include MyFlex;
-        flex-direction: column;
+        // flex-direction: column;
         gap: 40px;
         background-color: white;
 
         .image {
             height: 75vh;
-            width: 80%;
+            width: 100%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -85,10 +87,10 @@
     }
 }
 
-@media only screen and (max-width: 726px) {
+@media only screen and (max-width: 792px) {
     #detailPage {
         .imageAndTextBox {
-
+            flex-direction: column;
 
             .image {
                 width: 100%;

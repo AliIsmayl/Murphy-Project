@@ -9,6 +9,24 @@
 // @include MyFlex;
 // font-family: "Ubuntu", sans-serif;
 .galleryPage {
+    padding: 0px 0px 50px 0px;
+
+    .moreBtn {
+        @include MyFlex;
+
+        button {
+            font-family: "Ubuntu", sans-serif;
+            cursor: pointer;
+            cursor: pointer;
+            padding: 7px 10px;
+            border: 2px solid #25224b;
+            background-color: #25224b;
+            color: white;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+    }
+
     .normalBox {
         display: flex;
         gap: 20px;
