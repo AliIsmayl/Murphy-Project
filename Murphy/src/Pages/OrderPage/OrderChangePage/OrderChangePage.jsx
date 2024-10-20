@@ -33,17 +33,19 @@ function OrderChangePage() {
 
     async function handleUpdate(e) {
         e.preventDefault();
+        console.log("data:", getData.status)
         try {
-            await axios.patch(`http://thetest-001-site1.ftempurl.com/api/Orders/ChangeOrderStatus/${id}`, { status: getData.status }, {
+            await axios.patch(`http://thetest-001-site1.ftempurl.com/api/Orders/ChangeOrderStatus/${id}`, { Status: getData.status }, {
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data",
                 }
             });
             toast.success('Dəyişiklik edildi...')
             navigate('/admin/orders')
 
         } catch (error) {
-            alert("An error occurred while updating.");
+            alert(error.message);
         }
     }
 

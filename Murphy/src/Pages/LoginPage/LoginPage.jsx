@@ -33,7 +33,7 @@ function LoginPage() {
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showImage, setShowImage] = useState(null);
   const [errors, setErrors] = useState(null);
-const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   function handleImage(files) {
     if (files[0].type.startsWith("image")) {
@@ -45,7 +45,7 @@ const [isSending, setIsSending] = useState(false);
     }
     console.log("files:", files[0]);
   }
-  
+
   const loginValidationSchema = Yup.object().shape({
     username: Yup.string()
       .test(
@@ -146,6 +146,8 @@ const [isSending, setIsSending] = useState(false);
       } else {
         navigate("/");
       }
+      window.location.reload()
+
     } catch (error) {
       console.log("Error during login:", error.message);
       toast.error("Login failed!");
@@ -165,11 +167,11 @@ const [isSending, setIsSending] = useState(false);
     form.append("ConfirmPassword", values.regConfPass);
     form.append("Gender", values.regMale);
     form.append("BirthDate", moment(dateState).format("YYYY-MM-DDTHH:mm:ss"));
-  
+
     if (regImage) {
       form.append("Image", regImage);
     }
-  
+
     try {
       const res = await axios.post(
         "http://thetest-001-site1.ftempurl.com/api/Autentications/Register",
@@ -180,7 +182,7 @@ const [isSending, setIsSending] = useState(false);
           },
         }
       );
-  
+
       if (res.status === 400) {
         setErrors(res.errors);
       } else {
@@ -199,8 +201,8 @@ const [isSending, setIsSending] = useState(false);
       setIsSending(false); // İşlem tamamlandıktan sonra loading bitmeli
     }
   }
-  
-  
+
+
 
   function handleChangeBox() {
     setChangeBox(!changeBox);
@@ -487,9 +489,8 @@ const [isSending, setIsSending] = useState(false);
                         </p>
                       </div>
                       <div
-                        className={`openCalender ${
-                          openCalendarBox ? "opened" : ""
-                        }`}
+                        className={`openCalender ${openCalendarBox ? "opened" : ""
+                          }`}
                       >
                         <CalendarPicker
                           setDateState={setDateState}

@@ -23,7 +23,7 @@ function AdminAboutArchivePage() {
                 `http://thetest-001-site1.ftempurl.com/api/Abouts/Delete/${id}`,
                 {
                     headers: {
-                        "Content-Type": "application/json",
+                         "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${token}`
                     }
                 }
@@ -54,7 +54,7 @@ function AdminAboutArchivePage() {
                 null,
                 {
                     headers: {
-                        "Content-Type": "application/json",
+                         "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${token}`
                     }
                 }

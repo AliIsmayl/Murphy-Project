@@ -9,14 +9,26 @@ import { TfiClose } from "react-icons/tfi";
 import { useState } from 'react';
 import { userContext } from '../../Context/userContext';
 import { jwtDecode } from 'jwt-decode';
-const token = localStorage.getItem("token");
 import axios from 'axios'
 
 function Navbar() {
     const [navbarOpen, setNavbarOpen] = useState(false)
-    const { getTokenData } = useContext(userContext)
+    const { getTokenData, setgetTokenData } = useContext(userContext)
     const [getData, setGetData] = useState([])
     const [openRespNavbarText, setopenRespNavbarText] = useState(false)
+    const token = localStorage.getItem("token");
+
+    async function getToken() {
+        if (token) {
+            const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer " + token
+                },
+            })
+            setgetTokenData(res.data)
+        }
+    }
 
     async function GetFunctionData() {
         const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
@@ -24,6 +36,8 @@ function Navbar() {
     }
     useEffect(() => {
         GetFunctionData()
+        getToken()
+
     }, [])
     function handleOPenRespNavbarText() {
         setopenRespNavbarText(!openRespNavbarText)
@@ -33,12 +47,8 @@ function Navbar() {
         setNavbarOpen(!navbarOpen)
     }
 
-    let userRole = ""
-    if (token) {
-        const decoded = jwtDecode(token);
-        userRole = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-        console.log("user", userRole)
-    }
+    console.log("role", getTokenData)
+
     function handleDeleteLocal() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -46,6 +56,7 @@ function Navbar() {
         window.location.reload()
 
     }
+
     return (
         <nav>
             <div className="menuBox" onClick={handleOpenNavbar}>
@@ -145,7 +156,7 @@ function Navbar() {
                         </div>
                     </Link>
                 </li>
-                {userRole ?
+                {getTokenData.role === "Admin" ?
                     <li>
                         <Link className="link" to={'/admin'}>
                             <p> Admin </p>
@@ -180,7 +191,7 @@ function Navbar() {
                 </div>
                 {/* Eger user login olmayıbsa bu cür olacaq */}
                 {
-                    userRole ?
+                    getTokenData.role ?
                         <div className="loginBox" onClick={handleDeleteLocal}><p><Link >Log Out</Link></p><div className="line"></div></div>
                         :
                         <div className="loginBox"><p><Link to={"/login"}>Log In</Link></p><div className="line"></div></div>
@@ -189,11 +200,11 @@ function Navbar() {
                 {/* Eger user artıq login olubsa bu cür olacaq */}
 
                 {
-                    userRole ?
+                 getTokenData && getTokenData ?
                         <Link to={'/profile'}>
                             <div className="imageBox">
                                 <div className="image">
-                                    <img src={getTokenData.profileImage} alt="" />
+                                    <img src={ getTokenData && getTokenData.profileImage} alt="" />
                                 </div>
                             </div>
                         </Link> : ""
@@ -285,7 +296,7 @@ function Navbar() {
                             </div>
                         </Link>
                     </li>
-                    {userRole ?
+                    {getTokenData.role === "Admin" ?
                         <li>
                             <Link className="link" to={'/admin'}>
                                 <p> Admin </p>

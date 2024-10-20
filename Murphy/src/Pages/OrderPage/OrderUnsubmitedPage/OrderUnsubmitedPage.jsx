@@ -24,7 +24,7 @@ function OrderUnsubmitedPage() {
                     null,
                     {
                         headers: {
-                            "Content-Type": "application/json",
+                             "Content-Type": "multipart/form-data",
                             Authorization: `Bearer ${token}`
                         }
                     }
@@ -46,7 +46,7 @@ function OrderUnsubmitedPage() {
             if (token) {
                 await axios.delete(`http://thetest-001-site1.ftempurl.com/api/Orders/Delete/${id}`, {
                     headers: {
-                        "Content-Type": "application/json",
+                         "Content-Type": "multipart/form-data",
                         Authorization: `Bearer ${token}`
                     }
                 });
