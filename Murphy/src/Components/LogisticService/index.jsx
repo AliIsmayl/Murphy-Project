@@ -20,12 +20,12 @@ function LogisticService() {
     return (
         <section id='logisticService'>
             <div className="upLogisticServiceBox">
-                <div className="headText">LOGISTICS SERVICES</div>
+                <div className="headText">LOJİSTİKA XİDMƏTLƏRİ</div>
                 <div className="normalBox">
-                    <p>Global Logistics Expertise at Your Service</p>
-                    <span>Logistics services encompass a broad range of activities aimed at efficiently managing the movement and storage of goods. This includes transportation, warehousing, inventory management, order fulfillment, and distribution.</span>
+                    <p>Qlobal Logistika Ekspertizası Xidmətinizdə</p>
+                    <span>Lojistika xidmətləri malların hərəkəti və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət spektrini əhatə edir. Buraya nəqliyyat, anbarlaşdırma, inventarın idarə edilməsi, sifarişin yerinə yetirilməsi və paylama daxildir.</span>
                     <Link className='link'to={'cargoReguest'}>
-                        <p>Apply now</p>
+                        <p>İndi müraciət</p>
                         <div className="arrowBox">
                             <IoIosArrowRoundUp />
                         </div>

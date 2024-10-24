@@ -26,7 +26,7 @@ function Footer() {
             <div className="footerUpBox">
                 <div className="leftFooterBox">
                     <img src={MurphyPhoto} alt="" />
-                    <p>Logistics services encompass a broad range of activities aimed at efficiently managing the movement and storage of goods.</p>
+                    <p>Lojistika xidmətləri malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir.</p>
                     <div className="socialIconBox">
                         {
                             footer.map((item) => (
@@ -48,7 +48,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="middleFooterBox">
-                    <h3>Contact info</h3>
+                    <h3>Əlaqə məlumatı</h3>
                     {
                         footer.map((item) => (
                             <div className='normalBox'>
@@ -56,7 +56,7 @@ function Footer() {
                                     <div className="informBox">
                                         <ImLocation2 />
                                         <div className="textBox">
-                                            <p>Our location:</p>
+                                            <p>Ünvanımız:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@ function Footer() {
                                     <div className="informBox">
                                         <FaPhoneVolume />
                                         <div className="textBox">
-                                            <p>Phones:</p>
+                                            <p>Telefonlar:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@ function Footer() {
                                     <div className="informBox">
                                         <HiOutlineMail />
                                         <div className="textBox">
-                                            <p>Email:</p>
+                                            <p>E-poçt:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@ function Footer() {
             </div>
             <div className="footerDownBox">
                 <p>
-                    "Murphy" website was prepared in © 2024 by <span>"FB" group</span>
+                "Murphy" saytı © 2024-cü ildə <span>"FB" qrupu</span> tərəfindən hazırlanmışdır.
                 </p>
             </div>
         </footer>

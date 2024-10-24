@@ -35,14 +35,15 @@ function Delivering() {
             </div>
             <div className="middleDeliveryBox">
                 <img src="http://goodrise.like-themes.com/wp-content/uploads/2024/01/icon-yes.png" alt="" />
-                <h3>Delivering Confidence through
-                    <p>Secure Logistics Solutions</p>
+                <h3>
+                Təhlükəsiz Logistika Həlləri ilə
+                    <p>Etibarlılıq Təmin Edirik</p>
                 </h3>
             </div>
 
             <div className="rightDeliveryBox">
                 <div className="insureBtnBox" onClick={handleOpenSearchBox}>
-                    <p>Where My Cargo?</p>
+                    <p>Yüküm Haradadır?</p>
                     <div className="arrowBox"><IoIosArrowRoundUp /></div>
                 </div>
             </div>

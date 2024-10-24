@@ -21,7 +21,7 @@ function BoostYour() {
                 about.map((item) => (
                     <section id='boostYour'>
                         <div className="boostLeftBox">
-                            <h5>ABOUT COMPANY</h5>
+                            <h5>ŞİRKƏT HAQQINDA</h5>
                             <h2>{item.tittle}</h2>
                             <p>{item.description}</p>
                         </div>
