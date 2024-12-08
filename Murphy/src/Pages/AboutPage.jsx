@@ -12,7 +12,7 @@ function AboutPage() {
     <NotMean/>
     <AboutHead/>
     <BoostYour/>
-    <VideoSect/>
+    {/* <VideoSect/> */}
     <Faq/>
     <AboutSwiper/>
     </>

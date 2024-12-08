@@ -17,9 +17,19 @@
         flex-direction: column;
         gap: 20px;
 
-        img {
+        .imgBox {
             width: 400px;
             height: 250px;
+            overflow: hidden;
+            @include MyFlex;
+        }
+
+        img {
+            max-width: 100%;
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            aspect-ratio: 1/1;
         }
 
         .cardBox {
@@ -123,7 +133,7 @@
                 flex-wrap: wrap;
 
                 img {
-                    
+
                     width: 100%;
                 }
 

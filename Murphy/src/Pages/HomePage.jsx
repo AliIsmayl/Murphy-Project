@@ -16,7 +16,7 @@ function HomePage() {
       <Header />
       <SmallInform />
       <BoostYour />
-      <Delivering />
+    <Delivering />
       <LogisticService />
       {/* <VideoInform/> */}
       <ImageSwitcher />

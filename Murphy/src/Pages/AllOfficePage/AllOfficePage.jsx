@@ -32,7 +32,9 @@ function AllOfficePage() {
             <div className="normalBox">
                 {
                     office && office.map((item) => (<div className="cardBox">
+                        <div className="imgBox">
                         <img src={item.image} alt="" />
+                        </div>
                         <div className="oneCard">
                             <h3>{item.name}</h3>
                             {item.employers}
