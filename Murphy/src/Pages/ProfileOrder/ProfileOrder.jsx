@@ -16,7 +16,7 @@ function ProfileOrder() {
         try {
             if (token) {
                 const res = await axios.get(
-                    "http://thetest-001-site1.ftempurl.com/api/Orders/GetAllByCurrentlyUser?page=1&take=100",
+                    "https://thetest-001-site1.ftempurl.com/api/Orders/GetAllByCurrentlyUser?page=1&take=100",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`

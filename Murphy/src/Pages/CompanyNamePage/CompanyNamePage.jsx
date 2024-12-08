@@ -21,7 +21,7 @@ function AdminAbout() {
             }
     
             const response = await axios.patch(
-                `http://thetest-001-site1.ftempurl.com/api/Abouts/SoftDelete/${id}`,
+                `https://thetest-001-site1.ftempurl.com/api/Abouts/SoftDelete/${id}`,
                 null,
                 {
                     headers: {
@@ -46,7 +46,7 @@ function AdminAbout() {
     
 
     async function getAxiosData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=1000")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=1000")
         setGetData(res.data)
     }
     useEffect(() => {

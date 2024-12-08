@@ -16,6 +16,8 @@ function CargoRequestPage() {
   const [select3Data, setSelect3Data] = useState([]);
   const navigate = useNavigate();
   const [sending, setSending] = useState(false)
+  const appUserId = localStorage.getItem("appUserId")
+  console.log("appUserId:", appUserId);
 
   const initialValues = {
     companyName: "",
@@ -25,9 +27,11 @@ function CargoRequestPage() {
     loadName: "",
     loadWeight: "",
     loadCapasity: "",
-    serviceId: "", // serviceId
-    toCountryId: "", // toCountryId
-    fromCountryId: "", // fromCountryId
+    serviceId: "", 
+    toCountryId: "", 
+    fromCountryId: "", 
+    appUserId: `${appUserId ? appUserId : null}`,
+
   };
 
   const validationSchema = Yup.object().shape({
@@ -49,17 +53,17 @@ function CargoRequestPage() {
     async function fetchData() {
       try {
         const res1 = await axios.get(
-          "http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=6"
+          "https://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=6"
         );
         setSelect1Data(res1.data);
 
         const res2 = await axios.get(
-          "http://thetest-001-site1.ftempurl.com/api/ToCountries/Get?page=1&take=200"
+          "https://thetest-001-site1.ftempurl.com/api/ToCountries/Get?page=1&take=200"
         );
         setSelect2Data(res2.data);
 
         const res3 = await axios.get(
-          "http://thetest-001-site1.ftempurl.com/api/FromCountries/Get?page=1&take=200"
+          "https://thetest-001-site1.ftempurl.com/api/FromCountries/Get?page=1&take=200"
         );
         setSelect3Data(res3.data);
       } catch (error) {
@@ -74,12 +78,14 @@ function CargoRequestPage() {
     Object.keys(values).forEach((key) => {
       formData.append(key, values[key]);
     });
+    formData.set("appUserId", `${appUserId ? appUserId : null}`);
+
+    setSending(true); // Sorğu göndərilməyə başlandı
 
     try {
       const res = await axios.post(
-        "http://thetest-001-site1.ftempurl.com/api/Orders/Create",
+        "https://thetest-001-site1.ftempurl.com/api/Orders/Create",
         formData,
-        setSending(true),
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -88,15 +94,16 @@ function CargoRequestPage() {
         }
       );
       toast.success("Əlavə edildi...");
-      setSending(false)
-      navigate("/");
+      navigate("/"); // Uğurlu sorğu olduqda ana səhifəyə yönləndir
     } catch (error) {
       console.error("Error creating order:", error);
       toast.error("An error occurred while submitting the request.");
     } finally {
+      setSending(false); // Sorğu bitdi, loading gizlədilir
       setSubmitting(false);
     }
   };
+
 
   return (
     <>
@@ -227,10 +234,17 @@ function CargoRequestPage() {
                   <ErrorMessage className="err" name="fromCountryId" component="div" />
                 </div>
 
-                {/* Submit Button */}
-                <button type="submit" disabled={isSubmitting}>
-                  {sending ? <img src="https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-05-37_512.gif" alt="" /> : "Submit Request"}
+                <button type="submit" disabled={isSubmitting || sending}>
+                  {sending ? (
+                    <img
+                      src="https://cdn.pixabay.com/animation/2022/07/29/03/42/03-42-05-37_512.gif"
+                      alt="Loading..."
+                    />
+                  ) : (
+                    "Submit Request"
+                  )}
                 </button>
+
               </div>
             </Form>
           )}

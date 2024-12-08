@@ -10,7 +10,7 @@ function DetailPage() {
 
   async function getAxiosData(id) {
     try {
-      const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Services/Get/${id}?isdeleted=false`);
+      const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/Services/Get/${id}?isdeleted=false`);
       setGetData(res.data);
     } catch (error) {
       console.error(error.message);

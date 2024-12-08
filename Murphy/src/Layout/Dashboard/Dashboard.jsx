@@ -14,7 +14,7 @@ function Dashboard() {
 
     async function getToken() {
         if (token) {
-            const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
+            const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": "Bearer " + token

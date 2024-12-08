@@ -1,23 +1,45 @@
-import React, { useContext, useState } from 'react'
-import './Delivering.scss'
+import React, { useContext, useState } from 'react';
+import './Delivering.scss';
 import { IoIosArrowRoundUp } from "react-icons/io";
 import { FaSearchPlus } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../Context/userContext';
+import toast from "react-hot-toast";
 
 function Delivering() {
-    const [openSearch, setopenSearch] = useState(false)
-    // const [searchText, setsearchText] = useState('')
-    const {searchText, setsearchText}=useContext(userContext)
-    const navigate = useNavigate()
+    const [openSearch, setopenSearch] = useState(false);
+    const [error, setError] = useState(null);
+    const { searchText, setsearchText } = useContext(userContext);
+    const navigate = useNavigate();
+
     function handleOpenSearchBox() {
-        setopenSearch(!openSearch)
+        setopenSearch(!openSearch);
+        setError(null); // Yeni bir arama başlatırken hata sıfırlanır
     }
 
-    function handleGetSearchId(e) {
-        e.preventDefault()
-        navigate(`/delivery/detail/${searchText}`)
+    async function handleGetSearchId(e) {
+        e.preventDefault();
+        setError(null); // Hata mesajını sıfırla
+        if (!searchText) {
+            setError("Tracking ID boş bırakılamaz.");
+            return;
+        }
+        
+        try {
+            // API isteği
+            const response = await fetch(`https://thetest-001-site1.ftempurl.com/api/Orders/GetByTrackingId/${searchText}`);
+            
+            if (!response.ok) {
+                throw toast.error("Səhv tracking İd");
+
+            }
+            
+            // API yanıtını kontrol ettikten sonra yönlendir
+            navigate(`/delivery/detail/${searchText}`);
+        } catch (err) {
+            setError(err.message); // Hata mesajını kaydet
+        }
     }
 
     return (
@@ -26,7 +48,11 @@ function Delivering() {
                 <div className="closeBtn" onClick={handleOpenSearchBox}><IoMdClose /></div>
                 <div className="icon"><FaSearchPlus /></div>
                 <form action="" onSubmit={(e) => handleGetSearchId(e)}>
-                    <input type="text" onChange={(e) => setsearchText(e.target.value)} placeholder='Tracking Id ...' />
+                    <input 
+                        type="text" 
+                        onChange={(e) => setsearchText(e.target.value)} 
+                        placeholder='Tracking Id ...' 
+                    />
                     <button type='submit'>Search</button>
                 </form>
             </div>
@@ -35,19 +61,19 @@ function Delivering() {
             </div>
             <div className="middleDeliveryBox">
                 <img src="http://goodrise.like-themes.com/wp-content/uploads/2024/01/icon-yes.png" alt="" />
-                <h3>Delivering Confidence through
-                    <p>Secure Logistics Solutions</p>
+                <h3>İnam Yaratmaq üçün
+                    <p>Təhlükəsiz Logistika Həlləri</p>
                 </h3>
             </div>
 
             <div className="rightDeliveryBox">
                 <div className="insureBtnBox" onClick={handleOpenSearchBox}>
-                    <p>Where My Cargo?</p>
+                    <p>Yüküm haradadır?</p>
                     <div className="arrowBox"><IoIosArrowRoundUp /></div>
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default Delivering
+export default Delivering;

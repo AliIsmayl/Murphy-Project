@@ -18,9 +18,11 @@ function Navbar() {
     const [openRespNavbarText, setopenRespNavbarText] = useState(false)
     const token = localStorage.getItem("token");
 
+    // console.log("yeni update:", token)
+
     async function getToken() {
         if (token) {
-            const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
+            const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Autentications/GetCurrentUser", {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "Authorization": "Bearer " + token
@@ -31,7 +33,7 @@ function Navbar() {
     }
 
     async function GetFunctionData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
         setGetData(res.data)
     }
     useEffect(() => {
@@ -70,7 +72,7 @@ function Navbar() {
             <ul id='normalUl'>
                 <li>
                     <Link className="link" to={"/"}>
-                        <p>Home</p>
+                        <p>Ana Səhifə</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>
@@ -150,7 +152,7 @@ function Navbar() {
                 </li>
                 <li>
                     <Link className="link" to={"/news"}>
-                        <p>News</p>
+                        <p>Xəbərlər</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>
@@ -170,7 +172,7 @@ function Navbar() {
 
                 <li>
                     <Link className="link" to={"/myDelivery"}>
-                        <p>Kargom haradadır</p>
+                        <p>Yüküm haradadır</p>
                         <div className="array">
                             <IoIosArrowRoundUp />
                         </div>
@@ -194,17 +196,17 @@ function Navbar() {
                     getTokenData.role ?
                         <div className="loginBox" onClick={handleDeleteLocal}><p><Link >Log Out</Link></p><div className="line"></div></div>
                         :
-                        <div className="loginBox"><p><Link to={"/login"}>Log In</Link></p><div className="line"></div></div>
+                        <Link to={"/login"} className="loginBox"><p><Link to={"/login"}>Log In</Link></p><div className="line"></div></Link>
                 }
 
                 {/* Eger user artıq login olubsa bu cür olacaq */}
 
                 {
-                 getTokenData && getTokenData ?
+                    getTokenData && getTokenData ?
                         <Link to={'/profile'}>
                             <div className="imageBox">
                                 <div className="image">
-                                    <img src={ getTokenData && getTokenData.profileImage} alt="" />
+                                    <img src={getTokenData && getTokenData.profileImage} alt="" />
                                 </div>
                             </div>
                         </Link> : ""

@@ -11,7 +11,7 @@ function LogisticService() {
     const [getData, setGetData] = useState([])
 
     async function GetFunctionData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Services/Get?page=1&take=5")
         setGetData(res.data)
     }
     useEffect(() => {
@@ -20,12 +20,12 @@ function LogisticService() {
     return (
         <section id='logisticService'>
             <div className="upLogisticServiceBox">
-                <div className="headText">LOGISTICS SERVICES</div>
+                <div className="headText">LOJİSTİKA XİDMƏTLƏRİ</div>
                 <div className="normalBox">
-                    <p>Global Logistics Expertise at Your Service</p>
-                    <span>Logistics services encompass a broad range of activities aimed at efficiently managing the movement and storage of goods. This includes transportation, warehousing, inventory management, order fulfillment, and distribution.</span>
+                    <p>Sizin Xidmətinizdə Qlobal Logistika Təcrübəsi</p>
+                    <span>Logistika xidmətləri, malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir. Bu, nəqliyyat, anbarlaşdırma, inventar idarəetməsi, sifarişlərin yerinə yetirilməsi və paylanmanı əhatə edir.</span>
                     <Link className='link'to={'cargoReguest'}>
-                        <p>Apply now</p>
+                        <p>Müraciət et</p>
                         <div className="arrowBox">
                             <IoIosArrowRoundUp />
                         </div>

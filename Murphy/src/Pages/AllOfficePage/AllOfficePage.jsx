@@ -8,7 +8,7 @@ function AllOfficePage() {
     const [office, setOffice] = useState([])
 
     async function getData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Offices/Get?page=1&take=3")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Offices/Get?page=1&take=100")
         setOffice(res.data)
     }
 

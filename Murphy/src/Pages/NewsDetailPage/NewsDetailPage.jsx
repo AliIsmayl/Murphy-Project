@@ -11,14 +11,14 @@ function NewsDetailPage() {
 
   async function getData() {
     const res = await axios.get(
-      `http://thetest-001-site1.ftempurl.com/api/News/Get/${id}?isdeleted=false`
+      `https://thetest-001-site1.ftempurl.com/api/News/Get/${id}?isdeleted=false`
     );
     setDetail(res.data);
   }
 
   async function axiosData() {
     const res = await axios.get(
-      "http://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=3"
+      "https://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=100"
     );
     setInfo(res.data);
   }

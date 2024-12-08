@@ -22,7 +22,7 @@ function Header() {
     };
 
     async function GetFunctionData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Sliders/Get?isdeleted=false&page=1&take=3")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Sliders/Get?isdeleted=false&page=1&take=100")
         setGetData(res.data)
     }
 

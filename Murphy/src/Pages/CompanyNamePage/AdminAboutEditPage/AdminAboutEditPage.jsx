@@ -8,7 +8,7 @@ import axios from 'axios'
 function AdminAboutEditPage() {
     const [getData, setGetData] = useState([])
     async function getAxiosData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=5")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=5")
         setGetData(res.data)
     }
     useEffect(() => {

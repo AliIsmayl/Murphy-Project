@@ -14,7 +14,7 @@ function OrderDetailPage() {
 
   async function getAxiosData() {
     try {
-      const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Orders/Get/${id}?isdeleted=false`);
+      const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/Orders/Get/${id}?isdeleted=false`);
       setGetData(res.data);
       getAxiosData()
     } catch (error) {
@@ -34,7 +34,8 @@ function OrderDetailPage() {
             <div id='orderDetailPage'>
               <div className="orderDetailBox">
                 <div className="upBox">
-                  <p>Baku 28 may</p>
+                <p>{detail.address}</p>
+
                 </div>
                 <div className="downBox">
                   <div className="allIconsBox">
@@ -78,7 +79,7 @@ function OrderDetailPage() {
                         <FaCircleCheck /><p>Təyin olunmuş yere çatdı</p></div>
                     </div>
                   </div>
-                  <h1>Ali Ismayil</h1>
+                  <h1></h1>
                   <p>Tracking ID: {detail.trackingId}</p>
                   <p>Company Name: {detail.companyName}</p>
                   <p>Company Email: {detail.companyEmail}</p>

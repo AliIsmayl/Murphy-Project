@@ -7,7 +7,7 @@ function ImageSwitcher() {
     const [getData, setGetData] = useState([]);
 
     async function GetFunctionData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/CustomInfo/Get?page=1&take=4");
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/CustomInfo/Get?page=1&take=4");
         setGetData(res.data);
     }
 

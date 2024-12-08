@@ -12,7 +12,7 @@ function SertificatePage() {
         setTake((take) => take + 4)
     }
     async function getData() {
-        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Licenses/Get?page=1&take=${take}`)
+        const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/Licenses/Get?page=1&take=${take}`)
         setSertificate(res.data)
     }
     useEffect(() => {
@@ -35,7 +35,7 @@ function SertificatePage() {
             <div className="normalBox">
                 {
                     sertificate.map((item) => (
-                        <Link to={item.image} className="cardBox">
+                        <Link to={item.image} target='blank_' className="cardBox">
                             <img src={item.image} alt="" />
                             <span>{item.name}</span>
                         </Link>

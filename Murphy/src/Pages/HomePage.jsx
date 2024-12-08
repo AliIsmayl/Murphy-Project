@@ -19,7 +19,7 @@ function HomePage() {
       <Delivering />
       <LogisticService />
       {/* <VideoInform/> */}
-      {/* <ImageSwitcher /> */}
+      <ImageSwitcher />
     </>
   )
 }

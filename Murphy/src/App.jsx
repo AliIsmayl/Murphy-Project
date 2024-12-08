@@ -1,8 +1,6 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from './Layout/Navbar';
 import HomePage from './Pages/HomePage';
-import Footer from './Layout/Footer';
 import BackToTop from './Components/BackToTop';
 import AboutPage from './Pages/AboutPage';
 import LoginPage from './Pages/LoginPage/LoginPage';

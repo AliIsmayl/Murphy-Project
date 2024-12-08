@@ -11,7 +11,7 @@ function NewsAllPacket() {
         setTake((take) => take + 1)
     }
     async function getData() {
-        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=${take}`)
+        const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/News/Get?isdeleted=false&page=1&take=${take}`)
         setinfo(res.data)
     }
 

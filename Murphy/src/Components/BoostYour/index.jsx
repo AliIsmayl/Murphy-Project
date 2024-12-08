@@ -8,7 +8,7 @@ function BoostYour() {
 
     const [about, setAbout] = useState([])
     async function GetDate() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=3")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Abouts/Get?page=1&take=100")
         setAbout(res.data)
     }
     useEffect(() => {

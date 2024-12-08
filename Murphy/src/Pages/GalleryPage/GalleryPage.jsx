@@ -12,7 +12,7 @@ function GalleryPage() {
         setTake((take) => take + 4)
     }
     async function getData() {
-        const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/GalleryItems/Get?page=1&take=${take}`)
+        const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/GalleryItems/Get?page=1&take=${take}`)
         setGallery(res.data)
     }
     useEffect(() => {

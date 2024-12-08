@@ -16,7 +16,7 @@ function DeliverinDetail() {
 
   async function getAxiosData() {
     try {
-      const res = await axios.get(`http://thetest-001-site1.ftempurl.com/api/Orders/GetByTrackingId/${searchText}`);
+      const res = await axios.get(`https://thetest-001-site1.ftempurl.com/api/Orders/GetByTrackingId/${searchText}`);
       setGetData(res.data);
       getAxiosData()
     } catch (error) {

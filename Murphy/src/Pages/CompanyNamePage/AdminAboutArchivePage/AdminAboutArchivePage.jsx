@@ -20,7 +20,7 @@ function AdminAboutArchivePage() {
             }
 
             const response = await axios.delete(
-                `http://thetest-001-site1.ftempurl.com/api/Abouts/Delete/${id}`,
+                `https://thetest-001-site1.ftempurl.com/api/Abouts/Delete/${id}`,
                 {
                     headers: {
                          "Content-Type": "multipart/form-data",
@@ -50,7 +50,7 @@ function AdminAboutArchivePage() {
             }
     
             await axios.patch(
-                `http://thetest-001-site1.ftempurl.com/api/Abouts/Recovery/recovery/${id}`,
+                `https://thetest-001-site1.ftempurl.com/api/Abouts/Recovery/recovery/${id}`,
                 null,
                 {
                     headers: {
@@ -73,7 +73,7 @@ function AdminAboutArchivePage() {
 
 
     async function getAxiosData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Abouts/Get?isdeleted=true&page=1&take=10");
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Abouts/Get?isdeleted=true&page=1&take=10");
         setGetData(res.data);
     }
 

@@ -6,7 +6,7 @@ import { MdOutlineSearch } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { userContext } from '../../Context/userContext';
 function ProfilePage() {
-    const {  getTokenData } = useContext(userContext)
+    const { getTokenData } = useContext(userContext)
 
     return (
         <>
@@ -24,12 +24,12 @@ function ProfilePage() {
                         <h1>{getTokenData.surname} {getTokenData.name}</h1>
                         <span>{getTokenData.userName}</span>
                         <p>{getTokenData.email}</p>
-                        
-                        <div className="numberBox">
+
+                        {/* <div className="numberBox">
                             <div className="number"><p>65</p><span>Friend</span></div>
                             <div className="number"><p>43</p><span>Photos</span></div>
                             <div className="number"><p>21</p><span>Comments</span></div>
-                        </div>
+                        </div> */}
                         <div className="showMore"><Link className='link' to={"/profile/order"}>My Orders</Link></div>
                     </div>
                 </div>

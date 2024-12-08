@@ -25,7 +25,7 @@ function LoginPage() {
   const [openCalendarBox, setOpenCalendarBox] = useState(false);
   const [writeCalendarText, setWriteCalendarText] = useState(false);
   const [dateState, setDateState] = useState(null);
-  const { setUser } = useContext(userContext);
+  const {getTokenData,  setUser } = useContext(userContext);
   const navigate = useNavigate();
   const [regImage, setRegImage] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Şifre görünürlük state'i
@@ -34,6 +34,8 @@ function LoginPage() {
   const [showImage, setShowImage] = useState(null);
   const [errors, setErrors] = useState(null);
   const [isSending, setIsSending] = useState(false);
+
+ 
 
   function handleImage(files) {
     if (files[0].type.startsWith("image")) {
@@ -125,7 +127,7 @@ function LoginPage() {
     };
     try {
       const res = await axios.post(
-        "http://thetest-001-site1.ftempurl.com/api/Autentications/Login",
+        "https://thetest-001-site1.ftempurl.com/api/Autentications/Login",
         userData,
         {
           headers: {
@@ -133,11 +135,15 @@ function LoginPage() {
           },
         }
       );
+      console.log("idddd:", res.data.id)
+
+    
 
       const token = res.data.token;
       const decoded = jwtDecode(token);
       localStorage.setItem("user", JSON.stringify(decoded));
       localStorage.setItem("token", token);
+      // localStorage.setItem("appUserId", getTokenData.id)
       setUser(decoded);
       const userRole =
         decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
@@ -174,7 +180,7 @@ function LoginPage() {
 
     try {
       const res = await axios.post(
-        "http://thetest-001-site1.ftempurl.com/api/Autentications/Register",
+        "https://thetest-001-site1.ftempurl.com/api/Autentications/Register",
         form,
         {
           headers: {

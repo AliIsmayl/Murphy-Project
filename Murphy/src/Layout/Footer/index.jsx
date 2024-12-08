@@ -13,7 +13,7 @@ function Footer() {
     const [footer, setFooter] = useState([])
 
     async function getData() {
-        const res = await axios.get("http://thetest-001-site1.ftempurl.com/api/Settings/Get?page=1&take=6")
+        const res = await axios.get("https://thetest-001-site1.ftempurl.com/api/Settings/Get?page=1&take=6")
         setFooter(res.data)
     }
 
@@ -26,7 +26,7 @@ function Footer() {
             <div className="footerUpBox">
                 <div className="leftFooterBox">
                     <img src={MurphyPhoto} alt="" />
-                    <p>Logistics services encompass a broad range of activities aimed at efficiently managing the movement and storage of goods.</p>
+                    <p>Logistika xidmətləri, malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir.</p>
                     <div className="socialIconBox">
                         {
                             footer.map((item) => (
@@ -48,7 +48,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="middleFooterBox">
-                    <h3>Contact info</h3>
+                    <h3>Əlaqə məlumatları</h3>
                     {
                         footer.map((item) => (
                             <div className='normalBox'>
@@ -56,7 +56,7 @@ function Footer() {
                                     <div className="informBox">
                                         <ImLocation2 />
                                         <div className="textBox">
-                                            <p>Our location:</p>
+                                            <p>Bizim ünvan:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@ function Footer() {
                                     <div className="informBox">
                                         <FaPhoneVolume />
                                         <div className="textBox">
-                                            <p>Phones:</p>
+                                            <p>Telefon:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
