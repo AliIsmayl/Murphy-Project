@@ -22,10 +22,17 @@ function LogisticService() {
             <div className="upLogisticServiceBox">
                 <div className="headText">LOJİSTİKA XİDMƏTLƏRİ</div>
                 <div className="normalBox">
+<<<<<<< HEAD
                     <p>Sizin Xidmətinizdə Qlobal Logistika Təcrübəsi</p>
                     <span>Logistika xidmətləri, malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir. Bu, nəqliyyat, anbarlaşdırma, inventar idarəetməsi, sifarişlərin yerinə yetirilməsi və paylanmanı əhatə edir.</span>
                     <Link className='link'to={'cargoReguest'}>
                         <p>Müraciət et</p>
+=======
+                    <p>Qlobal Logistika Ekspertizası Xidmətinizdə</p>
+                    <span>Lojistika xidmətləri malların hərəkəti və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət spektrini əhatə edir. Buraya nəqliyyat, anbarlaşdırma, inventarın idarə edilməsi, sifarişin yerinə yetirilməsi və paylama daxildir.</span>
+                    <Link className='link'to={'cargoReguest'}>
+                        <p>İndi müraciət</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                         <div className="arrowBox">
                             <IoIosArrowRoundUp />
                         </div>

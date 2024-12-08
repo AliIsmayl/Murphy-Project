@@ -26,7 +26,11 @@ function Footer() {
             <div className="footerUpBox">
                 <div className="leftFooterBox">
                     <img src={MurphyPhoto} alt="" />
+<<<<<<< HEAD
                     <p>Logistika xidmətləri, malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir.</p>
+=======
+                    <p>Lojistika xidmətləri malların hərəkətini və saxlanmasını səmərəli idarə etməyə yönəlmiş geniş fəaliyyət sahələrini əhatə edir.</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                     <div className="socialIconBox">
                         {
                             footer.map((item) => (
@@ -48,7 +52,11 @@ function Footer() {
                     </div>
                 </div>
                 <div className="middleFooterBox">
+<<<<<<< HEAD
                     <h3>Əlaqə məlumatları</h3>
+=======
+                    <h3>Əlaqə məlumatı</h3>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                     {
                         footer.map((item) => (
                             <div className='normalBox'>
@@ -56,7 +64,11 @@ function Footer() {
                                     <div className="informBox">
                                         <ImLocation2 />
                                         <div className="textBox">
+<<<<<<< HEAD
                                             <p>Bizim ünvan:</p>
+=======
+                                            <p>Ünvanımız:</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -65,7 +77,11 @@ function Footer() {
                                     <div className="informBox">
                                         <FaPhoneVolume />
                                         <div className="textBox">
+<<<<<<< HEAD
                                             <p>Telefon:</p>
+=======
+                                            <p>Telefonlar:</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -74,7 +90,7 @@ function Footer() {
                                     <div className="informBox">
                                         <HiOutlineMail />
                                         <div className="textBox">
-                                            <p>Email:</p>
+                                            <p>E-poçt:</p>
                                             <span>{item.value}</span>
                                         </div>
                                     </div>
@@ -88,7 +104,7 @@ function Footer() {
             </div>
             <div className="footerDownBox">
                 <p>
-                    "Murphy" website was prepared in © 2024 by <span>"FB" group</span>
+                "Murphy" saytı © 2024-cü ildə <span>"FB" qrupu</span> tərəfindən hazırlanmışdır.
                 </p>
             </div>
         </footer>

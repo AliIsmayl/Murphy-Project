@@ -61,14 +61,24 @@ function Delivering() {
             </div>
             <div className="middleDeliveryBox">
                 <img src="http://goodrise.like-themes.com/wp-content/uploads/2024/01/icon-yes.png" alt="" />
+<<<<<<< HEAD
                 <h3>İnam Yaratmaq üçün
                     <p>Təhlükəsiz Logistika Həlləri</p>
+=======
+                <h3>
+                Təhlükəsiz Logistika Həlləri ilə
+                    <p>Etibarlılıq Təmin Edirik</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                 </h3>
             </div>
 
             <div className="rightDeliveryBox">
                 <div className="insureBtnBox" onClick={handleOpenSearchBox}>
+<<<<<<< HEAD
                     <p>Yüküm haradadır?</p>
+=======
+                    <p>Yüküm Haradadır?</p>
+>>>>>>> d81957e53f3ea8389c06944d85e2d6b4b1b3a2a2
                     <div className="arrowBox"><IoIosArrowRoundUp /></div>
                 </div>
             </div>
