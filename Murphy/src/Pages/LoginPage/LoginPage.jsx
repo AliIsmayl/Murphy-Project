@@ -25,7 +25,7 @@ function LoginPage() {
   const [openCalendarBox, setOpenCalendarBox] = useState(false);
   const [writeCalendarText, setWriteCalendarText] = useState(false);
   const [dateState, setDateState] = useState(null);
-  const {getTokenData,  setUser } = useContext(userContext);
+  const { getTokenData, setUser } = useContext(userContext);
   const navigate = useNavigate();
   const [regImage, setRegImage] = useState("");
   const [showPassword, setShowPassword] = useState(false); // Şifre görünürlük state'i
@@ -35,7 +35,7 @@ function LoginPage() {
   const [errors, setErrors] = useState(null);
   const [isSending, setIsSending] = useState(false);
 
- 
+
 
   function handleImage(files) {
     if (files[0].type.startsWith("image")) {
@@ -135,15 +135,22 @@ function LoginPage() {
           },
         }
       );
-      console.log("idddd:", res.data.id)
 
-    
+
+
 
       const token = res.data.token;
       const decoded = jwtDecode(token);
+
+      if (decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === "User") {
+        localStorage.setItem("isAdmin", "bubiruserdi")
+      } else {
+        localStorage.setItem("isAdmin", "IsAdMiNAdMiN")
+      }
+
       localStorage.setItem("user", JSON.stringify(decoded));
       localStorage.setItem("token", token);
-      // localStorage.setItem("appUserId", getTokenData.id)
+      
       setUser(decoded);
       const userRole =
         decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
@@ -152,7 +159,7 @@ function LoginPage() {
       } else {
         navigate("/");
       }
-      window.location.reload()
+      // window.location.reload()
 
     } catch (error) {
       console.log("Error during login:", error.message);

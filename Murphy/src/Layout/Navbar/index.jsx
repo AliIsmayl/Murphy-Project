@@ -54,6 +54,7 @@ function Navbar() {
     function handleDeleteLocal() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        localStorage.removeItem('isAdmin');
         navigate("/")
         window.location.reload()
 
@@ -181,9 +182,9 @@ function Navbar() {
             </ul>
             <div className='loginAndModeBox'>
                 <div className='normalBox'>
-                    <div className="lang1Box">Az</div>
+                    {/* <div className="lang1Box">Az</div>
                     <div className="lang1Box">En</div>
-                    <div className="lang1Box">Ru</div>
+                    <div className="lang1Box">Ru</div> */}
                     {/* <div className="modeBox">
                         <ModeBox />
                     </div> */}
@@ -214,19 +215,35 @@ function Navbar() {
             </div>
             <div className={`respNavbar ${navbarOpen ? "openNavbar" : ""}`}>
                 <div className="respNotUserLoginBox">
-                    <div className="loginBox"><p>Log In</p><div className="line"></div></div>
+                    {
+                        getTokenData.role ?
+                            <div className="loginBox" onClick={handleDeleteLocal}><p>Log Out</p><div className="line"></div></div>
+                            :
+                            <Link to={"/login"} className="loginBox" ><p>Log In</p><div className="line"></div></Link>
+                    }
                 </div>
-                <div className="respHaveUserLoginBox">
-                    <div className="imageBox">
-                        <div className="image">
-                            <img src="https://b.fssta.com/uploads/application/soccer/headshots/713.png" alt="" />
+                {
+                    getTokenData ?
+                        <div className="respHaveUserLoginBox">
+                            {
+                                getTokenData && getTokenData ?
+                                    <Link to={'/profile'}>
+                                        <div className="imageBox">
+                                            <div className="image">
+                                                <img src={getTokenData && getTokenData.profileImage} alt="" />
+                                            </div>
+                                        </div>
+                                    </Link> : ""
+                            }
+
+                            <div className="userInformBox">
+                                <p>{getTokenData.name}</p>
+                                <span>{getTokenData.email}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="userInformBox">
-                        <p>Ali</p>
-                        <span>ali.ismayil.681@gmail.com</span>
-                    </div>
-                </div>
+                        : ""
+                }
+
                 <div className="closeBtn" onClick={handleOpenNavbar}>
                     <TfiClose />
                 </div>
@@ -319,9 +336,9 @@ function Navbar() {
                     </li>
                 </ul>
                 <div className='respNormalBox'>
-                    <div className="lang1Box">Az</div>
+                    {/* <div className="lang1Box">Az</div>
                     <div className="lang1Box">En</div>
-                    <div className="lang1Box">Ru</div>
+                    <div className="lang1Box">Ru</div> */}
                     {/* <div className="modeBox">
                         <ModeBox />
                     </div> */}

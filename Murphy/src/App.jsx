@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import HomePage from './Pages/HomePage';
 import BackToTop from './Components/BackToTop';
 import AboutPage from './Pages/AboutPage';
@@ -32,13 +32,14 @@ import StructorPage from './Pages/StructorPage/StructorPage';
 import MyDelivery from './Pages/MyDelivery/MyDelivery';
 import ScrollToTop from './Components/ScroolTopFunction';
 import GalleryPage from './Pages/GalleryPage/GalleryPage';
+import PrivateRoot from './Components/PrivateRoot';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
-      <ScrollToTop/>
+        <ScrollToTop />
         <Toaster />
         <Routes>
           <Route path='/' element={<MainLayOut />}>
@@ -66,7 +67,11 @@ function App() {
         </Routes>
         <BackToTop />
         <Routes>
-          <Route path='/admin' element={<AdminLayOut />}>
+          <Route path='/admin' element={
+            <PrivateRoot>
+              <AdminLayOut />
+            </PrivateRoot>
+          }>
             <Route path="/admin/about" element={<AdminAbout />} />
             <Route path="/admin/about/create" element={<AdminAboutCreatePage />} />
             <Route path="/admin/about/update" element={<AdminAboutEditPage />} />

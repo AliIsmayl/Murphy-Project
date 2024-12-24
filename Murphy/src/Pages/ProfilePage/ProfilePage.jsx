@@ -14,11 +14,11 @@ function ProfilePage() {
             <section id='profilePage'>
                 <div className="profileBox">
                     <div className="upBox">
-                        <div className="contactBox"><MdOutlineEdit /><p>Edit</p> </div>
+                        {/* <div className="contactBox"><MdOutlineEdit /><p>Edit</p> </div> */}
                         <div className="profileImage">
                             <img src={getTokenData.profileImage} alt="" />
                         </div>
-                        <div className="messageBox"><MdOutlineSearch /><p>Search</p></div>
+                        {/* <div className="messageBox"><MdOutlineSearch /><p>Search</p></div> */}
                     </div>
                     <div className="downBox">
                         <h1>{getTokenData.surname} {getTokenData.name}</h1>

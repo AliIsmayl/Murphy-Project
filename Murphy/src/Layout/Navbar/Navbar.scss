@@ -57,7 +57,7 @@ nav {
                 }
             }
 
-            
+
 
             .link,
             .xidmətLink {
@@ -92,6 +92,7 @@ nav {
                     }
                 }
             }
+
             .xidmətLink {
                 p {
                     font-size: 16px;
@@ -188,6 +189,7 @@ nav {
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        color: white !important;
 
         .line {
             height: 100%;
@@ -196,6 +198,7 @@ nav {
             transition: 0.4s;
             background: #F06728;
         }
+
 
         p {
             position: absolute;
@@ -267,14 +270,17 @@ nav {
             bottom: 80px;
             display: flex;
             align-items: center;
-            color: white;
+            color: white !important;
 
             .loginBox {
                 border: 1px solid white;
+                color: white !important;
 
                 p {
-                    color: white;
+                    color: white !important;
+
                 }
+
             }
 
         }
@@ -283,9 +289,15 @@ nav {
             flex-direction: column;
             align-items: start;
 
-            .openMenu {}
-
             li {
+
+                p {
+                    text-align: start;
+                    align-items: start;
+                    justify-content: start;
+                    display: flex;
+                    font-size: 18px;
+                }
 
                 .link {
                     color: white;
