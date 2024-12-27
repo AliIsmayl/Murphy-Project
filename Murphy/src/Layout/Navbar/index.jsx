@@ -249,7 +249,7 @@ function Navbar() {
                 </div>
                 <ul>
                     <li>
-                        <Link className="link">
+                        <Link className="link" to={"/"}>
                             <p>Home</p>
                             <div className="array">
                                 <IoIosArrowRoundUp />
@@ -258,13 +258,14 @@ function Navbar() {
                     </li>
                     <li onClick={handleOPenRespNavbarText}>
                         <Link className="link">
-                            <p>Şirkət</p>
+                            <p>Şirkət Profili</p>
                             <div className="array">
                                 <IoIosArrowRoundUp />
                             </div>
                         </Link>
 
                     </li>
+                    
                     <ul className={`openMenu ${openRespNavbarText ? "opened" : ""}`}>
                         <li>
                             <Link className="link" to={"/about"}>

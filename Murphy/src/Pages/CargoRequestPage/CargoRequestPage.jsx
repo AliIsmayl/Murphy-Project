@@ -19,20 +19,33 @@ function CargoRequestPage() {
   const appUserId = localStorage.getItem("appUserId")
   console.log("appUserId:", appUserId);
 
-  const initialValues = {
-    companyName: "",
-    companyEmail: "",
-    companyPhone: "",
-    address: "",
-    loadName: "",
-    loadWeight: "",
-    loadCapasity: "",
-    serviceId: "", 
-    toCountryId: "", 
-    fromCountryId: "", 
-    appUserId: `${appUserId ? appUserId : null}`,
+  const initialValues = appUserId !== null ?
+    {
+      companyName: "",
+      companyEmail: "",
+      companyPhone: "",
+      address: "",
+      loadName: "",
+      loadWeight: "",
+      loadCapasity: "",
+      serviceId: "",
+      toCountryId: "",
+      fromCountryId: "",
+      appUserId: appUserId,
 
-  };
+    } : {
+      companyName: "",
+      companyEmail: "",
+      companyPhone: "",
+      address: "",
+      loadName: "",
+      loadWeight: "",
+      loadCapasity: "",
+      serviceId: "",
+      toCountryId: "",
+      fromCountryId: "",
+
+    }
 
   const validationSchema = Yup.object().shape({
     companyName: Yup.string().required("Company Name is required"),
@@ -78,7 +91,7 @@ function CargoRequestPage() {
     Object.keys(values).forEach((key) => {
       formData.append(key, values[key]);
     });
-    formData.set("appUserId", `${appUserId ? appUserId : null}`);
+    formData.set("appUserId", `${appUserId ? appUserId : ""}`);
 
     setSending(true); // Sorğu göndərilməyə başlandı
 
